@@ -8,11 +8,12 @@ from tkinter import messagebox
 def tologin(request):
     return render(request,'login.html')
 
+def toadmin(request):
+    return render(request,'Admin.html')
 
 def Login(request):
     usn = request.GET.get("user",'')
     pas = request.GET.get("psd",'')
-
     if usn and pas:
         t = customerInfo.objects.filter(username=usn,password = pas).count()
         if t>=1:
@@ -32,18 +33,49 @@ def Signup(request):
     phone = request.GET.get("pho",'')
     email = request.GET.get("ema",'')
     address = request.GET.get("add",'')
+    date = request.GET.get('date','')
     emailTrue = email.find("@") and email.endswith('.com')
 
     if usn and pas and phone and email and address:
-        if pas != pas2:
-            return HttpResponse("Two input password must be consistent")
-        elif not emailTrue:
-            return HttpResponse("Wrong email address")
-        elif not re.match(r'^1[3-9]\d{9}$', phone):
-            return HttpResponse("Please enter vaild phone number")
-        else:
-            newcus = customerInfo(id = 11,username = usn,password = pas,mobile = phone,dateofbirth = null,address = address )
-            newcus.save()
-            return HttpResponse("Signup success")
+        try:
+            customerInfo.objects.filter(username=usn).get()
+            return HttpResponse("Username already exists")
+        except:
+            if pas != pas2:
+                return HttpResponse("Two input password must be consistent")
+            elif not emailTrue:
+                return HttpResponse("Wrong email address")
+            elif not re.match(r'^1[3-9]\d{9}$', phone):
+                return HttpResponse("Please enter vaild phone number")
+            else:
+                newcus = customerInfo(id = 11,username = usn,password = pas,mobile = phone,dateofbirth = date,address = address )
+                newcus.save()
+                return HttpResponse("Signup success")
     else:
         return HttpResponse("Please enter all information")
+
+
+
+def Delprodect(request):
+    prod = request.GET.get("prod", '')
+    try:
+        Product.objects.filter(Productid=prod).get()
+        Product.objects.get(Productid=prod).delete()
+        return HttpResponse("Product delete")
+    except:
+        return HttpResponse("Product does not exist")
+
+def addprodect(request):
+    prod = request.GET.get("addprod", '')
+    pron = request.GET.get("proname", '')
+    prop = request.GET.get("prodinf", '')
+    proi = request.GET.get("prodimage", '')
+    proc = request.GET.get("prodcat", '')
+    try:
+        Product.objects.filter(Productid=prod).get()
+        return HttpResponse("Product id already exist")
+    except:
+        if prod and pron and prop and proi and proc:
+            newprod = customerInfo(Productid=prod, Productname=pron, Price=prop, category=proc, image=proi)
+            newprod.save()
+        return HttpResponse("Product does not exist")

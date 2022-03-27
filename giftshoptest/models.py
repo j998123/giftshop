@@ -10,17 +10,29 @@ class customerInfo(models.Model):
     mobile = PhoneNumberField()
     dateofbirth = models.DateField(null=True)
     address = models.CharField(max_length=255,blank=True,null=True)
+    emailaddress = models.CharField(max_length=255, blank=True, null=True)
+
+class admin(models.Model):
+    adid = models.IntegerField(primary_key=True)
+    adminname = models.CharField(unique=True,max_length=45,blank=True,null=True)
+    password = models.CharField(max_length=45,blank=True,null=True)
 
 
-# class Category(models.Model):
-#     name = models.CharField(max_length=255,db_index=True)
-#     slug = models.SlugField(max_length=255,unique=True)
-#
-#     class Meta:
-#         verbose_name_plural = 'categories'
-#
-#     def __str__(self):
-#         return self.name
-#
-# class Product(models.Model):
-#     categpry = models.ForeignKey(Category,related_name='prpduct',on_delete=models.CASCADE)
+class Order(models.Model):
+    Orderid = models.IntegerField(primary_key=True)
+    username = models.CharField(unique=True,max_length=45,blank=True,null=True)
+    mobile = PhoneNumberField()
+    date = models.DateField(null=True)
+    address = models.CharField(max_length=255,blank=True,null=True)
+    mobile = PhoneNumberField()
+    emailaddress = models.CharField(max_length=255, blank=True, null=True)
+    address = models.CharField(max_length=255, blank=True, null=True)
+
+class Product(models.Model):
+    Productid = models.IntegerField(primary_key=True)
+    Productname = models.CharField(unique=True,max_length=45,blank=True,null=True)
+    Price = models.IntegerField()
+    category = models.CharField(max_length=255, blank=True, null=True)
+    information = models.CharField(max_length=255, blank=True, null=True)
+    image = models.ImageField(max_length=1000,blank=True,null=True)
+

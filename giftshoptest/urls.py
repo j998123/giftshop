@@ -6,5 +6,6 @@ urlpatterns = [
     path('main/', views.Login),
     path('tosign/', views.toSignup),
     path('sign/',views.Signup),
-
+    path('admin/',views.toadmin),
+    path('toadmin/',views.Delprodect),
 ]
