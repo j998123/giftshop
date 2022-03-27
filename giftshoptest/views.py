@@ -78,4 +78,4 @@ def addprodect(request):
         if prod and pron and prop and proi and proc:
             newprod = customerInfo(Productid=prod, Productname=pron, Price=prop, category=proc, image=proi)
             newprod.save()
-        return HttpResponse("Product does not exist")
+        return HttpResponse("Product add success")
