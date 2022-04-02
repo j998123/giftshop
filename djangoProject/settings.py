@@ -77,7 +77,7 @@ DATABASES = {
         'NAME': 'giftshop',
         'USER': 'root',
         'PASSWORD': '980627',
-        'HOST': '127.0.0.1',
+        'HOST': '192.168.0.168',
         'PORT': '3306'
 
     }

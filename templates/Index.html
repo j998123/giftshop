@@ -18,7 +18,7 @@
         <div class="container">
           <div class="row">
               <div class="top-bar-1 col-md-4">
-                  <a href="Index.html">
+                  <a href="">
                       <img src="bootstrap/pic/logo1.png" alt="online gift shop" width="100">
                   </a>
               </div>
@@ -120,50 +120,75 @@
 </nav>
 </section>
 
-<!-- login- signup-->
-<section id="login-signup-btn">
-
+<!-- banner-->
+<section id="ol_banner">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Hello World!</h1>
+                <h5>Now, take a tour.</h5>
+                <h5>In this website, you will get what you want.</h5>
+                <h5>Pick your interested gifts and create a wish list, your friends will buy it for you </h5>
+        <br><br><br>          <p><a class="btn btn-primary btn-lg" style="background-color:#FC6701;border-color: #FC6701 " href="#" role="button">Learn more</a></p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- login- signup-->
-<section id="signup-login-btn">
+<!-- group-->
+<section id="ol_group">
     <div class="container">
-            <div class="row">
-        <div class="top-bar-1 col-md-6">
-            <div class="login-btn">
-                <h1>Login</h1>
-            <form>
-          <div class="form-group">
-              <label for="user" >Email：</label>
-              <input type="text" class="form-control" id="user"/>
-          </div>
-          <div class="form-group">
-              <label for="password" >Password：</label>
-             <input type="text" class="form-control" id="password"/>
-         </div>
-         <button type="submit" class="btn btn-login" >Login</button>
-     </form>
+        <div class="row">
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail">
+                <h2> Fashion</h2>
+                <img src="bootstrap/pic/mred.jpeg" alt="fashion" height="100%" width="100%">
+            </a>
+
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail">
+                <h2> MakeUp</h2>
+                <img src="bootstrap/pic/mred.jpeg" alt="makeup">
+            </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail">
+                <h2> Bag</h2>
+                <img src="bootstrap/pic/bag.png" alt="...">
+            </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <a href="#" class="thumbnail">
+                <h2> Cake</h2>
+                <img src="bootstrap/pic/bag.png" alt="cake">
+            </a>
         </div>
         </div>
-        <div class="top-bar-2 col-md-6">
-            <div class="signup-btn">
-        <h1>Sign up</h1>
-        <h5>Don't have an account yet?</h5>
-         <button type="submit" class="btn btn-sign" >Join Now</button>
     </div>
-        </div>
-    </div>
-    </div>
-
-
-
 </section>
+
+<!-- footer-->
+<footer id="ol_footer">
+        <div class="container">
+            <div>
+                <span className="btn" id="prompt_btn2"> code</span>
+            </div>
+        </div>
+</footer>
+
+
 
 <script src="bootstrap/jquery/jquery-3.5.1.js"></script>
 <script src="bootstrap/dist/js/bootstrap.js"></script>
 <script src="bootstrap/dist/js/index.js"></script>
+<script type="text/javascript" src="bootstrap/dist/js/poplayer.js"></script>
+<script>
+    document.getElementById("prompt_btn2").onclick = function(){
+		// 调用插件
+		poplayer.prompt('Welcome,please enter the invitation code','Enter','Cancel','','Code',true);
+	};
 </script>
-
 
 </body>
 </html>
