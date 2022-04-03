@@ -39,7 +39,7 @@ def Signup(request):
     address = request.GET.get("add",'')
     date = request.GET.get("date",'')
     emailTrue = email.find("@") and email.endswith('.com')
-
+    id = customerInfo.objects.count()+1
     if usn and pas and phone and email and address:
         try:
             customerInfo.objects.filter(username=usn).get()
@@ -50,7 +50,7 @@ def Signup(request):
             elif not emailTrue:
                 return HttpResponse("Wrong email address")
             else:
-                newcus = customerInfo(id = 11,username = usn,password = pas,mobile = phone,dateofbirth = date,address = address,emailaddress=email )
+                newcus = customerInfo(id = id,username = usn,password = pas,mobile = phone,dateofbirth = date,address = address,emailaddress=email )
                 newcus.save()
                 return HttpResponse("Signup success")
     else:
