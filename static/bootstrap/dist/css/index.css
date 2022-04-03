@@ -1,7 +1,6 @@
 /*header*/
 body{
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
 }
 
 #ol_header .top-bar{
@@ -36,34 +35,25 @@ body{
 #ol_cate .navbar .container .collapse .nav li a:hover{
     background-color: transparent;
     border-bottom: 2px solid #FC6701;
-
 }
 a:hover{
     text-decoration:none
-
 }
 h2{
      color: Black;
 }
 /*login button*/
-#login-signup-btn .login-btn .btn-login{
+#signup-login-btn .container .row .top-bar-1 .login-btn form .btn{
     background-color:#FC6701;
     color: white;
 }
-/*labe style*/
-#login-signup-btn .login-btn .form-group label{
-    display:inline-block;
-    text-align: right;
-}
-/*input syle*/
-#login-signup-btn input{
-    width:200px;
-}
+
 /*form position*/
 /*form{*/
 /*    margin-left:400px;*/
 /*    margin-top:120px;*/
 /*}*/
+
 #signup-login-btn .signup-btn .btn-sign{
     background-color:#FC6701;
     width: 120px;
@@ -75,12 +65,34 @@ h2{
     left:850px;
     top:293px;
 }
-
 */
 
+#signup-login-btn .container .top-bar-1{
+    position: relative;
+    left:200px;
+}
+#signup-login-btn .container .top-bar-2{
+    position: relative;
+    left:50px;
+}
 
+/*input syle*/
+#signup-login-btn .container .form-group input{
+    width: 220px;
+}
+#fill-info .container .form-group input{
+    width: 250px;
+}
 
+#fill-info .container button{
+    background-color:#FC6701;
+    color: white;
+}
 
+#fill-info{
+margin-left: 10%;
+
+}
 
 
 
