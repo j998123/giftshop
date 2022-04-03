@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewpoint" content="width=device-width, initial-scale=1">
     <title>Online Gift Shop</title>
-    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="bootstrap/dist/css/index.css">
+    <link rel="stylesheet" href="../../static/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../static/bootstrap/dist/css/index.css">
 
-    <link rel="shortcut icon" href="bootstrap/pic/webicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../static/bootstrap/pic/webicon.png" type="image/x-icon">
 
 </head>
 <body>
@@ -18,8 +18,8 @@
         <div class="container">
           <div class="row">
               <div class="top-bar-1 col-md-4">
-                  <a href="Index.html">
-                      <img src="bootstrap/pic/logo1.png" alt="online gift shop" width="100">
+                  <a href=../ >
+                      <img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" width="100">
                   </a>
               </div>
 
@@ -35,7 +35,7 @@
 <!--                  -->
                     <a href="" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px">
                     </a>
-                    <a href="login.html">
+                    <a href="">
 <!--                        -->
                       <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
                     </a>
@@ -132,16 +132,16 @@
         <div class="top-bar-1 col-md-6">
             <div class="login-btn">
                 <h1>Login</h1>
-            <form>
+            <form action="/giftshop/tologin"method="get">
           <div class="form-group">
-              <label for="user" >Email：</label>
-              <input type="text" class="form-control" id="user"/>
+              <label for="user" >Username：</label>
+              <input name ="user" type="text" class="form-control" id="user"/>
           </div>
           <div class="form-group">
               <label for="password" >Password：</label>
-             <input type="text" class="form-control" id="password"/>
+             <input name ="psd" type="password" class="form-control" id="password"/>
          </div>
-         <button type="submit" class="btn btn-login" >Login</button>
+         <button type="submit" class="btn btn-login" value="Login" >Login</button>
      </form>
         </div>
         </div>
@@ -159,9 +159,9 @@
 
 </section>
 
-<script src="bootstrap/jquery/jquery-3.5.1.js"></script>
-<script src="bootstrap/dist/js/bootstrap.js"></script>
-<script src="bootstrap/dist/js/index.js"></script>
+<script src="../../static/bootstrap/jquery/jquery-3.5.1.js"></script>
+<script src="../../static/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../../static/bootstrap/dist/js/index.js"></script>
 </script>
 
 

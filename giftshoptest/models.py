@@ -24,7 +24,6 @@ class Order(models.Model):
     mobile = PhoneNumberField()
     date = models.DateField(null=True)
     address = models.CharField(max_length=255,blank=True,null=True)
-    mobile = PhoneNumberField()
     emailaddress = models.CharField(max_length=255, blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)
 

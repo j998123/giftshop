@@ -5,11 +5,17 @@ import re
 from tkinter import messagebox
 # Create your views here.
 
+def Mainpage(request):
+    return render(request,'Index.html')
+
 def tologin(request):
     return render(request,'login.html')
 
 def toadmin(request):
     return render(request,'Admin.html')
+
+def toSignup(request):
+    return render(request,'Signup.html')
 
 def Login(request):
     usn = request.GET.get("user",'')
@@ -23,8 +29,6 @@ def Login(request):
     else:
         return HttpResponse("Please enter Username and password")
 
-def toSignup(request):
-    return render(request,'Signup.html')
 
 def Signup(request):
     usn = request.GET.get("user",'')

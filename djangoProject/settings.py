@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,7 +78,7 @@ DATABASES = {
         'NAME': 'giftshop',
         'USER': 'root',
         'PASSWORD': '980627',
-        'HOST': '192.168.0.168',
+        'HOST': '127.0.0.1',
         'PORT': '3306'
 
     }
@@ -119,6 +120,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, 'common_static'),
+
+]
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
