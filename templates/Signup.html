@@ -122,42 +122,48 @@
 <!--information-->
 <section id="fill-info">
     <div class="container">
+        <form action="/giftshop/sign"method="get">
         <div class="form-group">
             <label>Username</label>
-            <input type="text" class="form-control" placeholder="Username">
+            <input name = "user" type="text" class="form-control" placeholder="Username">
         </div>
         <div class="form-group">
             <label>Email address</label>
-            <input type="email" class="form-control" name="email" id="emailBox" aria-describedby="emailHelp" required=""
+            <input name = "ema" type="email" class="form-control" id="emailBox" aria-describedby="emailHelp" required=""
                    placeholder="@email.com">
             <small id="emailText" class="form-text text-warning"></small>
         </div>
 
         <div class="form-group">
             <label>Password</label>
-            <input type="password" class="form-control" name="pwd" id="pwd" aria-describedby="emailHelp" required=""
+            <input name = "psd" type="password" class="form-control"  id="pwd" aria-describedby="emailHelp" required=""
                    placeholder="Password">
             <small id="pwdText" class="form-text text-warning"></small>
         </div>
         <div class="form-group">
             <label>Confirm you password</label>
-            <input type="password" class="form-control" name="con-pwd" id="con-pwd" aria-describedby="emailHelp"
+            <input name = "psd2" type="password" class="form-control"  id="con-pwd" aria-describedby="emailHelp"
                    required="" placeholder="Password again">
             <small id="confirm-pwd" class="form-text text-warning"></small>
         </div>
         <div class="form-group">
             <label>Phone number</label>
-            <input type="text" class="form-control" name="phone" id="phone" aria-describedby="emailHelp" required=""
+            <input name = "pho" type="text" class="form-control"  id="phone" aria-describedby="emailHelp" required=""
                    placeholder="000 0000 000">
             <small id="phonenum" class="form-text text-warning"></small>
         </div>
         <div class="form-group">
+            <label>Address</label>
+            <input name = "add"  type="text" class="form-control"  id="add" aria-describedby="emailHelp" required=""placeholder="3/8 claude Street,central">
+            <small id="address" class="form-text text-warning"></small>
+        </div>
+        <div class="form-group">
             <label>Date of Birth</label>
-            <input type="date" class="form-control" name="dob" id="dob" aria-describedby="emailHelp" required="">
+            <input name = "date" max="2015-01-01" type="date" class="form-control"  id="dob" aria-describedby="emailHelp" required="">
             <small id="dob-num" class="form-text text-warning"></small>
         </div>
-
-        <button type="submit" class="btn" id="submitBtn">Submit</button>
+        <button type="submit" class="btn" id="submitBtn" value="Signup">Submit</button>
+        </form>
     </div>
 </section>
 

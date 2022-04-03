@@ -37,7 +37,7 @@ def Signup(request):
     phone = request.GET.get("pho",'')
     email = request.GET.get("ema",'')
     address = request.GET.get("add",'')
-    date = request.GET.get('date','')
+    date = request.GET.get("date",'')
     emailTrue = email.find("@") and email.endswith('.com')
 
     if usn and pas and phone and email and address:
@@ -49,10 +49,8 @@ def Signup(request):
                 return HttpResponse("Two input password must be consistent")
             elif not emailTrue:
                 return HttpResponse("Wrong email address")
-            elif not re.match(r'^1[3-9]\d{9}$', phone):
-                return HttpResponse("Please enter vaild phone number")
             else:
-                newcus = customerInfo(id = 11,username = usn,password = pas,mobile = phone,dateofbirth = date,address = address )
+                newcus = customerInfo(id = 11,username = usn,password = pas,mobile = phone,dateofbirth = date,address = address,emailaddress=email )
                 newcus.save()
                 return HttpResponse("Signup success")
     else:
