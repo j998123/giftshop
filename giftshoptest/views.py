@@ -14,6 +14,15 @@ def tologin(request):
 def toadmin(request):
     return render(request,'Admin.html')
 
+def adminordpage(request):
+    return render(request,'Adminorder.html')
+
+def adminpropage(request):
+    return render(request,'Adminproduct.html')
+
+def adminuserpage(request):
+    return render(request,'Adminuser.html')
+
 def toSignup(request):
     return render(request,'Signup.html')
 

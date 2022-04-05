@@ -9,4 +9,7 @@ urlpatterns = [
     path('sign/',views.Signup),
     path('admin/',views.toadmin),
     path('toadmin/',views.Delprodect),
+    path('adminord/',views.adminordpage),
+    path('adminpro/',views.adminpropage),
+    path('adminuser/',views.adminuserpage),
 ]
