@@ -6,7 +6,7 @@ class CustomerAdmin(admin.ModelAdmin):
     list_display = ['username','mobile','dateofbirth','address','emailaddress']
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['Orderid','username','mobile','deliverdate','address','emailaddress']
+    list_display = ['Orderid','username','mobile','deliverdate','address','emailaddress','Productlist']
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['Productid','Productname','Price','category','information','image']
