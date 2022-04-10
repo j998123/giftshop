@@ -3,7 +3,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 # Create your models here.
 
 
-class customerInfo(models.Model):
+class Customer(models.Model):
     id = models.IntegerField(primary_key=True)
     username = models.CharField(unique=True,max_length=45,blank=True,null=True)
     password = models.CharField(max_length=45,blank=True,null=True)
@@ -22,10 +22,9 @@ class Order(models.Model):
     Orderid = models.IntegerField(primary_key=True)
     username = models.CharField(unique=True,max_length=45,blank=True,null=True)
     mobile = PhoneNumberField()
-    date = models.DateField(null=True)
+    deliverdate = models.DateField(null=True)
     address = models.CharField(max_length=255,blank=True,null=True)
     emailaddress = models.CharField(max_length=255, blank=True, null=True)
-    address = models.CharField(max_length=255, blank=True, null=True)
 
 class Product(models.Model):
     Productid = models.IntegerField(primary_key=True)
