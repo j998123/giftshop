@@ -91,14 +91,39 @@ h2{
 
 #fill-info{
 margin-left: 10%;
+}
+
+/*left filter*/
+#product_mid .product_list .container .row .col-xs-6 .radio dd{
+    margin-bottom: 5px;
+    font-size: 14px;
 
 }
 
+#caption{
+    position: relative;
+    margin-top: -15px;
+}
 
+div #button .btn{
+    position: relative;
+    right: 10px;
+}
 
+#product_mid .product_list .container .row .col-xs-6 .col-pro .btn{
+    width: 38px;
+    position: relative;
+    top: -30px;
+    right: -210px;
 
+    padding: 2px;
+    font-size: 10px;
+}
 
-
+#product_mid .product_list .container .row .pages{
+    position: relative;
+    left: 620px;
+}
 
 
 
