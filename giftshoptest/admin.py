@@ -11,7 +11,7 @@ class CustomerAdmin(admin.ModelAdmin):
     list_display = ['username','mobile','dateofbirth','address','emailaddress']
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['Orderid','user_id','mobile','deliverdate','address','emailaddress','Productlist']
+    list_display = ['Orderid','user_id','mobile','deliverdate','address','emailaddress']
     def has_add_permission(self, request):
         return False
 
@@ -19,7 +19,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['Productid','Productname','Price','category','information','image']
 
 class WishlistAdmin(admin.ModelAdmin):
-    list_display = ['listid','listname', 'user_id', 'deliverdate','Productlist']
+    list_display = ['listid','listname', 'user_id', 'deliverdate']
 
 admin.site.register(Customer,CustomerAdmin)
 admin.site.register(Order,OrderAdmin)

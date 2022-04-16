@@ -14,6 +14,12 @@ def tologin(request):
 def toSignup(request):
     return render(request,'Signup.html')
 
+def persondetails(request):
+    return render(request,'Personal_info.html')
+
+def Productlist(request):
+    return render(request,'Product_list.html')
+
 def Login(request):
     usn = request.GET.get("user",'')
     pas = request.GET.get("psd",'')
