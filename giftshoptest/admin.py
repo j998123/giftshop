@@ -19,7 +19,14 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['Productid','Productname','Price','category','information','image']
 
 class WishlistAdmin(admin.ModelAdmin):
-    list_display = ['listid','listname', 'user_id', 'deliverdate']
+    def prodlist(self,obj):
+        return [pl.Productid for pl in obj.Productlist.all()]
+    def user(self,obj):
+        return obj.user_id.username
+    prodlist.short_description = 'Productlist'
+    list_display = ['listid','listname', 'user', 'deliverdate','prodlist']
+    fieldsets = ((None,{'fields':('listid','listname', 'user_id', 'deliverdate','Productlist')}),)
+    filter_horizontal = ('Productlist',)
 
 admin.site.register(Customer,CustomerAdmin)
 admin.site.register(Order,OrderAdmin)
