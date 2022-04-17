@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render,redirect
+from django.http import HttpResponse,HttpResponseRedirect
+from django.contrib import messages
 from .models import *
 import re
 from tkinter import messagebox
@@ -21,16 +22,27 @@ def Productlist(request):
     return render(request,'Product_list.html')
 
 def Login(request):
+    if request.session.get('is_login',None):
+        return redirect("../")
     usn = request.GET.get("user",'')
     pas = request.GET.get("psd",'')
     if usn and pas:
-        t = Customer.objects.filter(username=usn,password = pas).count()
-        if t>=1:
-            return HttpResponse("Login Success")
+        try:
+            user = Customer.objects.get(username=usn)
+        except:
+            messages.error(request,'User does not exist')
+            return redirect("../login")
+        if user.password == pas:
+            request.session['is_login'] = True
+            request.session['user_id'] = user.id
+            request.session['user_name'] = user.username
+            return redirect("../")
         else:
-            return HttpResponse("Login Fail")
+            messages.error(request, 'The password is incorrect')
+            return redirect("../login")
     else:
-        return HttpResponse("Please enter Username and password")
+        messages.error(request, 'Please enter username and password')
+        return redirect("../login")
 
 
 def Signup(request):
@@ -46,41 +58,23 @@ def Signup(request):
     if usn and pas and phone and email and address:
         try:
             Customer.objects.filter(username=usn).get()
-            return HttpResponse("Username already exists")
+            messages.error(request, 'Username already exists')
+            return redirect("../tosign")
         except:
             if pas != pas2:
-                return HttpResponse("Two input password must be consistent")
+                messages.error(request, 'Two input password must be consistent')
+                return redirect("../tosign")
             elif not emailTrue:
-                return HttpResponse("Wrong email address")
+                messages.error(request, 'Wrong email address')
+                return redirect("../tosign")
             else:
                 newcus = Customer(id = id,username = usn,password = pas,mobile = phone,dateofbirth = date,address = address,emailaddress=email )
                 newcus.save()
-                return HttpResponse("Signup success")
+                messages.error(request, 'Signup success')
+                return redirect("../")
     else:
-        return HttpResponse("Please enter all information")
+        messages.error(request, 'Please enter all information')
+        return redirect("../tosign")
 
 
 
-def Delprodect(request):
-    prod = request.GET.get("prod", '')
-    try:
-        Product.objects.filter(Productid=prod).get()
-        Product.objects.get(Productid=prod).delete()
-        return HttpResponse("Product delete")
-    except:
-        return HttpResponse("Product does not exist")
-
-def addprodect(request):
-    prod = request.GET.get("addprod", '')
-    pron = request.GET.get("proname", '')
-    prop = request.GET.get("prodinf", '')
-    proi = request.GET.get("prodimage", '')
-    proc = request.GET.get("prodcat", '')
-    try:
-        Product.objects.filter(Productid=prod).get()
-        return HttpResponse("Product id already exist")
-    except:
-        if prod and pron and prop and proi and proc:
-            newprod = Customer(Productid=prod, Productname=pron, Price=prop, category=proc, image=proi)
-            newprod.save()
-        return HttpResponse("Product add success")
