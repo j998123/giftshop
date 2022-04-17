@@ -74,7 +74,7 @@ def Signup(request):
                 newcus = Customer(id = id,username = usn,password = pas,mobile = phone,dateofbirth = date,address = address,emailaddress=email )
                 newcus.save()
                 messages.error(request, 'Signup success')
-                return redirect("../")
+                return redirect("../login")
     else:
         messages.error(request, 'Please enter all information')
         return redirect("../tosign")
