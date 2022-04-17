@@ -125,10 +125,74 @@ div #button .btn{
     left: 620px;
 }
 
+/*add to cart button*/
+#details .container .row .col-xs-5 .section .btn{
+    margin-top: 20px;
+    width:50%;
+    background-color: #FC6701;
+    color: white;
+}
+
+
+.item-photo{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-right:1px solid #f6f6f6;
+}
+
+.menu-items{
+    list-style-type:none;
+    font-size:15px;
+    display:inline-flex;
+    margin-bottom:0;
+    margin-top:20px}
+
+@media (max-width: 426px) {
+    .container {margin-top:0px !important;}
+    .container > .row{padding:0 !important;}
+    .container > .row > .col-xs-12.col-sm-5{
+        padding-right:0 ;
+    }
+    .container > .row > .col-xs-12.col-sm-9 > div > p{
+        padding-left:0 !important;
+        padding-right:0 !important;
+    }
+    .container > .row > .col-xs-12.col-sm-9 > div > ul{
+        padding-left:10px !important;
+    }
+    .section{width:104%;}
+    .menu-items{padding-left:0;}
+}
+
+/*des*/
+#details .container .row .col-xs-9 .menu-items li{
+    margin-right:25px;
+    margin-top:25px;
+    cursor:pointer
+}
+#details .container .row .col-xs-9 .menu-items li .active{
+    border-bottom:3px solid black;
+}
+
+#details .container .row .col-xs-9 .li-des{
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+#details{
+    margin-left: 300px;
+}
 
 
 
 
 
+.title-price{margin-top:30px;margin-bottom:0;color:black}
+.title-attr{margin-top:0;margin-bottom:0;color:black;}
+.btn-minus{cursor:pointer;font-size:7px;display:flex;align-items:center;padding:5px;padding-left:10px;padding-right:10px;border:1px solid gray;border-radius:2px;border-right:0;}
+.btn-plus{cursor:pointer;font-size:7px;display:flex;align-items:center;padding:5px;padding-left:10px;padding-right:10px;border:1px solid gray;border-radius:2px;border-left:0;}
+div.section > div {width:100%;display:inline-flex;}
+div.section > div > input {margin:0;padding-left:5px;font-size:10px;padding-right:5px;max-width:18%;text-align:center;}
 
 
