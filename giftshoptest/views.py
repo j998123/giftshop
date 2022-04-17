@@ -21,6 +21,9 @@ def persondetails(request):
 def Productlist(request):
     return render(request,'Product_list.html')
 
+def Productdetail(request):
+    return render(request,'Product_detail.html')
+
 def Login(request):
     # if request.session.get('is_login',None):
     #     return redirect("../")
