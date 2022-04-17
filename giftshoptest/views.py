@@ -22,8 +22,8 @@ def Productlist(request):
     return render(request,'Product_list.html')
 
 def Login(request):
-    if request.session.get('is_login',None):
-        return redirect("../")
+    # if request.session.get('is_login',None):
+    #     return redirect("../")
     usn = request.GET.get("user",'')
     pas = request.GET.get("psd",'')
     if usn and pas:

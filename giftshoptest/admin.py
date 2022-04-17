@@ -20,10 +20,10 @@ class ProductAdmin(admin.ModelAdmin):
 
 class WishlistAdmin(admin.ModelAdmin):
     def prodlist(self,obj):
-        return [pl.Productid for pl in obj.Productlist.all()]
+        return obj.Productlist.count()
     def user(self,obj):
         return obj.user_id.username
-    prodlist.short_description = 'Productlist'
+    prodlist.short_description = 'Number of Products'
     list_display = ['listid','listname', 'user', 'deliverdate','prodlist']
     fieldsets = ((None,{'fields':('listid','listname', 'user_id', 'deliverdate','Productlist')}),)
     filter_horizontal = ('Productlist',)
