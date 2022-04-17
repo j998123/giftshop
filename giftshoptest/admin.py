@@ -11,7 +11,12 @@ class CustomerAdmin(admin.ModelAdmin):
     list_display = ['username','mobile','dateofbirth','address','emailaddress']
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['Orderid','user_id','mobile','deliverdate','address','emailaddress']
+    def prodlist(self,obj):
+        return obj.Productlist.count()
+    def user(self,obj):
+        return obj.user_id.username
+    prodlist.short_description = 'Number of Products'
+    list_display = ['Orderid','user','mobile','Price','deliverdate','address','emailaddress','prodlist','status']
     def has_add_permission(self, request):
         return False
 

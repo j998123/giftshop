@@ -24,6 +24,19 @@ class Product(models.Model):
 
 
 class Order(models.Model):
+    ORDER_STATUS_ENUM = {
+        "UNPAID": 1,
+        "UNSEND": 2,
+        "UNRECRIVED": 3,
+        "FINISH": 4,
+    }
+    ORDER_STATUS_CHOICES = (
+        (1,"Pending Payment"),
+        (2, "Pending Shipment"),
+        (3, "Awaiting confirmation of receipt"),
+        (4, "Completed"),
+        (5, "Cancelled"),
+    )
     Orderid = models.IntegerField(primary_key=True)
     user_id = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
     Price = models.IntegerField(null=True)
@@ -31,6 +44,7 @@ class Order(models.Model):
     deliverdate = models.DateField(null=True)
     address = models.CharField(max_length=255,blank=True,null=True)
     emailaddress = models.CharField(max_length=255, blank=True, null=True)
+    status = models.SmallIntegerField(choices=ORDER_STATUS_CHOICES,default=1)
     Productlist = models.ManyToManyField(Product)
 
 class Wishlist(models.Model):
