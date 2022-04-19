@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1">
+    <title>Online Gift Shop</title>
+    <link rel="stylesheet" href="../../static/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../static/bootstrap/dist/css/index.css">
+
+    <link rel="shortcut icon" href="../../static/bootstrap/pic/webicon.png" type="image/x-icon">
+
+</head>
+<body style="background-color: #eeeeee">
+<!-- head-->
+<header id="ol_header">
+    <!--header1-->
+    <div class="top-bar  text-center">
+        <div class="container">
+          <div class="row">
+              <div class="top-bar-1 col-md-4">
+                  <a href=../ >
+                      <img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" width="100">
+                  </a>
+              </div>
+
+              <div class="top-bar-2 col-md-4">
+                  <div class="top-search hidden-sm hidden-xs" >
+                      <input type="text" class="form-control" placeholder="Search">
+                  </div>
+              </div>
+              <div class="top-bar-3 col-md-4">
+                    <a href="" style="color: white">
+                      <span>Event code</span>
+                    </a>
+<!--                  -->
+                    <a href="" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px">
+                    </a>
+                    <a href="">
+<!--                        -->
+                      <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
+                    </a>
+              </div>
+          </div>
+        </div>
+    </div>
+</header>
+
+
+<!-- path -->
+<section id="path_top">
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li class="active">Shopping cart</li>
+</ol>
+</section>
+
+<!-- shopping cart-->
+<section id="cart">
+<div class="container-fluid">
+    <div class="row">
+        <aside class="col-lg-1"></aside>
+        <aside class="col-lg-7">
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table table-borderless table-shopping-cart">
+                        <thead class="text-muted">
+                            <tr class="small text-uppercase">
+                                <th scope="col">Product</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
+                                <th scope="col" class="text-right d-none d-md-block"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <figure class="item_side align-items-center">
+                                        <div class="aside"><img src="https://i.imgur.com/1eq5kmC.png" class="img-sm"></div>
+                                        <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">Tshirt with round nect</a>
+                                            <p class="text-muted small">SIZE: L <br> Brand: ZAARA</p>
+                                        </figcaption>
+                                    </figure>
+                                </td>
+                                <td> <select class="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select> </td>
+                                <td>
+                                    <div class="price-wrap"> <var class="price">$25.00</var>  </div><!-- <small class="text-muted"> $9.20 each </small> -->
+                                </td>
+                                <td class="text-right d-none d-md-block">
+                                    <a href="" class="btn btn-light" data-abc="true"> Remove</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <figure class="item_side align-items-center">
+                                        <div class="aside"><img src="https://i.imgur.com/hqiAldf.jpg" class="img-sm"></div>
+                                        <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">Flower Formal T-shirt</a>
+                                            <p class="text-muted small">SIZE: L <br> Brand: ADDA </p>
+                                        </figcaption>
+                                    </figure>
+                                </td>
+                                <td> <select class="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select> </td>
+                                <td>
+                                    <div class="price-wrap"> <var class="price">$25.00</var></div>
+                                </td>
+                                <td class="text-right d-none d-md-block">
+                                    <a href="" class="btn btn-light btn-round" data-abc="true"> Remove</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <figure class="item_side align-items-center">
+                                        <div class="aside"><img src="https://i.imgur.com/UwvU0cT.jpg" class="img-sm"></div>
+                                        <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">Printed White Tshirt</a>
+                                            <p class="small text-muted">SIZE:M <br> Brand: H&MM</p>
+                                        </figcaption>
+                                    </figure>
+                                </td>
+                                <td> <select class="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select> </td>
+                                <td>
+                                    <div class="price-wrap"> <var class="price">$20.00</var> </div>
+                                </td>
+                                <td class="text-right d-none d-md-block">
+
+                                    <a href="" class="btn btn-light btn-round" data-abc="true"> Remove</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </aside>
+        <aside class="col-lg-3">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group"> <label>Generate a Wish List?</label>
+                            <div class="input-group">
+                                <!--<input type="text" class="form-control coupon" name="" placeholder="Coupon code"> -->
+                                <span class="input-group-append">
+                                    <button class="btn btn-primary btn-apply coupon">Generate</button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <dl class="dlist-align">
+                        <dt>Total price:</dt>
+                        <dd class="text-right ml-3">$60.00</dd>
+                    </dl>
+                    <dl class="dlist-align">
+                        <dt>Discount:</dt>
+                        <dd class="text-right text-danger ml-3">- $10.00</dd>
+                    </dl>
+                    <dl class="dlist-align">
+                        <dt>Total:</dt>
+                        <dd class="text-right text-dark b ml-3"><strong>$60.00</strong></dd>
+                    </dl>
+                    <hr> <a href="#" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a> <a href="#" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Continue Shopping</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+</section>
+
+<script src="../../static/bootstrap/jquery/jquery-3.5.1.js"></script>
+<script src="../../static/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../../static/bootstrap/dist/js/index.js"></script>
+</script>
+
+
+</body>
+</html>
