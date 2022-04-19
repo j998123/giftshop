@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'phonenumber_field',
 ]
 
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -79,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'giftshop',
         'USER': 'root',
-        'PASSWORD': 'simon1994',
+        'PASSWORD': '980627',
         'HOST': '127.0.0.1',
         'PORT': '3306'
 

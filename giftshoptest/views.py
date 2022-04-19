@@ -24,6 +24,9 @@ def Productlist(request):
 def Productdetail(request):
     return render(request,'Product_detail.html')
 
+def Shoppingcart(request):
+    return render(request,'Shopping_cart.html')
+
 def Login(request):
     # if request.session.get('is_login',None):
     #     return redirect("../")

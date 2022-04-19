@@ -10,4 +10,5 @@ urlpatterns = [
     path('personal/',views.persondetails),
     path('productlist/',views.Productlist),
     path('productlist/productdetail',views.Productdetail),
+    path('shoppingcart/',views.Shoppingcart),
 ]
