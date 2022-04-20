@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib import messages
 from .models import *
+from cart.cart import Cart
 import re
 from tkinter import messagebox
 # Create your views here.
