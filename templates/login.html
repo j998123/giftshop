@@ -35,10 +35,17 @@
 <!--                  -->
                     <a href="" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px">
                     </a>
+                   {% if request.session.username %}
+                    <a href="" style="color: white">
+                      <h3>{{request.session.username }}</h3>
+                    </a>
+
+                    {% else %}
                     <a href="">
 <!--                        -->
                       <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
                     </a>
+                  {% endif %}
               </div>
           </div>
         </div>
@@ -127,15 +134,17 @@
         <div class="top-bar-1 col-md-6">
             <div class="login-btn">
                 <h1>Login</h1>
-            <form action="/giftshop/tologin"method="get">
+                <!-- action method-->
+            <form name="loginForm" action="/giftshop/tologin"method="get">
           <div class="form-group">
-              <label for="user" >Username：</label>
-              <input name ="user" type="text" class="form-control" id="user"/>
+              <label for="username" >Username：</label>
+              <input name ="username" type="text" class="form-control" id="username"/>
           </div>
           <div class="form-group">
               <label for="password" >Password：</label>
-             <input name ="psd" type="password" class="form-control" id="password"/>
+             <input name ="password" type="password" class="form-control" id="password"/>
          </div>
+                <!-- login- button-->
          <button type="submit" class="btn btn-login" value="Login" >Login</button>
              <a herf="#" class="forgetPWD" style="font-size: 8px">Forget your password?</a>
 
@@ -162,6 +171,7 @@
     {% endfor %}
 </script>
 </script>
+
 
 
 </body>

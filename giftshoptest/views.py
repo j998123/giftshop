@@ -31,8 +31,8 @@ def Shoppingcart(request):
 def Login(request):
     # if request.session.get('is_login',None):
     #     return redirect("../")
-    usn = request.GET.get("user",'')
-    pas = request.GET.get("psd",'')
+    usn = request.GET.get("username",'')
+    pas = request.GET.get("password",'')
     if usn and pas:
         try:
             user = Customer.objects.get(username=usn)
