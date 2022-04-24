@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'giftshoptest',
     'phonenumber_field',
+    "cart",
 ]
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
