@@ -33,19 +33,12 @@
                       <span>Event code</span>
                     </a>
 <!--                  -->
-                    <a href="shoppingcart" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px">
+                    <a href="" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px">
                     </a>
-                    {% if request.session.is_login %}
-                            <a href="personal" style="color: white">
-
-                                <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
-                            </a>
-                    {% else %}
-                            <a href="login">
-                                <!--                        -->
-                                <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
-                            </a>
-                    {% endif %}
+                    <a href="login">
+<!--                        -->
+                      <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
+                    </a>
               </div>
           </div>
         </div>
@@ -53,7 +46,7 @@
 </header>
 
 <section>
-    
+
     <div class="border-bottom">
         <div class="container">
             <!-- Nav tabs -->
@@ -73,8 +66,8 @@
             </ul>
         </div>
     </div>
-        
-      
+
+
     <!-- Tab panes -->
     <div class="container">
         <div class="tab-content">
@@ -88,7 +81,7 @@
                             <li><a href="#">Anniversary</a></li>
                             <li><a href="#">Festival</a></li>
                         </ul>
-                        
+
                     </div>
                     <div class="col-lg-9">
                         <div class="top text-right">
@@ -173,26 +166,30 @@
                     <div class="row">
                         <div class="col-sm-3">
                             <select class="form-control input-sm">
-                                <option value="">Select the event</option>
+                                <option value="Birthday">Birthday</option>
+                                <option value="Weddings">Weddings</option>
+                                <option value="Anniversary">Anniversary</option>
+                                <option value="Festival">Festival</option>
+                                <option value="Others">Others</option>
                             </select>
                         </div>
                         <div class="col-sm-3">
                             <input class="form-control" type="date" placeholder="">
                         </div>
                         <div class="col-sm-3">
-                            <select class="form-control input-sm">
-                                <option value="">15:00 - 16:00</option>
-                            </select>
+                                <input type = "time">
+
                         </div>
                         <div class="col-sm-3">
                             <p><button type="button" class="btn btn-default ">Clear</button></p>
                         </div>
                     </div>
+
                     <div class="row text-center">
-                        <button type="button" class="btn btn-default savebut">Save</button></p>
+                        <button type="button" class="btn btn-default save but">Save</button></p>
                     </div>
                 </div>
-                
+
             </div>
             <div id="Order" class="tab-pane fade">
                 <div class="text-center">
@@ -287,23 +284,25 @@
                         <p>Username</p>
                     </div>
                     <div class="col-sm-6">
-                        <p>Shuo</p>
+                        <input type="text" class="form-control" id="Username" placeholder="Shuo">
                     </div>
                     <div class="col-sm-3 text-right">
-                        <p><a href="">Edit</a></p>
+                        <p><a href="">Venty</a> | <a href="">Edit</a></p>
                     </div>
                 </div>
+
                 <div class="row border-bottom1">
                     <div class="col-sm-3">
                         <p>Password</p>
                     </div>
                     <div class="col-sm-6">
-                        <p>**********</p>
+                        <input type="text" class="form-control" id="Password" placeholder="*********">
                     </div>
                     <div class="col-sm-3 text-right">
-                        <p><a href="">Edit</a></p>
+                        <p><a href="">Venty</a> | <a href="">Edit</a></p>
                     </div>
                 </div>
+
                 <div class="row border-bottom1">
                     <div class="col-sm-3">
                         <p>Contact info</p>
