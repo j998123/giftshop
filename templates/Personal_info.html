@@ -37,12 +37,12 @@
                     <a href="shoppingcart" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px">
                     </a>
                     {% if request.session.is_login %}
-                            <a href="personal" style="color: white">
+                            <a href=" " style="color: white">
 
                                 <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
                             </a>
                     {% else %}
-                            <a href="login">
+                            <a href="../login">
                                 <!--                        -->
                                 <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
                             </a>
@@ -146,16 +146,16 @@
 					<img src="" alt="">
 				</div>
 				<h4 class="user">Information</h4>
-                <h6 class="user-info">Simon Zhang</h6>
-				<h6 class="user-email">Szhang@gmail.com</h6>
-                <h6 class="user-phone">0451209888</h6>
+                <h6 class="user-info">{{user.username}}</h6>
+				<h6 class="user-email">{{user.emailaddress}}</h6>
+                <h6 class="user-phone">{{user.mobile}}</h6>
 			</div><br>
 			<div class="about">
 				<h4>Address</h4>
-				<p>213,Somewhere St, Hurstville 2220 </p>
+				<p>{{user.address}} </p>
 			</div>
-            <form action="/giftshop/Logout">
-            <button type="submit" class="btn btn-primary" style="background-color:#FC6701" value="Logout">Log out</button>
+            <form method="Post" onsubmit="return" action="/giftshop/personal/">
+            <button type="submit" class="btn btn-primary" style="background-color:#FC6701" name="Logout" value="Logout">Log out</button>
             </form>
 		</div>
 	</div>

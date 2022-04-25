@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
+
 from .models import *
 from cart.cart import Cart
 import re
@@ -16,8 +18,14 @@ def tologin(request):
 def toSignup(request):
     return render(request,'Signup.html')
 
+@csrf_exempt
 def persondetails(request):
-    return render(request,'Personal_info.html')
+    user = Customer.objects.get(id=request.session['user_id'])
+    if request.POST:
+        if 'Logout' in request.POST:
+            request.session.flush()
+            return redirect("../")
+    return render(request,'Personal_info.html',{'user':user})
 
 def Productlist(request):
     return render(request,'Product_list.html')
@@ -26,7 +34,7 @@ def Productdetail(request):
     return render(request,'Product_detail.html')
 
 def Shoppingcart(request):
-    return render(request,'Shopping_cart.html')
+    return render(request,'Shopping_cart.html',{'cart':Cart(request)})
 
 def Login(request):
     # if request.session.get('is_login',None):
@@ -84,6 +92,14 @@ def Signup(request):
         return redirect("../tosign")
 
 
-def Logout(request):
-    request.session.flush()
-    return redirect("../")
+
+def add_to_cart(request,product_id,quantity):
+    product = Product.objects.get(Productid=product_id)
+    price = product.Price
+    cart=Cart(request)
+    cart.add(product,price,quantity)
+
+def remove_from_cart(request,product_id):
+    product = Product.objects.get(Productid=product_id)
+    cart=Cart(request)
+    cart.remove(product)

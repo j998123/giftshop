@@ -33,7 +33,7 @@
                       <span>Event code</span>
                     </a>
 <!--                  -->
-                    <a href="shoppingcart" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px">
+                    <a href="../shoppingcart" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px">
                     </a>
                    {% if request.session.is_login %}
                             <a href="personal" style="color: white">
@@ -41,15 +41,11 @@
                                 <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
                             </a>
                    {% else %}
-                            <a href="login">
+                            <a href=" ">
                                 <!--                        -->
                                 <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
                             </a>
                    {% endif %}
-                    <a href="">
-<!--                        -->
-                      <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
-                    </a>
               </div>
           </div>
         </div>

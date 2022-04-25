@@ -8,7 +8,6 @@ urlpatterns = [
     path('tosign/', views.toSignup),
     path('sign/',views.Signup),
     path('personal/',views.persondetails),
-    path('Logout/',views.Logout),
     path('productlist/',views.Productlist),
     path('productlist/productdetail',views.Productdetail),
     path('shoppingcart/',views.Shoppingcart),
