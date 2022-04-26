@@ -29,9 +29,8 @@
                   </div>
               </div>
               <div class="top-bar-3 col-md-4">
-                    <a href="" style="color: white">
-                      <span>Event code</span>
-                    </a>
+
+                        <span id="prompt_btn2" style="color: white">Event code</span>
 <!--                  -->
                     <a href="" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px">
                     </a>
@@ -41,7 +40,7 @@
                                 <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
                             </a>
                     {% else %}
-                            <a href="login">
+                            <a href="../login">
                                 <!--                        -->
                                 <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
                             </a>
@@ -54,7 +53,7 @@
 <!-- path -->
 <section id="path_top">
 <ol class="breadcrumb">
-  <li><a href="#">Home</a></li>
+  <li><a href="../">Home</a></li>
   <li class="active">Shopping cart</li>
 </ol>
 </section>
@@ -107,7 +106,7 @@
                     </table>
                     {% endif %}
                         {% empty %}
-                        <em>Shopping cart is empty</em>
+                        <em><h3>Shopping cart is empty</h3></em>
                         {% endfor %}
                 </div>
             </div>

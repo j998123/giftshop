@@ -24,7 +24,7 @@ def persondetails(request):
         if 'Logout' in request.POST:
             request.session.flush()
             return redirect("../")
-    return render(request,'Personal_info.html',{'user':user})
+    return render(request, 'Personal_info.html', {'user':user})
 
 def Productlist(request):
     return render(request,'Product_list.html')

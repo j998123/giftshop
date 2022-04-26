@@ -28,20 +28,18 @@
                   </div>
               </div>
               <div class="top-bar-3 col-md-4">
-                    <a href="" style="color: white">
-                      <span>Event code</span>
-                    </a>
+                    <span id="prompt_btn2" style="color: white">Event code</span>
 <!--         shopping cart       -->
-                    <a href="shoppingcart" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px;
+                    <a href="../shoppingcart" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px;
                         " >
                     </a>
                     {% if request.session.is_login %}
-                            <a href="personal" style="color: white">
+                            <a href="../personal" style="color: white">
 
                                 <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
                             </a>
                     {% else %}
-                            <a href="login">
+                            <a href="../login">
                                 <!--                        -->
                                 <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
                             </a>
@@ -197,8 +195,13 @@
 <script src="../../static/bootstrap/dist/js/bootstrap.js"></script>
 <script src="../../static/bootstrap/dist/js/index.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+    document.getElementById("prompt_btn2").onclick = function(){
+		// 调用插件
+		poplayer.prompt('Welcome,please enter the invitation code','Enter','Cancel','','Code',true);
+	};
 </script>
-
+</script>
 
 </body>
 </html>

@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="../../static/bootstrap/dist/css/index.css">
 
     <link rel="shortcut icon" href="../../static/bootstrap/pic/webicon.png" type="image/x-icon">
-
+    <link rel="stylesheet" href="../../static/bootstrap/dist/css/wishlist.css">
 </head>
 <body>
-
 <!-- head-->
 <header id="ol_header">
     <!--header1-->
@@ -19,7 +18,7 @@
         <div class="container">
           <div class="row">
               <div class="top-bar-1 col-md-4">
-                  <a href=../ >
+                  <a href="../">
                       <img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" width="100">
                   </a>
               </div>
@@ -30,111 +29,263 @@
                   </div>
               </div>
               <div class="top-bar-3 col-md-4">
-                    <a href="" style="color: white">
-                      <span>Event code</span>
+                   <span id="prompt_btn2" style="color: white">Event code</span>
+
+                    <!--       cart           -->
+                    <a href="../shoppingcart" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px">
                     </a>
-<!--                  -->
-                    <a href="shoppingcart" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px">
-                    </a>
-                    {% if request.session.is_login %}
-                            <a href=" " style="color: white">
+
+                        {% if request.session.is_login %}
+                            <a href="" style="color: white">
 
                                 <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
                             </a>
-                    {% else %}
-                            <a href="../login">
+                        {% else %}
+                            <a href="login">
                                 <!--                        -->
                                 <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
                             </a>
-                    {% endif %}
+                        {% endif %}
               </div>
           </div>
         </div>
     </div>
 </header>
-<!-- cate-->
-<section id="ol_cate">
-<nav class="navbar navbar-default navbar-static-top navbar-giftshop">
-  <div class="container">
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
-      <ul class="nav navbar-nav">
-<!--   exclusive       -->
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Exclusive</a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Cake</a></li>
-                <li><a href="#">Flowers</a></li>
-                <li><a href="#">Bags</a></li>
-                <li><a href="#">Makeups</a></li>
-                <li><a href="#">Rings</a></li>
-                <li><a href="#">Clothes</a></li>
-                <li><a href="#">Beauty</a></li>
-                <li><a href="#">Other more</a></li>
-          </ul>
-        </li>
-<!--  events          -->
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events</a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Wedding</a></li>
-                <li><a href="#">Birthday</a></li>
-                <li><a href="#">House Warming</a></li>
-                <li><a href="#">Get Promotion</a></li>
-                <li><a href="#">Graduation</a></li>
-                <li><a href="#">Other Events</a></li>
-          </ul>
-        </li>
-<!--  holidays        -->
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Holiday</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Valentine‘s Day</a></li>
-                    <li><a href="#">New Year</a></li>
-                    <li><a href="#">Mother's Day</a></li>
-                    <li><a href="#">Christmas</a></li>
-                    <li><a href="#">Halloween</a></li>
-                    <li><a href="#">Thanksgiving Day</a></li>
-                </ul>
-        </li>
-<!--    womens     <span class="caret">   -->
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Womens</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Flowers</a></li>
-            <li><a href="#">Perfume</a></li>
-            <li><a href="#">Bags</a></li>
-            <li><a href="#">Makeups</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Beauty</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Other more</a></li>
-          </ul>
-        </li>
-<!--    mens      -->
-        <li><a href="#">Mens</a></li>
-<!--    kids and baby     hidden-sm hidden-xs -->
-        <li><a href="#">Kids & Baby</a></li>
-        <li><a href="#">Technology</a></li>
-        <li><a href="#">Artworks</a></li>
-        <li><a href="#">Entertainment</a></li>
-        <li><a href="#">Home & Living</a></li>
-        <li><a href="#">Sports & Outdoor</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-</section>
-<!-- path -->
-<section id="path_top">
-<ol class="breadcrumb">
-  <li><a href="#">Account</a></li>
-  <li><a href="#">Profile</a></li>
-  <li class="active">Edit</li>
-</ol>
-</section>
-<!-- personal-->
+<section>
+
+    <div class="border-bottom">
+        <div class="container">
+            <!-- Nav tabs -->
+            <ul class="nav row nav-tabs">
+                <li class="col-sm-3 text-center">
+                <a class="nav-link active" data-toggle="tab" href="#Wish">Wish list</a>
+                </li>
+                <li class="col-sm-3 text-center">
+                <a class="nav-link" data-toggle="tab" href="#Delivery">Delivery arrangement</a>
+                </li>
+                <li class="col-sm-3 text-center">
+                <a class="nav-link" data-toggle="tab" href="#Order">Order history</a>
+                </li>
+                <li class="col-sm-3 text-center">
+                <a class="nav-link" data-toggle="tab" href="#Profile">Profile & setting</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- Tab panes -->
+    <div class="container">
+        <div class="tab-content">
+            <div id="Wish" class="tab-pane active">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <h2>New list</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Birthday</a></li>
+                            <li class="act"><a href="#">Wedding</a></li>
+                            <li><a href="#">Anniversary</a></li>
+                            <li><a href="#">Festival</a></li>
+                        </ul>
+
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="top text-right">
+                            <p><a href="">Edit</a></p>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="pa text-center">
+                                    <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100"></p>
+                                    <p>Amazing wedding fift</p>
+                                    <p>AUD 120.00</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="pa text-center">
+                                    <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100"></p>
+                                    <p>Amazing wedding fift</p>
+                                    <p>AUD 120.00</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="pa text-center">
+                                    <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100"></p>
+                                    <p>Amazing wedding fift</p>
+                                    <p>AUD 120.00</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="pa text-center">
+                                    <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100"></p>
+                                    <p>Amazing wedding fift</p>
+                                    <p>AUD 120.00</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="pa text-center">
+                                    <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100"></p>
+                                    <p>Amazing wedding fift</p>
+                                    <p>AUD 120.00</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="pa text-center">
+                                    <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100"></p>
+                                    <p>Amazing wedding fift</p>
+                                    <p>AUD 120.00</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="pa text-center">
+                                    <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100"></p>
+                                    <p>Amazing wedding fift</p>
+                                    <p>AUD 120.00</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="pa text-center">
+                                    <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100"></p>
+                                    <p>Amazing wedding fift</p>
+                                    <p>AUD 120.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Delivery" class="tab-pane fade">
+                <div class="twotop">
+                    <h3>Set preferences</h3>
+                    <p>Set the receive time for your pending orders.</p>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h4>Select the event</h4>
+                        </div>
+                        <div class="col-sm-3">
+                            <h4>Date</h4>
+                        </div>
+                        <div class="col-sm-3">
+                            <h4>Time</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <select class="form-control input-sm">
+                                <option value="Birthday">Birthday</option>
+                                <option value="Weddings">Weddings</option>
+                                <option value="Anniversary">Anniversary</option>
+                                <option value="Festival">Festival</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <input class="form-control" type="date" placeholder="">
+                        </div>
+                        <div class="col-sm-3">
+                                <input type = "time">
+
+                        </div>
+                        <div class="col-sm-3">
+                            <p><button type="button" class="btn btn-default ">Clear</button></p>
+                        </div>
+                    </div>
+
+                    <div class="row text-center">
+                        <button type="button" class="btn btn-default save but">Save</button></p>
+                    </div>
+                </div>
+
+            </div>
+            <div id="Order" class="tab-pane fade">
+                <div class="text-center">
+                    <h3><a href="" class="threec">Received fift</a> <a href="">Orders</a></h3>
+                </div>
+                <div class="row border-bottom1">
+                    <div class="col-sm-2">
+                        <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100" width="100%"></p>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p>Product name Flowers</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p>2022-03-01</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p>*1</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p>Lorem input dolor sat amet</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <p>AUD 40.00</p>
+                    </div>
+                    <div class="col-sm-2">
+                        <p class="threec">Pending</p>
+                    </div>
+                </div>
+                <div class="row border-bottom1">
+                    <div class="col-sm-2">
+                        <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100" width="100%"></p>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p>Product name Flowers</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p>2022-03-01</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p>*1</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p>Lorem input dolor sat amet</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <p>AUD 40.00</p>
+                    </div>
+                    <div class="col-sm-2">
+                        <p class="threec">Pending</p>
+                    </div>
+                </div>
+                <div class="row border-bottom1">
+                    <div class="col-sm-2">
+                        <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100" width="100%"></p>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p>Product name Flowers</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p>2022-03-01</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p>*1</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <p>Lorem input dolor sat amet</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <p>AUD 40.00</p>
+                    </div>
+                    <div class="col-sm-2">
+                        <p class="threec">Pending</p>
+                    </div>
+                </div>
+            </div>
+            <div id="Profile" class="tab-pane fade">
+                <h2>Personal info</h2>
 <div class="container">
 <div class="row gutters">
 <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
@@ -235,12 +386,32 @@
 </div>
 </div>
 </div>
+            </div>
+        </div>
+    </div>
+
+        
+      
+</section>
+
+
+
+
+
+
+
+
 
 <script src="../../static/bootstrap/jquery/jquery-3.5.1.js"></script>
 <script src="../../static/bootstrap/dist/js/bootstrap.js"></script>
 <script src="../../static/bootstrap/dist/js/index.js"></script>
+<script type="text/javascript" src="../../static/bootstrap/dist/js/poplayer.js"></script>
+<script>
+    document.getElementById("prompt_btn2").onclick = function(){
+		// 调用插件
+		poplayer.prompt('Welcome,please enter the invitation code','Enter','Cancel','','Code',true);
+	};
 </script>
-
 
 </body>
 </html>
