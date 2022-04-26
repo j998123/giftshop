@@ -99,12 +99,6 @@ margin-left: 10%;
     font-size: 14px;
 
 }
-
-#caption{
-    position: relative;
-    text-align: center;
-}
-
 div #button .btn{
     position: relative;
     right: 10px;
@@ -272,25 +266,12 @@ a {
     border-radius: 1px
 }
 
-.price {
-    font-weight: 600;
-    color: #212529;
-    height:20px
-}
-/*price */
-#price h5{
-    position: relative;
-    margin-left: 35px;
-}
 
-#btn_add{
-    position: relative;
-    top: -30px;
-    left: 180px;
-    line-height: 15px;
-    font-size: 12px;
-    width: 50px;
-}
+/*product_list*/
+/**/
+
+
+/****/
 
 .btn.btn-out {
     outline: 1px solid #fff;

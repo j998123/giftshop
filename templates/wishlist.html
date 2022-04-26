@@ -279,56 +279,106 @@
             </div>
             <div id="Profile" class="tab-pane fade">
                 <h2>Personal info</h2>
-                <div class="row border-bottom1">
-                    <div class="col-sm-3">
-                        <p>Username</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="Username" placeholder="Shuo">
-                    </div>
-                    <div class="col-sm-3 text-right">
-                        <p><a href="">Venty</a> | <a href="">Edit</a></p>
-                    </div>
-                </div>
-
-                <div class="row border-bottom1">
-                    <div class="col-sm-3">
-                        <p>Password</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="Password" placeholder="*********">
-                    </div>
-                    <div class="col-sm-3 text-right">
-                        <p><a href="">Venty</a> | <a href="">Edit</a></p>
-                    </div>
-                </div>
-
-                <div class="row border-bottom1">
-                    <div class="col-sm-3">
-                        <p>Contact info</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <p>email address</p>
-                        <p>z***40@gmail.com</p>
-                        <p>Not</p>
-                    </div>
-                    <div class="col-sm-3 text-right">
-                        <p><a href="">Venty</a> | <a href="">Edit</a></p>
-                    </div>
-                </div>
-                <div class="row border-bottom1">
-                    <div class="col-sm-3">
-                        <p>Personal info</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <p>SHUO ZHANG</p>
-                        <p>1b pearl St</p>
-                        <p>303</p>
-                    </div>
-                    <div class="col-sm-3 text-right">
-                        <p><a href="">Edit</a></p>
-                    </div>
-                </div>
+<div class="container">
+<div class="row gutters">
+<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+<div class="card h-100">
+	<div class="card-body">
+		<div class="account-settings">
+			<div class="user-profile">
+				<div class="user-avatar">
+					<img src="" alt="">
+				</div>
+				<h4 class="user">Information</h4>
+                <h6 class="user-info">{{user.username}}</h6>
+				<h6 class="user-email">{{user.emailaddress}}</h6>
+                <h6 class="user-phone">{{user.mobile}}</h6>
+			</div><br>
+			<div class="about">
+				<h4>Address</h4>
+				<p>{{user.address}} </p>
+			</div>
+            <form method="Post" onsubmit="return" action="/giftshop/personal/">
+            <button type="submit" class="btn btn-primary" style="background-color:#FC6701" name="Logout" value="Logout">Log out</button>
+            </form>
+		</div>
+	</div>
+</div>
+</div>
+<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+<div class="card h-100">
+	<div class="card-body">
+		<div class="row gutters">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<h6 class="mb-2 text-primary">Personal Details</h6>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="fullName">Full Name</label>
+					<input type="text" class="form-control" id="fullName" placeholder="Enter full name">
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="eMail">Email</label>
+					<input type="email" class="form-control" id="eMail" placeholder="Enter email ID">
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="phone">Phone</label>
+					<input type="text" class="form-control" id="phone" placeholder="Enter phone number">
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" id="password" placeholder="Enter new password">
+				</div>
+			</div>
+		</div>
+		<div class="row gutters">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<h6 class="mt-3 mb-2 text-primary">Address</h6>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="Street">Street</label>
+					<input type="name" class="form-control" id="Street" placeholder="Enter Street">
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="ciTy">City</label>
+					<input type="name" class="form-control" id="ciTy" placeholder="Enter City">
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="sTate">State</label>
+					<input type="text" class="form-control" id="sTate" placeholder="Enter State">
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+				<div class="form-group">
+					<label for="Post">Post Code</label>
+					<input type="text" class="form-control" id="Post" placeholder="Zip Code">
+				</div>
+			</div>
+		</div>
+		<div class="row gutters">
+			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+				<div class="text-right">
+					<button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+					<button type="button" id="submit" name="submit" class="btn btn-primary" style="background-color:#FC6701 ">Update</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</div>
             </div>
         </div>
     </div>
