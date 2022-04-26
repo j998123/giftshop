@@ -2,7 +2,6 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
-
 from .models import *
 from cart.cart import Cart
 import re
