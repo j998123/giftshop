@@ -18,7 +18,7 @@
         <div class="container">
           <div class="row">
               <div class="top-bar-1 col-md-4">
-                  <a href=../ >
+                  <a href="../">
                       <img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" width="100">
                   </a>
               </div>
@@ -29,21 +29,24 @@
                   </div>
               </div>
               <div class="top-bar-3 col-md-4">
-                     <span id="prompt_btn2" style="color: white">Event code</span>
-<!--                  -->
+               <!--  event code   -->
+                   <span id="prompt_btn332" style="color: white">Event code</span>
+
+                    <!--       cart           -->
                     <a href="../shoppingcart" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px">
                     </a>
-                   {% if request.session.is_login %}
-                            <a href="personal" style="color: white">
+
+                        {% if request.session.is_login %}
+                            <a href="" style="color: white">
 
                                 <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
                             </a>
-                   {% else %}
-                            <a href=" ">
+                        {% else %}
+                            <a href="login">
                                 <!--                        -->
                                 <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
                             </a>
-                   {% endif %}
+                        {% endif %}
               </div>
           </div>
         </div>
@@ -160,20 +163,23 @@
     </div>
 </section>
 
+
 <script src="../../static/bootstrap/jquery/jquery-3.5.1.js"></script>
 <script src="../../static/bootstrap/dist/js/bootstrap.js"></script>
 <script src="../../static/bootstrap/dist/js/index.js"></script>
+<script type="text/javascript" src="../../static/bootstrap/dist/js/poplayer.js"></script>
+<script type="text/javascript">
+    document.getElementById("prompt_btn332").onclick = function(){
+		// 调用插件
+		poplayer.prompt('Welcome,please enter the invitation code','Enter','Cancel','','Code',true);
+	};
+</script>
 <script>
     {% for msg in messages %}
         alert('{{ msg.message }}');
     {% endfor %}
 </script>
-<script>
-    document.getElementById("prompt_btn2").onclick = function(){
-		// 调用插件
-		poplayer.prompt('Welcome,please enter the invitation code','Enter','Cancel','','Code',true);
-	};
-</script>
+
 
 
 

@@ -144,8 +144,14 @@
 <script src="../../static/bootstrap/jquery/jquery-3.5.1.js"></script>
 <script src="../../static/bootstrap/dist/js/bootstrap.js"></script>
 <script src="../../static/bootstrap/dist/js/index.js"></script>
+<script type="text/javascript" src="../../static/bootstrap/dist/js/poplayer.js"></script>
 </script>
-
+<script>
+    document.getElementById("prompt_btn2").onclick = function(){
+		// 调用插件
+		poplayer.prompt('Welcome,please enter the invitation code','Enter','Cancel','','Code',true);
+	};
+</script>
 
 </body>
 </html>
