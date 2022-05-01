@@ -9,6 +9,6 @@ urlpatterns = [
     path('sign/',views.Signup),
     path('personal/',views.persondetails),
     path('productlist/',views.Productlist),
-    path('productlist/productdetail',views.Productdetail),
+    path('productlist/<int:Productid>/',views.Productdetail),
     path('shoppingcart/',views.Shoppingcart),
 ]

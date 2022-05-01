@@ -137,3 +137,8 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Payment
+TRIPE_PUBLISHABLE_KEY = 'pk_test_51KuWixLzrkFEQUJtOQJhpAC00zTQ7pG3OHfE64DlKHyMFe3h3Mc9RtQRMkHqvj8pVB5VB6uPiPOV6IsJ3ePpHurg00JDw1Kli9'
+STRIPE_SECRET_KEY = 'sk_test_51KuWixLzrkFEQUJt0WmdtHiVnztIJU7uRna8cuJfXnVPsgRM0MBLz9CgafeCBw3o67DytJtf3mQ9ePPmqP7sr9T800AZ8erCwr'

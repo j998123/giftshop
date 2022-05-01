@@ -29,15 +29,23 @@ def persondetails(request):
 def Productlist(request):
     return render(request,'Product_list.html')
 
-def Productdetail(request):
-    return render(request,'Product_detail.html')
+@csrf_exempt
+def Productdetail(request,Productid):
+    product = Product.objects.get(Productid=Productid)
+    if request.POST:
+        if 'Add' in request.POST:
+            add_to_cart(Productid,1)
+            return redirect("../shoppingcart")
+    return render(request,'Product_detail.html',{'product':product})
 
+
+@csrf_exempt
 def Shoppingcart(request):
     return render(request,'Shopping_cart.html',{'cart':Cart(request)})
 
 def Login(request):
-    # if request.session.get('is_login',None):
-    #     return redirect("../")
+    if request.session.get('is_login',None):
+        return redirect("../")
     usn = request.GET.get("username",'')
     pas = request.GET.get("password",'')
     if usn and pas:
