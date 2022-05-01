@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewpoint" content="width=device-width, initial-scale=1">
     <title>Online Gift Shop</title>
-    <link rel="stylesheet" href="../../static/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../../static/bootstrap/dist/css/index.css">
-    <link rel="shortcut icon" href="../../static/bootstrap/pic/webicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../../static/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../static/bootstrap/dist/css/index.css">
+    <link rel="shortcut icon" href="../../../static/bootstrap/pic/webicon.png" type="image/x-icon">
 
 </head>
 <body>
@@ -17,8 +17,8 @@
         <div class="container">
           <div class="row">
               <div class="top-bar-1 col-md-4">
-                  <a href=../>
-                      <img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" width="100">
+                  <a href=../../>
+                      <img src="../../../static/bootstrap/pic/logo1.png" alt="online gift shop" width="100">
                   </a>
               </div>
 
@@ -30,16 +30,16 @@
               <div class="top-bar-3 col-md-4">
                     <span id="prompt_btn2" style="color: white">Event code</span>
 <!--         shopping cart       -->
-                    <a href="../shoppingcart" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px;
+                    <a href="../../shoppingcart" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px;
                         " >
                     </a>
                     {% if request.session.is_login %}
-                            <a href="../personal" style="color: white">
+                            <a href="../../personal" style="color: white">
 
                                 <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
                             </a>
                     {% else %}
-                            <a href="../login">
+                            <a href="../../login">
                                 <!--                        -->
                                 <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
                             </a>
@@ -138,7 +138,7 @@
 <div class="container">
         	<div class="row">
                <div class="col-xs-4 item-photo">
-                    <img style="max-width:100%;" src="../../static/bootstrap/pic/car-flower.jpeg" />
+                    <img style="max-width:100%;" src="{{MEDIA_URL}}{{image}}" />
                 </div>
                 <div class="col-xs-5" style="border:0px solid gray">
                     <!-- des -->
@@ -161,7 +161,7 @@
 
                     <!-- cart -->
                     <div class="section" style="padding-bottom:20px;">
-                        <form method="Post" onsubmit="return" action="/giftshop/shoppingcart/">
+                        <form method="Post" onsubmit="return" action="../giftshop/shoppingcart/">
                         <button class="btn",name="Add" value="Add"> Add to Cart</button>
                         </form>
                         <h6><a href="#"><span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span> Cancel</a></h6>
@@ -185,11 +185,11 @@
 
 
 
-<script src="../../static/bootstrap/jquery/jquery-3.5.1.js"></script>
-<script src="../../static/bootstrap/dist/js/bootstrap.js"></script>
-<script src="../../static/bootstrap/dist/js/index.js"></script>
+<script src="../../../static/bootstrap/jquery/jquery-3.5.1.js"></script>
+<script src="../../../static/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../../../static/bootstrap/dist/js/index.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="../../static/bootstrap/dist/js/poplayer.js"></script>
+<script type="text/javascript" src="../../../static/bootstrap/dist/js/poplayer.js"></script>
 <script>
     document.getElementById("prompt_btn2").onclick = function(){
 		// 调用插件
