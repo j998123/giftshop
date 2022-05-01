@@ -11,4 +11,7 @@ urlpatterns = [
     path('productlist/',views.Productlist),
     path('productlist/<int:Productid>/',views.Productdetail),
     path('shoppingcart/',views.Shoppingcart),
+    path('test/', views.paymenttest, name='test'),
+    path('thanks/', views.paymentsucess, name='thanks'),
+    path('checkout/', views.checkout, name='checkout'),
 ]

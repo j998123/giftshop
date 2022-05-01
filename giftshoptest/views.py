@@ -1,12 +1,17 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import JsonResponse
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
 from cart.cart import Cart
+from django.views import View
+import stripe
+from django.conf import settings
+from django.urls import reverse
 import re
 from tkinter import messagebox
 # Create your views here.
+
 
 def Mainpage(request):
     return render(request,'Index.html')
@@ -16,6 +21,13 @@ def tologin(request):
 
 def toSignup(request):
     return render(request,'Signup.html')
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
+def paymenttest(request):
+    return render(request, 'testpayment.html')
+
+def paymentsucess(request):
+    return render(request, 'thanks.html')
 
 @csrf_exempt
 def persondetails(request):
@@ -110,3 +122,21 @@ def remove_from_cart(request,product_id):
     product = Product.objects.get(Productid=product_id)
     cart=Cart(request)
     cart.remove(product)
+
+@csrf_exempt
+def checkout(request):
+    session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=[{
+            'price': 'price_1KuXbTLzrkFEQUJthAfPKVS4',
+            'quantity': 1,
+        }],
+        mode='payment',
+        success_url=request.build_absolute_uri(reverse('thanks')) + '?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url=request.build_absolute_uri(reverse('test')),
+    )
+
+    return JsonResponse({
+        'session_id' : session.id,
+        'stripe_public_key' : settings.TRIPE_PUBLISHABLE_KEY
+    })
