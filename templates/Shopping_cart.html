@@ -80,7 +80,7 @@
                             <tr>
                                 <td>
                                     <figure class="item_side align-items-center">
-                                        <div class="aside"><img src={{ item.product.image }} class="img-sm"></div>
+                                        <div class="aside"><img src="{{ MEDIA_URL }}{{ item.product.image }}"class="img-sm"></div>
                                         <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">{{ item.product.Productname }}</a>
                                             <p class="text-muted small">{{ item.product.category }}</p>
                                         </figcaption>
@@ -96,7 +96,9 @@
                                     <div class="price-wrap"> <var class="price">{{item.unit_price}}</var>  </div><!-- <small class="text-muted"> $9.20 each </small> -->
                                 </td>
                                 <td class="text-right d-none d-md-block">
-                                    <a href="" class="btn btn-light" data-abc="true"> Remove</a>
+                                     <form method="Post" onsubmit="return" >
+                                    <button type="submit" class="btn btn-light" style="background-color:#FC6701" name="Remove" value="{{ item.product.Productid }}"> Remove</button>
+                                     </form>
                                 </td>
                             </tr>
                         </tbody>

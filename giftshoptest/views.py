@@ -29,6 +29,9 @@ def paymenttest(request):
 def paymentsucess(request):
     return render(request, 'thanks.html')
 
+def Payment(request):
+    return render(request, 'Payment.html.')
+
 @csrf_exempt
 def persondetails(request):
     user = Customer.objects.get(id=request.session['user_id'])
@@ -47,13 +50,17 @@ def Productdetail(request,Productid):
     product = Product.objects.get(Productid=Productid)
     if request.POST:
         if 'Add' in request.POST:
-            add_to_cart(Productid,1)
-            return redirect("../")
+            add_to_cart(request,Productid,1)
+            return redirect("../../shoppingcart")
     return render(request,'Product_detail.html',{'product':product})
 
 
 @csrf_exempt
 def Shoppingcart(request):
+    if request.POST:
+        if 'Remove' in request.POST:
+            remove_from_cart(request,request.POST.get('Remove'))
+            return redirect("../shoppingcart")
     return render(request,'Shopping_cart.html',{'cart':Cart(request)})
 
 def Login(request):
@@ -126,21 +133,22 @@ def remove_from_cart(request,product_id):
 
 @csrf_exempt
 def checkout(request):
-    session = stripe.checkout.Session.create(
-        payment_method_types=['card'],
-        line_items=[{
-            'price': 'price_1KuXbTLzrkFEQUJthAfPKVS4',
-            'quantity': 1,
-        }],
-        mode='payment',
-        success_url=request.build_absolute_uri(reverse('thanks')) + '?session_id={CHECKOUT_SESSION_ID}',
-        cancel_url=request.build_absolute_uri(reverse('test')),
-    )
+    for item in Cart(request):
+        session = stripe.checkout.Session.create(
+            payment_method_types=['card'],
+            line_items=[{
+                'price': item.product.stripe_price_id,
+                'quantity': item.quantity,
+            }],
+            mode='payment',
+            success_url=request.build_absolute_uri(reverse('thanks')) + '?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url=request.build_absolute_uri(reverse('test')),
+        )
 
-    return JsonResponse({
-        'session_id' : session.id,
-        'stripe_public_key' : settings.TRIPE_PUBLISHABLE_KEY
-    })
+        return JsonResponse({
+            'session_id' : session.id,
+            'stripe_public_key' : settings.TRIPE_PUBLISHABLE_KEY
+        })
 
 
 
