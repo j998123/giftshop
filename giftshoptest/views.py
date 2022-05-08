@@ -48,7 +48,7 @@ def Productdetail(request,Productid):
     if request.POST:
         if 'Add' in request.POST:
             add_to_cart(Productid,1)
-            return redirect("../shoppingcart")
+            return redirect("../")
     return render(request,'Product_detail.html',{'product':product})
 
 
