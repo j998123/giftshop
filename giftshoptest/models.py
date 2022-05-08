@@ -21,6 +21,7 @@ class Product(models.Model):
     category = models.CharField(max_length=255, blank=True, null=True)
     information = models.CharField(max_length=255, blank=True, null=True)
     image = models.ImageField(max_length=1000,blank=True,null=True)
+    stripe_price_id = models.CharField(unique=True,max_length=45,blank=True,null=True)
 
 
 class Order(models.Model):

@@ -55,7 +55,7 @@
                         " >
                     </a>
                     {% if request.session.is_login %}
-                        <a href="personal" style="color: white">
+                        <a href="../personal" style="color: white">
 
                             <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
                         </a>
@@ -180,131 +180,45 @@
                 <div class="col-xs-6 col-md-39">
                     <div class="table" >
                         <table class="table" id="table_list" >
-                            <tr>
-                                <td>
-                                    <a href="#">
-                                        <img src="../../static/bootstrap/pic/fantasy.jpeg" alt="online gift shop" style="width:250px">
+                            <tbody>
+                            {%for product in products %}
+                            {% if forloop.counter0|divisibleby:"3" %}
+                                <tr>
+                                <th>
+                                    <a href="{% url 'Productdetail' product.Productid %}">
+                                        <img src="{{MEDIA_URL}}{{product.image}}" alt="online gift shop" style="width:250px">
                                     </a>
                                     <div id="caption">
-                                        <p>Classic Sympathy Bouquet</p>
+                                        <p>{{ product.Productname }}</p>
                                     </div>
                                     <div id="price">
-                                        <h5>$59.99</h5>
+                                        <h5>AUD${{ product.Price }}</h5>
+                                        <a href="{% url 'Productdetail' product.Productid %}">
                                         <button class= "btn add" type="button" >Add</button>
+                                        </a>
                                     </div>
-
-                                </td>
-                                <td>
-                                    <a href="#">
-                                        <img src="../../static/bootstrap/pic/fantasy.jpeg" alt="online gift shop" style="width:250px">
+                                </th>
+                                {% else %}
+                                <th>
+                                    <a href="{% url 'Productdetail' product.Productid %}">
+                                        <img src="{{MEDIA_URL}}{{product.image}}" alt="online gift shop" style="width:250px">
                                     </a>
                                     <div id="caption">
-                                        <p>Classic Sympathy Bouquet</p>
+                                        <p>{{ product.Productname }}</p>
                                     </div>
                                     <div id="price">
-                                        <h5>$59.99</h5>
+                                        <h5>AUD${{ product.Price }}</h5>
+                                        <a href="{% url 'Productdetail' product.Productid %}">
                                         <button class= "btn add" type="button" >Add</button>
+                                        </a>
                                     </div>
-
-                                </td>
-                                <td>
-                                    <a href="#">
-                                        <img src="../../static/bootstrap/pic/fantasy.jpeg" alt="online gift shop" style="width:250px">
-                                    </a>
-                                    <div id="caption">
-                                        <p>Classic Sympathy Bouquet</p>
-                                    </div>
-                                    <div id="price">
-                                        <h5>$59.99</h5>
-                                        <button class= "btn add" type="button" >Add</button>
-                                    </div>
-
-                                </td>
+                                </th>
+                                {% endif %}
+                                {% endfor %}
                             </tr>
-                            <tr>
-                                <td>
-                                    <a href="#">
-                                        <img src="../../static/bootstrap/pic/fantasy.jpeg" alt="online gift shop" style="width:250px">
-                                    </a>
-                                    <div id="caption">
-                                        <p>Classic Sympathy Bouquet</p>
-                                    </div>
-                                    <div id="price">
-                                        <h5>$59.99</h5>
-                                        <button class= "btn add" type="button" >Add</button>
-                                    </div>
-
-                                </td>
-                                <td>
-                                    <a href="#">
-                                        <img src="../../static/bootstrap/pic/fantasy.jpeg" alt="online gift shop" style="width:250px">
-                                    </a>
-                                    <div id="caption">
-                                        <p>Classic Sympathy Bouquet</p>
-                                    </div>
-                                    <div id="price">
-                                        <h5>$59.99</h5>
-                                        <button class= "btn add" type="button" >Add</button>
-                                    </div>
-
-                                </td>
-                                <td>
-                                    <a href="#">
-                                        <img src="../../static/bootstrap/pic/fantasy.jpeg" alt="online gift shop" style="width:250px">
-                                    </a>
-                                    <div id="caption">
-                                        <p>Classic Sympathy Bouquet</p>
-                                    </div>
-                                    <div id="price">
-                                        <h5>$59.99</h5>
-                                        <button class= "btn add" type="button" >Add</button>
-                                    </div>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a href="#">
-                                        <img src="../../static/bootstrap/pic/fantasy.jpeg" alt="online gift shop" style="width:250px">
-                                    </a>
-                                    <div id="caption">
-                                        <p>Classic Sympathy Bouquet</p>
-                                    </div>
-                                    <div id="price">
-                                        <h5>$59.99</h5>
-                                        <button class= "btn add" type="button" >Add</button>
-                                    </div>
-
-                                </td>
-                                <td>
-                                    <a href="#">
-                                        <img src="../../static/bootstrap/pic/fantasy.jpeg" alt="online gift shop" style="width:250px">
-                                    </a>
-                                    <div id="caption">
-                                        <p>Classic Sympathy Bouquet</p>
-                                    </div>
-                                    <div id="price">
-                                        <h5>$59.99</h5>
-                                        <button class= "btn add" type="button" >Add</button>
-                                    </div>
-
-                                </td>
-                                <td>
-                                    <a href="#">
-                                        <img src="../../static/bootstrap/pic/fantasy.jpeg" alt="online gift shop" style="width:250px">
-                                    </a>
-                                    <div id="caption">
-                                        <p>Classic Sympathy Bouquet</p>
-                                    </div>
-                                    <div id="price">
-                                        <h5>$59.99</h5>
-                                        <button class= "btn add" type="button" >Add</button>
-                                    </div>
-
-                                </td>
-                            </tr>
-
+                            </tbody>
                         </table>
+
                     </div>
                 </div>
             </div> <!-- row closed -->

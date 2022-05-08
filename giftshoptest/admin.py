@@ -23,7 +23,7 @@ class OrderAdmin(admin.ModelAdmin):
         return False
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['Productid','Productname','Price','category','information','image']
+    list_display = ['Productid','Productname','Price','category','information','image','stripe_price_id']
 
 class WishlistAdmin(admin.ModelAdmin):
     def prodlist(self,obj):

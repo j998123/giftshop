@@ -39,7 +39,8 @@ def persondetails(request):
     return render(request, 'Personal_info.html', {'user':user})
 
 def Productlist(request):
-    return render(request,'Product_list.html')
+    products = Product.objects.all()
+    return render(request,'Product_list.html',{'products':products})
 
 @csrf_exempt
 def Productdetail(request,Productid):
@@ -140,3 +141,6 @@ def checkout(request):
         'session_id' : session.id,
         'stripe_public_key' : settings.TRIPE_PUBLISHABLE_KEY
     })
+
+
+
