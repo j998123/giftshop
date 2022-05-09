@@ -186,7 +186,7 @@
                                 <tr>
                                 <th>
                                     <a href="{% url 'Productdetail' product.Productid %}">
-                                        <img src="{{MEDIA_URL}}{{product.image}}" alt="online gift shop" style="width:250px">
+                                        <img src="{{MEDIA_URL}}{{product.image}}" alt="online gift shop" style="height: 250px;width:250px">
                                     </a>
                                     <div id="caption">
                                         <p>{{ product.Productname }}</p>
@@ -201,7 +201,7 @@
                                 {% else %}
                                 <th>
                                     <a href="{% url 'Productdetail' product.Productid %}">
-                                        <img src="{{MEDIA_URL}}{{product.image}}" alt="online gift shop" style="width:250px">
+                                        <img src="{{MEDIA_URL}}{{product.image}}" alt="online gift shop" style="height: 250px;width:250px">
                                     </a>
                                     <div id="caption">
                                         <p>{{ product.Productname }}</p>
