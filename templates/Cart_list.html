@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewpoint" content="width=device-width, initial-scale=1">
     <title>Online Gift Shop</title>
-    <link rel="stylesheet" href="../static/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../static/bootstrap/dist/css/index.css">
+    <link rel="stylesheet" href="../../../static/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../static/bootstrap/dist/css/index.css">
 
-    <link rel="shortcut icon" href="../static/bootstrap/pic/webicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="../static/bootstrap/dist/css/cart.css">
+    <link rel="shortcut icon" href="../../../static/bootstrap/pic/webicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../../static/bootstrap/dist/css/cart.css">
 </head>
 <body>
 <!-- head-->
@@ -19,7 +19,7 @@
           <div class="row">
               <div class="top-bar-1 col-md-4">
                   <a href="">
-                      <img src="../static/bootstrap/pic/logo1.png" alt="online gift shop" width="100">
+                      <img src="../../../static/bootstrap/pic/logo1.png" alt="online gift shop" width="100">
                   </a>
               </div>
 
@@ -74,121 +74,40 @@
                     </p>
                 </div>
                 <div class="row">
-                    <table  cellpadding=0">
-                        <tr>
-                            <td>
+                    <table cellpadding=0">
+                        <tbody>
+                            {%for product in wishlist.Productlist.all %}
+                            {% if forloop.counter0|divisibleby:"3" %}
+                            <tr>
+                            <th>
                                 <div class="product">
                                     <div class="productcheck">
                                         <input type="checkbox" name="">
                                     </div>
                                     <div class="pa text-left">
-                                        <p><img src="../static/bootstrap/pic/car-flower.jpeg" alt="online gift shop" ></p>
-                                        <p>Amazing wedding gift</p>
-                                        <p>AUD 120.00</p>
+                                        <p><img src="{{MEDIA_URL}}{{product.image}}" alt="online gift shop" ></p>
+                                        <p>{{ product.Productname }}</p>
+                                        <p>AUD{{ product.Price }}</p>
                                     </div>
                                 </div>
-                            </td>
-                            <td>
+                            </th>
+                            {% else %}
+                            <th>
                                 <div class="product">
                                     <div class="productcheck">
                                         <input type="checkbox" name="">
                                     </div>
                                     <div class="pa text-left">
-                                        <p><img src="../static/bootstrap/pic/car-flower.jpeg" alt="online gift shop" ></p>
-                                        <p>Amazing wedding gift</p>
-                                        <p>AUD 120.00</p>
+                                        <p><img src="{{MEDIA_URL}}{{product.image}}" alt="online gift shop" ></p>
+                                        <p>{{ product.Productname }}</p>
+                                        <p>AUD{{ product.Price }}</p>
                                     </div>
                                 </div>
-                            </td>
-                            <td>
-                                <div class="product">
-                                    <div class="productcheck">
-                                        <input type="checkbox" name="">
-                                    </div>
-                                    <div class="pa text-left">
-                                        <p><img src="../static/bootstrap/pic/car-flower.jpeg" alt="online gift shop" ></p>
-                                        <p>Amazing wedding gift</p>
-                                        <p>AUD 120.00</p>
-                                    </div>
-                                </div>
-                            </td>
+                            </th>
+                            {% endif %}
+                            {% endfor %}
                         </tr>
-                        <tr>
-                            <td>
-                                <div class="product">
-                                    <div class="productcheck">
-                                        <input type="checkbox" name="">
-                                    </div>
-                                    <div class="pa text-left">
-                                        <p><img src="../static/bootstrap/pic/car-flower.jpeg" alt="online gift shop" ></p>
-                                        <p>Amazing wedding gift</p>
-                                        <p>AUD 120.00</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="product">
-                                    <div class="productcheck">
-                                        <input type="checkbox" name="">
-                                    </div>
-                                    <div class="pa text-left">
-                                        <p><img src="../static/bootstrap/pic/car-flower.jpeg" alt="online gift shop" ></p>
-                                        <p>Amazing wedding gift</p>
-                                        <p>AUD 120.00</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="product">
-                                    <div class="productcheck">
-                                        <input type="checkbox" name="">
-                                    </div>
-                                    <div class="pa text-left">
-                                        <p><img src="../static/bootstrap/pic/car-flower.jpeg" alt="online gift shop" ></p>
-                                        <p>Amazing wedding gift</p>
-                                        <p>AUD 120.00</p>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="product">
-                                    <div class="productcheck">
-                                        <input type="checkbox" name="">
-                                    </div>
-                                    <div class="pa text-left">
-                                        <p><img src="../static/bootstrap/pic/car-flower.jpeg" alt="online gift shop" ></p>
-                                        <p>Amazing wedding gift</p>
-                                        <p>AUD 120.00</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="product">
-                                    <div class="productcheck">
-                                        <input type="checkbox" name="">
-                                    </div>
-                                    <div class="pa text-left">
-                                        <p><img src="../static/bootstrap/pic/car-flower.jpeg" alt="online gift shop" ></p>
-                                        <p>Amazing wedding gift</p>
-                                        <p>AUD 120.00</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="product">
-                                    <div class="productcheck">
-                                        <input type="checkbox" name="">
-                                    </div>
-                                    <div class="pa text-left">
-                                        <p><img src="../static/bootstrap/pic/car-flower.jpeg" alt="online gift shop" ></p>
-                                        <p>Amazing wedding gift</p>
-                                        <p>AUD 120.00</p>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                        </tbody>
                     </table>
                     
                 </div>
@@ -223,9 +142,9 @@
 
 
 
-<script src="../static/bootstrap/jquery/jquery-3.5.1.js"></script>
-<script src="../static/bootstrap/dist/js/bootstrap.js"></script>
-<script src="../static/bootstrap/dist/js/index.js"></script>
+<script src="../../../static/bootstrap/jquery/jquery-3.5.1.js"></script>
+<script src="../../../static/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../../../static/bootstrap/dist/js/index.js"></script>
 <script type="text/javascript" src="../static/bootstrap/dist/js/poplayer.js"></script>
 <script>
     document.getElementById("prompt_btn2").onclick = function(){

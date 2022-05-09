@@ -56,6 +56,11 @@ def Productdetail(request,Productid):
 
 
 @csrf_exempt
+def WishList(request,listid):
+    wishlist = Wishlist.objects.get(listid = listid)
+    return render(request,'Cart_list.html',{'wishlist':wishlist})
+
+@csrf_exempt
 def Shoppingcart(request):
     if request.POST:
         if 'Remove' in request.POST:
