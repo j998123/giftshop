@@ -84,8 +84,7 @@ def genWishList(request):
 def addwishlist(request):
     name = request.GET.get("name", '')
     date = request.GET.get("date")
-    uid = str(uuid.uuid4())
-    suid = ''.join(uid.split('-'))
+    suid = str(uuid.uuid4().int)[-6:]
     user = Customer.objects.get(username=request.session['user_name'])
     products = []
     for item in Cart(request):
