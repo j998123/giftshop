@@ -8,6 +8,7 @@ from django.views import View
 import stripe
 from django.conf import settings
 from django.urls import reverse
+import uuid
 import re
 from tkinter import messagebox
 # Create your views here.
@@ -67,6 +68,29 @@ def Shoppingcart(request):
             remove_from_cart(request,request.POST.get('Remove'))
             return redirect("../shoppingcart")
     return render(request,'Shopping_cart.html',{'cart':Cart(request)})
+
+@csrf_exempt
+def Addwishlist(request):
+    return render(request,'testaddwishlist.html')
+
+def genWishList(request):
+    return render(request,'wishgen.html',)
+
+def addwishlist(request):
+    name = request.GET.get("name", '')
+    date = request.GET.get("date")
+    uid = str(uuid.uuid4())
+    suid = ''.join(uid.split('-'))
+    user = Customer.objects.get(username=request.session['user_name'])
+    products = []
+    for item in Cart(request):
+        products.append(item.product)
+    newlist = Wishlist(listid=suid, listname=name, user_id=user, deliverdate=date, address=user.address,
+                       emailaddress=user.emailaddress)
+    newlist.save()
+    newlist.Productlist.set(products)
+    request.session['newwishlist'] = suid
+    return redirect("/giftshop/shoppingcart/addwishlist/genwishlist")
 
 def Login(request):
     if request.session.get('is_login',None):
@@ -149,7 +173,6 @@ def checkout(request):
             success_url=request.build_absolute_uri(reverse('thanks')) + '?session_id={CHECKOUT_SESSION_ID}',
             cancel_url=request.build_absolute_uri(reverse('test')),
         )
-
         return JsonResponse({
             'session_id' : session.id,
             'stripe_public_key' : settings.TRIPE_PUBLISHABLE_KEY

@@ -49,7 +49,7 @@ class Order(models.Model):
     Productlist = models.ManyToManyField(Product)
 
 class Wishlist(models.Model):
-   listid = models.IntegerField(primary_key=True)
+   listid = models.CharField(primary_key=True,max_length=100)
    listname = models.CharField(unique=True, max_length=45, blank=True, null=True)
    user_id = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
    deliverdate = models.DateField(null=True)
