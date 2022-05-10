@@ -68,10 +68,10 @@ def Shoppingcart(request):
             remove_from_cart(request,request.POST.get('Remove'))
             return redirect("../shoppingcart")
         if 'Gen' in request.POST:
-            if request.session.get('is_login', True):
+            if request.session.get('is_login', None):
                 return redirect("../shoppingcart/addwishlist")
             else:
-                return redirect("../../login")
+                return redirect("../login")
     return render(request,'Shopping_cart.html',{'cart':Cart(request)})
 
 @csrf_exempt
