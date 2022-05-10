@@ -16,383 +16,358 @@
     <!--header1-->
     <div class="top-bar  text-center">
         <div class="container">
-          <div class="row">
-              <div class="top-bar-1 col-md-4">
-                  <a href="../">
-                      <img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" width="100">
-                  </a>
-              </div>
+            <div class="row">
+                <div class="top-bar-1 col-md-4">
+                    <a href="../">
+                        <img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" width="100">
+                    </a>
+                </div>
 
-              <div class="top-bar-2 col-md-4">
-                  <div class="top-search hidden-sm hidden-xs" >
-                      <input type="text" class="form-control" placeholder="Search">
-                  </div>
-              </div>
-              <div class="top-bar-3 col-md-4">
-               <!--  event code   -->
-                   <span id="prompt_btn332" style="color: white">Event code</span>
+                <div class="top-bar-2 col-md-4">
+                    <div class="top-search hidden-sm hidden-xs" >
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                </div>
+                <div class="top-bar-3 col-md-4">
+                    <!--  event code   -->
+                    <span id="prompt_btn332" style="color: white">Event code</span>
 
                     <!--       cart           -->
                     <a href="../shoppingcart" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px">
                     </a>
 
-                        {% if request.session.is_login %}
-                            <a href="" style="color: white">
+                    {% if request.session.is_login %}
+                        <a href="" style="color: white">
 
-                                <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
-                            </a>
-                        {% else %}
-                            <a href="login">
-                                <!--                        -->
-                                <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
-                            </a>
-                        {% endif %}
-              </div>
-          </div>
+                            <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
+                        </a>
+                    {% else %}
+                        <a href="login">
+                            <!--                        -->
+                            <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
 </header>
 
 <section>
-
+    <!--top-bar-3groups -->
     <div class="border-bottom">
         <div class="container">
             <!-- Nav tabs -->
             <ul class="nav row nav-tabs">
-                <li class="col-sm-3 text-center">
-                <a class="nav-link active" data-toggle="tab" href="#Wish">Wish list</a>
+                <li class="col-sm-4 text-center">
+                    <a class="nav-link active" data-toggle="tab" href="#Wish">Wish list</a>
                 </li>
-                <li class="col-sm-3 text-center">
-                <a class="nav-link" data-toggle="tab" href="#Delivery">Delivery arrangement</a>
+                <li class="col-sm-4 text-center">
+                    <a class="nav-link" data-toggle="tab" href="#Order">Order history</a>
                 </li>
-                <li class="col-sm-3 text-center">
-                <a class="nav-link" data-toggle="tab" href="#Order">Order history</a>
-                </li>
-                <li class="col-sm-3 text-center">
-                <a class="nav-link" data-toggle="tab" href="#Profile">Profile & setting</a>
+                <li class="col-sm-4 text-center">
+                    <a class="nav-link" data-toggle="tab" href="#Profile">Profile & setting</a>
                 </li>
             </ul>
         </div>
     </div>
-
-
     <!-- Tab panes -->
     <div class="container">
         <div class="tab-content">
             <div id="Wish" class="tab-pane active">
                 <div class="row">
+                    <!--4 cate -->
                     <div class="col-lg-3">
                         <h2>New list</h2>
                         <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">Birthday</a></li>
-                            <li class="act"><a href="#">Wedding</a></li>
-                            <li><a href="#">Anniversary</a></li>
-                            <li><a href="#">Festival</a></li>
+                            <li class="row-sm-3 ">
+                                <a class="nav-link active" data-toggle="tab" href="#Birthday">Birthday</a>
+                            </li>
+                            <li class="row-sm-3 ">
+                                <a class="nav-link " data-toggle="tab" href="#Wedding">Wedding</a>
+                            </li>
+                            <li class="row-sm-3 ">
+                                <a class="nav-link " data-toggle="tab" href="#Anniversary">Anniversary</a>
+                            </li>
+                            <li class="row-sm-3 ">
+                                <a class="nav-link " data-toggle="tab" href="#Festival">Festival</a>
+                            </li>
                         </ul>
-
                     </div>
                     <div class="col-lg-9">
-                        <div class="top text-right">
-                            <p><a href="">Edit</a></p>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <div class="pa text-center">
-                                    <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100"></p>
-                                    <p>Amazing wedding fift</p>
-                                    <p>AUD 120.00</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="pa text-center">
-                                    <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100"></p>
-                                    <p>Amazing wedding fift</p>
-                                    <p>AUD 120.00</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="pa text-center">
-                                    <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100"></p>
-                                    <p>Amazing wedding fift</p>
-                                    <p>AUD 120.00</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="pa text-center">
-                                    <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100"></p>
-                                    <p>Amazing wedding fift</p>
-                                    <p>AUD 120.00</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="pa text-center">
-                                    <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100"></p>
-                                    <p>Amazing wedding fift</p>
-                                    <p>AUD 120.00</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="pa text-center">
-                                    <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100"></p>
-                                    <p>Amazing wedding fift</p>
-                                    <p>AUD 120.00</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="pa text-center">
-                                    <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100"></p>
-                                    <p>Amazing wedding fift</p>
-                                    <p>AUD 120.00</p>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="pa text-center">
-                                    <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100"></p>
-                                    <p>Amazing wedding fift</p>
-                                    <p>AUD 120.00</p>
-                                </div>
-                            </div>
+                        <div id="Birthday" class="tab-pane active">
+                            <!--inner table -->
+                            <table class="table table-borderless arrangement">
+                            <thead class="text-muted">
+                                <tr class="small text-uppercase">
+                                <th scope="col">Product for Birthday</th>
+                                <th scope="col">Event</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Time</th>
+                            </tr>
+                            </thead>
+                                 <!-- 3 products -->
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <figure class="item_side align-items-center">
+                                            <div class="aside"><img src="../../static/bootstrap/pic/t-s-o.jpeg" class="img-sm"></div>
+                                            <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">Tshirt with round nect</a>
+                                                <p class="text-muted small">SIZE: L <br> Brand: ZARA</p>
+                                            </figcaption>
+                                        </figure>
+                                    </td>
+                                    <!-- select events -->
+                                    <td>
+                                        <select class="form-control input-sm">
+                                            <option value="Birthday">Birthday</option>
+                                            <option value="Weddings">Weddings</option>
+                                            <option value="Anniversary">Anniversary</option>
+                                            <option value="Festival">Festival</option>
+                                            <option value="Others">Others</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <div class="">
+                                            <input class="form-control" type="date">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="">
+                                            <input class="form-control" type="time">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-right">
+                                            <p><a href="#">Add</a></p>
+                                            <p><a href="#">Delete</a></p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <!-- select events -->
+                                    <td>
+                                        <figure class="item_side align-items-center">
+                                            <div class="aside"><img src="../../static/bootstrap/pic/t-s-p.png" class="img-sm"></div>
+                                            <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">Tshirt with round nect</a>
+                                                <p class="text-muted small">SIZE: XL <br> Brand: ZARA</p>
+                                            </figcaption>
+                                        </figure>
+                                    </td>
+                                    <!-- select events -->
+                                    <td>
+                                        <select class="form-control input-sm">
+                                            <option value="Birthday">Birthday</option>
+                                            <option value="Weddings">Weddings</option>
+                                            <option value="Anniversary">Anniversary</option>
+                                            <option value="Festival">Festival</option>
+                                            <option value="Others">Others</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <div class="">
+                                            <input class="form-control" type="date">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="">
+                                            <input class="form-control" type="time">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-right">
+                                            <p><a href="#">Add</a></p>
+                                            <p><a href="#">Delete</a></p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <!-- select events -->
+                                    <td>
+                                        <figure class="item_side align-items-center">
+                                            <div class="aside"><img src="../../static/bootstrap/pic/t-s-p.png" class="img-sm"></div>
+                                            <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">Tshirt with round nect</a>
+                                                <p class="text-muted small">SIZE: XL <br> Brand: ZARA</p>
+                                            </figcaption>
+                                        </figure>
+                                    </td>
+                                    <!-- select events -->
+                                    <td>
+                                        <select class="form-control input-sm">
+                                            <option value="Birthday">Birthday</option>
+                                            <option value="Weddings">Weddings</option>
+                                            <option value="Anniversary">Anniversary</option>
+                                            <option value="Festival">Festival</option>
+                                            <option value="Others">Others</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <div class="">
+                                            <input class="form-control" type="date">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="">
+                                            <input class="form-control" type="time">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="text-right">
+                                            <p><a href="#">Add</a></p>
+                                            <p><a href="#">Delete</a></p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="Delivery" class="tab-pane fade">
-                <div class="twotop">
-                    <h3>Set preferences</h3>
-                    <p>Set the receive time for your pending orders.</p>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <h4>Select the event</h4>
-                        </div>
-                        <div class="col-sm-3">
-                            <h4>Date</h4>
-                        </div>
-                        <div class="col-sm-3">
-                            <h4>Time</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <select class="form-control input-sm">
-                                <option value="Birthday">Birthday</option>
-                                <option value="Weddings">Weddings</option>
-                                <option value="Anniversary">Anniversary</option>
-                                <option value="Festival">Festival</option>
-                                <option value="Others">Others</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-3">
-                            <input class="form-control" type="date" placeholder="">
-                        </div>
-                        <div class="col-sm-3">
-                                <input type = "time">
 
-                        </div>
-                        <div class="col-sm-3">
-                            <p><button type="button" class="btn btn-default ">Clear</button></p>
-                        </div>
-                    </div>
-
-                    <div class="row text-center">
-                        <button type="button" class="btn btn-default save but">Save</button></p>
-                    </div>
-                </div>
-
-            </div>
             <div id="Order" class="tab-pane fade">
-                <div class="text-center">
-                    <h3><a href="" class="threec">Received fift</a> <a href="">Orders</a></h3>
-                </div>
-                <div class="row border-bottom1">
-                    <div class="col-sm-2">
-                        <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100" width="100%"></p>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <p>Product name Flowers</p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p>2022-03-01</p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p>*1</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <p>Lorem input dolor sat amet</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>AUD 40.00</p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p class="threec">Pending</p>
+                <div class="container">
+                    <div class="text-center">
+                        <h3><a href="" class="threec">Received gift order</a> <a href="">Orders</a></h3>
                     </div>
                 </div>
+
                 <div class="row border-bottom1">
-                    <div class="col-sm-2">
-                        <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100" width="100%"></p>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <p>Product name Flowers</p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p>2022-03-01</p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p>*1</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <p>Lorem input dolor sat amet</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>AUD 40.00</p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p class="threec">Pending</p>
-                    </div>
-                </div>
-                <div class="row border-bottom1">
-                    <div class="col-sm-2">
-                        <p><img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" height="100" width="100%"></p>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <p>Product name Flowers</p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p>2022-03-01</p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p>*1</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <p>Lorem input dolor sat amet</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-2">
-                        <p>AUD 40.00</p>
-                    </div>
-                    <div class="col-sm-2">
-                        <p class="threec">Pending</p>
-                    </div>
+                    <table style="border:1px; height:230px; width:1000px; align:center">
+                        <thead style="text-align: center">
+                            <td>NO.</td>
+                            <td>Product name</td>
+                            <td>Time</td>
+                            <td>Price</td>
+                        </thead>
+                        <tr align = "center">
+                            <td>1</td>
+                            <td><img src="../../static/bootstrap/pic/logo1.png"  class="img-sm"></td>
+                            <td>2022-03-01</td>
+                            <td>AUD 40.00</td>
+                        </tr>
+                        <tr align = "center">
+                            <td>2</td>
+                            <td><img src="../../static/bootstrap/pic/t-s-p.png" class="img-sm" ></td>
+                            <td>2022-03-01</td>
+                            <td>AUD 40.00</td>
+                        </tr>
+                        <tr align = "center">
+                            <td>3</td>
+                            <td><img src="../../static/bootstrap/pic/t-s-g.jpeg" class="img-sm"></td>
+                            <td>2022-03-01</td>
+                            <td>AUD 40.00</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
+            <!-- user profile -->
             <div id="Profile" class="tab-pane fade">
                 <h2>Personal info</h2>
-<div class="container">
-<div class="row gutters">
-<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-<div class="card h-100">
-	<div class="card-body">
-		<div class="account-settings">
-			<div class="user-profile">
-				<div class="user-avatar">
-					<img src="" alt="">
-				</div>
-				<h4 class="user">Information</h4>
-                <h6 class="user-info">{{user.username}}</h6>
-				<h6 class="user-email">{{user.emailaddress}}</h6>
-                <h6 class="user-phone">{{user.mobile}}</h6>
-			</div><br>
-			<div class="about">
-				<h4>Address</h4>
-				<p>{{user.address}} </p>
-			</div>
-            <form method="Post" onsubmit="return" >
-            <button type="submit" class="btn btn-primary" style="background-color:#FC6701" name="Logout" value="Logout">Log out</button>
-            </form>
-		</div>
-	</div>
-</div>
-</div>
-<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-<div class="card h-100">
-	<div class="card-body">
-		<div class="row gutters">
-			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<h6 class="mb-2 text-primary">Personal Details</h6>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="fullName">Full Name</label>
-					<input type="text" class="form-control" id="fullName" placeholder="Enter full name">
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="eMail">Email</label>
-					<input type="email" class="form-control" id="eMail" placeholder="Enter email ID">
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="phone">Phone</label>
-					<input type="text" class="form-control" id="phone" placeholder="Enter phone number">
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="password">Password</label>
-					<input type="password" class="form-control" id="password" placeholder="Enter new password">
-				</div>
-			</div>
-		</div>
-		<div class="row gutters">
-			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<h6 class="mt-3 mb-2 text-primary">Address</h6>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="Street">Street</label>
-					<input type="name" class="form-control" id="Street" placeholder="Enter Street">
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="ciTy">City</label>
-					<input type="name" class="form-control" id="ciTy" placeholder="Enter City">
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="sTate">State</label>
-					<input type="text" class="form-control" id="sTate" placeholder="Enter State">
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-				<div class="form-group">
-					<label for="Post">Post Code</label>
-					<input type="text" class="form-control" id="Post" placeholder="Zip Code">
-				</div>
-			</div>
-		</div>
-		<div class="row gutters">
-			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<div class="text-right">
-					<button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
-					<button type="button" id="submit" name="submit" class="btn btn-primary" style="background-color:#FC6701 ">Update</button>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-</div>
-</div>
+
+                <div class="container">
+                    <div class="row gutters">
+                        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="account-settings">
+                                        <div class="user-profile">
+                                            <div class="user-avatar">
+                                                <img src="" alt="">
+                                            </div>
+                                            <h4 class="user">Information</h4>
+                                            <h6 class="user-info">{{user.username}}</h6>
+                                            <h6 class="user-email">{{user.emailaddress}}</h6>
+                                            <h6 class="user-phone">{{user.mobile}}</h6>
+                                        </div><br>
+                                        <div class="about">
+                                            <h4>Address</h4>
+                                            <p>{{user.address}} </p>
+                                        </div>
+                                        <form method="Post" onsubmit="return" action="/giftshop/personal/">
+                                            <button type="submit" class="btn btn-primary" style="background-color:#FC6701" name="Logout" value="Logout">Log out</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="row gutters">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <h6 class="mb-2 text-primary">Personal Details</h6>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="fullName">Full Name</label>
+                                                <input type="text" class="form-control" id="fullName" placeholder="Enter full name">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="eMail">Email</label>
+                                                <input type="email" class="form-control" id="eMail" placeholder="Enter email ID">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="phone">Phone</label>
+                                                <input type="text" class="form-control" id="phone" placeholder="Enter phone number">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="password">Password</label>
+                                                <input type="password" class="form-control" id="password" placeholder="Enter new password">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row gutters">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <h6 class="mt-3 mb-2 text-primary">Address</h6>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="Street">Street</label>
+                                                <input type="name" class="form-control" id="Street" placeholder="Enter Street">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="ciTy">City</label>
+                                                <input type="name" class="form-control" id="ciTy" placeholder="Enter City">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="sTate">State</label>
+                                                <input type="text" class="form-control" id="sTate" placeholder="Enter State">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                            <div class="form-group">
+                                                <label for="Post">Post Code</label>
+                                                <input type="text" class="form-control" id="Post" placeholder="Zip Code">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row gutters">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                            <div class="text-right">
+                                                <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+                                                <button type="button" id="submit" name="submit" class="btn btn-primary" style="background-color:#FC6701 ">Update</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-        
-      
 </section>
 
 
@@ -409,9 +384,9 @@
 <script type="text/javascript" src="../../static/bootstrap/dist/js/poplayer.js"></script>
 <script type="text/javascript">
     document.getElementById("prompt_btn332").onclick = function(){
-		// 调用插件
-		poplayer.prompt('Welcome,please enter the invitation code','Enter','Cancel','','Code',true);
-	};
+        // 调用插件
+        poplayer.prompt('Welcome,please enter the invitation code','Enter','Cancel','','Code',true);
+    };
 </script>
 
 </body>
