@@ -79,7 +79,8 @@ def Addwishlist(request):
     return render(request,'testaddwishlist.html')
 
 def genWishList(request):
-    return render(request,'wishgen.html',)
+    wish = Wishlist.objects.get(listid = request.session['newwishlist'])
+    return render(request,'Generate.html', {'wish':wish})
 
 def addwishlist(request):
     name = request.GET.get("name", '')

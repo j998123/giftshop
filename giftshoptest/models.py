@@ -12,6 +12,7 @@ class Customer(models.Model):
     dateofbirth = models.DateField(null=True)
     address = models.CharField(max_length=255,blank=True,null=True)
     emailaddress = models.CharField(max_length=255, blank=True, null=True)
+    Name = models.CharField(max_length=45,blank=True,null=True)
 
 
 class Product(models.Model):

@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewpoint" content="width=device-width, initial-scale=1">
     <title>Online Gift Shop</title>
-    <link rel="stylesheet" href="../../static/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../../static/bootstrap/dist/css/index.css">
+    <link rel="stylesheet" href="../../../static/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../static/bootstrap/dist/css/index.css">
 
-    <link rel="shortcut icon" href="../../static/bootstrap/pic/webicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../static/bootstrap/pic/webicon.png" type="image/x-icon">
 
 </head>
 <body>
@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="top-bar-1 col-md-4">
                     <a href="../">
-                        <img src="../../static/bootstrap/pic/logo1.png" alt="online gift shop" width="100">
+                        <img src="../../../static/bootstrap/pic/logo1.png" alt="online gift shop" width="100">
                     </a>
                 </div>
 
@@ -135,18 +135,18 @@
             <div class="col-lg-6" style="position: center">
                 <div style="text-align: left;font-size: 14px">
                     <p>Hi, there</p><br>
-                    <p>You are invited to <mark>Username's</mark> Wedding party on 20th May 2022.</p>
+                    <p>You are invited to <mark>{{ wish.user_id.Name }}'s</mark> Wedding party on 20th May 2022.</p>
                     <p>Below is the link to online gift shop if you are struggling with choosing the wedding gift.
-                        The item list that you will see on the webpage is created by <mark>Username</mark> for saving you from guessing the wishes of the couple.
+                        The item list that you will see on the webpage is created by <mark>{{ wish.user_id.Name }}</mark> for saving you from guessing the wishes of the couple.
                         Now, let's check it out!</p>
                 </div>
                 <div>
-                    <a href="#">https://www.olgift.com.au/8rq02dwe=WQD23dfop</a>
+                    <a href="/giftshop/wishlist/{{request.session.newwishlist}}">http://127.0.0.1:8000/giftshop/wishlist/{{request.session.newwishlist}}</a>
                     <br>
                     <br>
                     <p>Or you could go to the homepage and enter the following code to access the list:</p>
                     <!--code-->
-                    <h4>329123</h4>
+                    <h4>{{ request.session.newwishlist }}</h4>
                     <!--code
                     <div style="position: relative;top: -36px;right: -100px">
                         <input class="btn btn-default" type="button" value="Copy">
@@ -175,9 +175,9 @@
 
 
 
-<script src="../../static/bootstrap/jquery/jquery-3.5.1.js"></script>
-<script src="../../static/bootstrap/dist/js/bootstrap.js"></script>
-<script src="../../static/bootstrap/dist/js/index.js"></script>
+<script src="../../../static/bootstrap/jquery/jquery-3.5.1.js"></script>
+<script src="../../../static/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../../../static/bootstrap/dist/js/index.js"></script>
 <script type="text/javascript" src="../../static/bootstrap/dist/js/poplayer.js"></script>
 <script type="text/javascript">
     document.getElementById("prompt_btn332").onclick = function(){
