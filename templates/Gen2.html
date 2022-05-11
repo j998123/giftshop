@@ -37,13 +37,11 @@
                     </a>
 
                     {% if request.session.is_login %}
-                        <a href="" style="color: white">
-
+                        <a href="/giftshop/personal/" style="color: white">
                             <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
                         </a>
                     {% else %}
                         <a href="login">
-                            <!--                        -->
                             <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
                         </a>
                     {% endif %}
@@ -134,15 +132,15 @@
             <div class="col-lg-6" style="position: center">
                 <!--fill the list name-->
                 <div>
-                    <form>
+                    <form method="get"action="/giftshop/shoppingcart/addwishlist/togenwishlist">
                         <div class="row">
                             <div class="col">
                                 <h5>Enter a list name</h5>
-                                <input type="text" class="form-control" placeholder="Enter a list name">
+                                <input name = "name"  type="text" class="form-control" placeholder="Enter a list name">
                             </div>
                             <div class="col">
                                 <h5>Choose a date</h5>
-                                <input type="date" class="form-control">
+                                <input name = "date" id="datePickerId" type="date" class="form-control">
                             </div>
                             <div class="col">
                                 <h5>Choose an address</h5>
@@ -151,7 +149,7 @@
                         </div>
                         <br>
                         <div style="text-align: center">
-                            <button class="btn" style="background-color: #FC6701;color: white" type="submit">Generate</button>
+                            <button class="btn" style="background-color: #FC6701;color: white" name = "addwishlist" type="submit">Generate</button>
                         </div>
                     </form>
                 </div>
@@ -187,7 +185,7 @@
         alert('{{ msg.message }}');
     {% endfor %}
 </script>
-
+<script>datePickerId.min = new Date().toISOString().split("T")[0];</script>
 
 
 

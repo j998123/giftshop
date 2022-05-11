@@ -37,8 +37,7 @@
                     </a>
 
                     {% if request.session.is_login %}
-                        <a href="" style="color: white">
-
+                        <a href="/giftshop/personal/" style="color: white">
                             <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
                         </a>
                     {% else %}
@@ -178,7 +177,7 @@
 <script src="../../../static/bootstrap/jquery/jquery-3.5.1.js"></script>
 <script src="../../../static/bootstrap/dist/js/bootstrap.js"></script>
 <script src="../../../static/bootstrap/dist/js/index.js"></script>
-<script type="text/javascript" src="../../static/bootstrap/dist/js/poplayer.js"></script>
+<script type="text/javascript" src="../../../static/bootstrap/dist/js/poplayer.js"></script>
 <script type="text/javascript">
     document.getElementById("prompt_btn332").onclick = function(){
         // 调用插件

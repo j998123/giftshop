@@ -76,7 +76,7 @@ def Shoppingcart(request):
 
 @csrf_exempt
 def Addwishlist(request):
-    return render(request,'testaddwishlist.html')
+    return render(request,'Gen2.html')
 
 def genWishList(request):
     wish = Wishlist.objects.get(listid = request.session['newwishlist'])
