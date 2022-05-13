@@ -122,10 +122,12 @@
                                 </tr>
                                 </tbody>
                             </table>
+                                {% empty %}
+                            <em><h3>Wishlist is empty</h3></em>
                                 {% endfor %}
                         </div>
                         {% empty %}
-                            <em><h3>Wishlist is empty</h3></em>
+                            <em><h3>You don't have wishlist</h3></em>
                         {% endfor %}
                     </div>
                 </div>
