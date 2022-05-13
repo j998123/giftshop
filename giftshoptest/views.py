@@ -30,9 +30,6 @@ def paymenttest(request):
 def paymentsucess(request):
     return render(request, 'thanks.html')
 
-def Payment(request):
-    return render(request, 'Payment.html.')
-
 @csrf_exempt
 def persondetails(request):
     user = Customer.objects.get(id=request.session['user_id'])
