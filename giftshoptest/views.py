@@ -33,11 +33,12 @@ def paymentsucess(request):
 @csrf_exempt
 def persondetails(request):
     user = Customer.objects.get(id=request.session['user_id'])
+    wishlists = Wishlist.objects.all()
     if request.POST:
         if 'Logout' in request.POST:
             request.session.flush()
             return redirect("../")
-    return render(request, 'Personal_info.html', {'user':user})
+    return render(request, 'Personal_info.html', {'user':user,'wishlists':wishlists})
 
 def Productlist(request):
     products = Product.objects.all()

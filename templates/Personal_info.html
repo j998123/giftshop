@@ -37,15 +37,15 @@
                     </a>
 
                     {% if request.session.is_login %}
-                        <a href="" style="color: white">
+                    <a href="" style="color: white">
 
-                            <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
-                        </a>
+                        <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
+                    </a>
                     {% else %}
-                        <a href="login">
-                            <!--                        -->
-                            <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
-                        </a>
+                    <a href="login">
+                        <!--                        -->
+                        <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
+                    </a>
                     {% endif %}
                 </div>
             </div>
@@ -60,7 +60,7 @@
             <!-- Nav tabs -->
             <ul class="nav row nav-tabs">
                 <li class="col-sm-4 text-center">
-                    <a class="nav-link active" data-toggle="tab" href="#Wish">Wish list</a>
+                    <a class="nav-link " data-toggle="tab" href="#Wish">Wish list</a>
                 </li>
                 <li class="col-sm-4 text-center">
                     <a class="nav-link" data-toggle="tab" href="#Order">Order history</a>
@@ -77,64 +77,41 @@
             <div id="Wish" class="tab-pane active">
                 <div class="row">
                     <!--4 cate -->
+                {%for wishlist in wishlists %}
                     <div class="col-lg-3">
-                        <h2>New list</h2>
+                        <h2>Your list</h2>
                         <ul class="nav nav-pills nav-stacked">
-                            <li class="row-sm-3 ">
-                                <a class="nav-link active" data-toggle="tab" href="#Birthday">Birthday</a>
-                            </li>
-                            <li class="row-sm-3 ">
-                                <a class="nav-link " data-toggle="tab" href="#Wedding">Wedding</a>
-                            </li>
-                            <li class="row-sm-3 ">
-                                <a class="nav-link " data-toggle="tab" href="#Anniversary">Anniversary</a>
-                            </li>
-                            <li class="row-sm-3 ">
-                                <a class="nav-link " data-toggle="tab" href="#Festival">Festival</a>
+                            <li class="nav-item ">
+                                <a class="nav-link active" data-toggle="tab" href="#{{wishlist.listname}}">{{wishlist.listname}}</a>
                             </li>
                         </ul>
                     </div>
-                    <div class="col-lg-9">
-                        <div id="Birthday" class="tab-pane active">
+                    <div class="col-lg-9 tab-content">
+                        <div id="{{wishlist.listname}}" class="tab-pane container active">
                             <!--inner table -->
+                            {% for product in wishlist.Productlist.all %}
                             <table class="table table-borderless arrangement">
-                            <thead class="text-muted">
+                                <thead class="text-muted">
                                 <tr class="small text-uppercase">
-                                <th scope="col">Product for Birthday</th>
-                                <th scope="col">Event</th>
-                                <th scope="col">Date</th>
-                                <th scope="col">Time</th>
-                            </tr>
-                            </thead>
-                                 <!-- 3 products -->
-                            <tbody>
+                                    <th scope="col">Product for Birthday</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Time</th>
+                                </tr>
+                                </thead>
+                                <!-- 3 products -->
+                                <tbody>
                                 <tr>
                                     <td>
                                         <figure class="item_side align-items-center">
-                                            <div class="aside"><img src="../../static/bootstrap/pic/t-s-o.jpeg" class="img-sm"></div>
-                                            <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">Tshirt with round nect</a>
-                                                <p class="text-muted small">SIZE: L <br> Brand: ZARA</p>
+                                            <div class="aside"><img src="{{ MEDIA_URL }}{{ product.image}}"class="img-sm"></div>
+                                            <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">{{ product.Productname}}</a>
+                                                <p class="text-muted small">{{ product.category }}</p>
                                             </figcaption>
                                         </figure>
-                                    </td>
-                                    <!-- select events -->
-                                    <td>
-                                        <select class="form-control input-sm">
-                                            <option value="Birthday">Birthday</option>
-                                            <option value="Weddings">Weddings</option>
-                                            <option value="Anniversary">Anniversary</option>
-                                            <option value="Festival">Festival</option>
-                                            <option value="Others">Others</option>
-                                        </select>
                                     </td>
                                     <td>
                                         <div class="">
                                             <input class="form-control" type="date">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="">
-                                            <input class="form-control" type="time">
                                         </div>
                                     </td>
                                     <td>
@@ -144,83 +121,13 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <!-- select events -->
-                                    <td>
-                                        <figure class="item_side align-items-center">
-                                            <div class="aside"><img src="../../static/bootstrap/pic/t-s-p.png" class="img-sm"></div>
-                                            <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">Tshirt with round nect</a>
-                                                <p class="text-muted small">SIZE: XL <br> Brand: ZARA</p>
-                                            </figcaption>
-                                        </figure>
-                                    </td>
-                                    <!-- select events -->
-                                    <td>
-                                        <select class="form-control input-sm">
-                                            <option value="Birthday">Birthday</option>
-                                            <option value="Weddings">Weddings</option>
-                                            <option value="Anniversary">Anniversary</option>
-                                            <option value="Festival">Festival</option>
-                                            <option value="Others">Others</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <div class="">
-                                            <input class="form-control" type="date">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="">
-                                            <input class="form-control" type="time">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-right">
-                                            <p><a href="#">Add</a></p>
-                                            <p><a href="#">Delete</a></p>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <!-- select events -->
-                                    <td>
-                                        <figure class="item_side align-items-center">
-                                            <div class="aside"><img src="../../static/bootstrap/pic/t-s-p.png" class="img-sm"></div>
-                                            <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">Tshirt with round nect</a>
-                                                <p class="text-muted small">SIZE: XL <br> Brand: ZARA</p>
-                                            </figcaption>
-                                        </figure>
-                                    </td>
-                                    <!-- select events -->
-                                    <td>
-                                        <select class="form-control input-sm">
-                                            <option value="Birthday">Birthday</option>
-                                            <option value="Weddings">Weddings</option>
-                                            <option value="Anniversary">Anniversary</option>
-                                            <option value="Festival">Festival</option>
-                                            <option value="Others">Others</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <div class="">
-                                            <input class="form-control" type="date">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="">
-                                            <input class="form-control" type="time">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="text-right">
-                                            <p><a href="#">Add</a></p>
-                                            <p><a href="#">Delete</a></p>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                                {% endfor %}
                         </div>
+                        {% empty %}
+                            <em><h3>Wishlist is empty</h3></em>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -233,31 +140,41 @@
                 </div>
 
                 <div class="row border-bottom1">
-                    <table style="border:1px; height:230px; width:1000px; align:center">
-                        <thead style="text-align: center">
-                            <td>NO.</td>
-                            <td>Product name</td>
-                            <td>Time</td>
-                            <td>Price</td>
+                    <table class="table table-borderless table-shopping-cart">
+                        <thead class="text-muted">
+                        <tr class="small text-uppercase">
+                            <th scope="col">Product</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Price</th>
+                            <th scope="col" class="text-right d-none d-md-block"></th>
+                        </tr>
                         </thead>
-                        <tr align = "center">
-                            <td>1</td>
-                            <td><img src="../../static/bootstrap/pic/logo1.png"  class="img-sm"></td>
-                            <td>2022-03-01</td>
-                            <td>AUD 40.00</td>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <figure class="item_side align-items-center">
+                                    <div class="aside"><img src="{{ MEDIA_URL }}{{ item.product.image }}"class="img-sm"></div>
+                                    <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">{{ item.product.Productname }}</a>
+                                        <p class="text-muted small">{{ item.product.category }}</p>
+                                    </figcaption>
+                                </figure>
+                            </td>
+                            <td> <select class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select> </td>
+                            <td>
+                                <div class="price-wrap"> <var class="price">{{item.unit_price}}</var>  </div><!-- <small class="text-muted"> $9.20 each </small> -->
+                            </td>
+                            <td class="text-right d-none d-md-block">
+                                <form method="Post" onsubmit="return" >
+                                    <button type="submit" class="btn btn-light" style="background-color:#FC6701" name="Remove" value="{{ item.product.Productid }}"> Remove</button>
+                                </form>
+                            </td>
                         </tr>
-                        <tr align = "center">
-                            <td>2</td>
-                            <td><img src="../../static/bootstrap/pic/t-s-p.png" class="img-sm" ></td>
-                            <td>2022-03-01</td>
-                            <td>AUD 40.00</td>
-                        </tr>
-                        <tr align = "center">
-                            <td>3</td>
-                            <td><img src="../../static/bootstrap/pic/t-s-g.jpeg" class="img-sm"></td>
-                            <td>2022-03-01</td>
-                            <td>AUD 40.00</td>
-                        </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -387,6 +304,36 @@
         // 调用插件
         poplayer.prompt('Welcome,please enter the invitation code','Enter','Cancel','','Code',true);
     };
+</script>
+
+</body>
+</html>
+</div>
+            </div>
+        </div>
+    </div>
+
+        
+      
+</section>
+
+
+
+
+
+
+
+
+
+<script src="../../static/bootstrap/jquery/jquery-3.5.1.js"></script>
+<script src="../../static/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../../static/bootstrap/dist/js/index.js"></script>
+<script type="text/javascript" src="../../static/bootstrap/dist/js/poplayer.js"></script>
+<script type="text/javascript">
+    document.getElementById("prompt_btn332").onclick = function(){
+		// 调用插件
+		poplayer.prompt('Welcome,please enter the invitation code','Enter','Cancel','','Code',true);
+	};
 </script>
 
 </body>
