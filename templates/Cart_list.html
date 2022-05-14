@@ -45,92 +45,72 @@
 </header>
 
 <section class="pb">
-    
-    
-        
-      
+
     <!-- Tab panes -->
     <div class="container">
         <div class="row pt">
             <div class="col-lg-3">
                 <h2>Gender</h2>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a><input type="checkbox"> Male</a></li>
-                    <li><a><input type="checkbox"> Unisex</a></li>
-                    <li><a><input type="checkbox"> Female</a></li>
+                    <li><a><input type="radio"> Male</a></li>
+                    <li><a><input type="radio"> Unisex</a></li>
+                    <li><a><input type="radio"> Female</a></li>
                 </ul>
                 <h2>Price</h2>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a><input type="checkbox"> $5-$10</a></li>
-                    <li><a><input type="checkbox"> $10-$20</a></li>
-                    <li><a><input type="checkbox"> $20-$30</a></li>
-                    <li><a><input type="checkbox"> $30-$50</a></li>
+                    <li><a><input type="radio"> $5-$10</a></li>
+                    <li><a><input type="radio"> $10-$20</a></li>
+                    <li><a><input type="radio"> $20-$30</a></li>
+                    <li><a><input type="radio"> $30-$50</a></li>
                 </ul>
             </div>
-            <div class="col-lg-9">
-                <div class="top text-right">
-                    <p><a>Soft by: <a href="">Popular</a> </a>
-                       <a href="">New</a>
-                    </p>
-                </div>
-                <div class="row">
-                    <table cellpadding=0">
-                        <tbody>
-                            {%for product in wishlist.Productlist.all %}
+                            <div class="col-xs-6 col-md-39">
+                    <div class="table" >
+                        <table class="table" id="table_list" >
+                            <tbody>
+                            {%for product in products %}
                             {% if forloop.counter0|divisibleby:"3" %}
-                            <tr>
-                            <th>
-                                <div class="product">
-                                    <div class="productcheck">
-                                        <input type="checkbox" name="">
-                                    </div>
-                                    <div class="pa text-left">
-                                        <p><img src="{{MEDIA_URL}}{{product.image}}" alt="online gift shop"  style="height: 250px;width:250px"></p>
+                                <tr>
+                                <th>
+                                    <a href="{% url 'Productdetail' product.Productid %}">
+                                        <img src="{{MEDIA_URL}}{{product.image}}" alt="online gift shop" style="height: 250px;width:250px">
+                                    </a>
+                                    <div id="caption">
                                         <p>{{ product.Productname }}</p>
-                                        <p>AUD{{ product.Price }}</p>
                                     </div>
-                                </div>
-                            </th>
-                            {% else %}
-                            <th>
-                                <div class="product">
-                                    <div class="productcheck">
-                                        <input type="checkbox" name="">
+                                    <div id="price">
+                                        <h5>AUD${{ product.Price }}</h5>
+                                        <a href="{% url 'Productdetail' product.Productid %}">
+                                        <button class= "btn add" type="button" >Add</button>
+                                        </a>
                                     </div>
-                                    <div class="pa text-left">
-                                        <p><img src="{{MEDIA_URL}}{{product.image}}" alt="online gift shop" style="height: 250px;width:250px"></p>
+                                </th>
+                                {% else %}
+                                <th>
+                                    <a href="{% url 'Productdetail' product.Productid %}">
+                                        <img src="{{MEDIA_URL}}{{product.image}}" alt="online gift shop" style="height: 250px;width:250px">
+                                    </a>
+                                    <div id="caption">
                                         <p>{{ product.Productname }}</p>
-                                        <p>AUD{{ product.Price }}</p>
                                     </div>
-                                </div>
-                            </th>
-                            {% endif %}
-                            {% endfor %}
-                        </tr>
-                        </tbody>
-                    </table>
-                    
+                                    <div id="price">
+                                        <h5>AUD${{ product.Price }}</h5>
+                                        <a href="{% url 'Productdetail' product.Productid %}">
+                                        <button class= "btn add" type="button" >Add</button>
+                                        </a>
+                                    </div>
+                                </th>
+                                {% endif %}
+                                {% endfor %}
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
                 </div>
-            </div>
-        </div>
+            </div> <!-- row closed -->
     </div>
 
-    <div class="cartin">
-        <div class="container">
-            <div class="col-lg-6">
-                <p><input type="checkbox"> Select All</p>
-            </div>
-            <div class="col-lg-2">
-                <p><span class="text-danger big">1</span> Products chosen</p>
-            </div>
-            <div class="col-lg-2">
-                <p>Total Price:</p>
-            </div>
-            <div class="col-lg-2">
-                <p><span class="text-danger big">1.00</span></p>
-            </div>
-        </div>
-    </div>
       
 </section>
 
