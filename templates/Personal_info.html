@@ -77,23 +77,27 @@
             <div id="Wish" class="tab-pane active">
                 <div class="row">
                     <!--4 cate -->
-                {%for wishlist in wishlists %}
                     <div class="col-lg-3">
                         <h2>Your list</h2>
                         <ul class="nav nav-pills nav-stacked">
+                            {% for name in lists.keys %}
                             <li class="nav-item ">
-                                <a class="nav-link active" data-toggle="tab" href="#{{wishlist.listname}}">{{wishlist.listname}}</a>
+                                <a class="nav-link active" data-toggle="tab" href="#{{name}}">{{name}}</a>
                             </li>
+                            {% empty %}
+                                <em><h3>You don't have wishlist</h3></em>
+                            {% endfor %}
                         </ul>
                     </div>
                     <div class="col-lg-9 tab-content">
-                        <div id="{{wishlist.listname}}" class="tab-pane container active">
+                    {% for name,product in lists.items %}
+                        <div id="{{name}}" class="tab-pane container active">
                             <!--inner table -->
-                            {% for product in wishlist.Productlist.all %}
+                            {% for product in product %}
                             <table class="table table-borderless arrangement">
                                 <thead class="text-muted">
                                 <tr class="small text-uppercase">
-                                    <th scope="col">Product for {{wishlist.listname}}</th>
+                                    <th scope="col">Product for {{name}}</th>
                                     <th scope="col">Date</th>
                                 </tr>
                                 </thead>
@@ -126,9 +130,7 @@
                             <em><h3>Wishlist is empty</h3></em>
                                 {% endfor %}
                         </div>
-                        {% empty %}
-                            <em><h3>You don't have wishlist</h3></em>
-                        {% endfor %}
+                    {% endfor %}
                     </div>
                 </div>
             </div>

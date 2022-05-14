@@ -34,11 +34,16 @@ def paymentsucess(request):
 def persondetails(request):
     user = Customer.objects.get(id=request.session['user_id'])
     wishlists = Wishlist.objects.all()
+    list = {}
+    for wishlist in wishlists:
+        name = wishlist.listname
+        products = wishlist.Productlist.all()
+        list[name] = products
     if request.POST:
         if 'Logout' in request.POST:
             request.session.flush()
             return redirect("../")
-    return render(request, 'Personal_info.html', {'user':user,'wishlists':wishlists})
+    return render(request, 'Personal_info.html', {'user':user,'wishlists':wishlists,'lists':list,})
 
 def Productlist(request):
     products = Product.objects.all()
