@@ -76,8 +76,6 @@ def Shoppingcart(request):
 def Addwishlist(request):
     return render(request,'Gen2.html')
 
-def cartlist(request):
-    return render(request,'Cart_list.html')
 
 def genWishList(request):
     wish = Wishlist.objects.get(listid = request.session['newwishlist'])

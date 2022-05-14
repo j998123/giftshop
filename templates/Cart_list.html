@@ -69,7 +69,7 @@
                     <div class="table" >
                         <table class="table" id="table_list" >
                             <tbody>
-                            {%for product in products %}
+                            {%for product in wishlist.Productlist.all %}
                             {% if forloop.counter0|divisibleby:"3" %}
                                 <tr>
                                 <th>
