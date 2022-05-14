@@ -18,5 +18,4 @@ urlpatterns = [
     path('test/', views.paymenttest, name='test'),
     path('thanks/', views.paymentsucess, name='thanks'),
     path('checkout/', views.checkout, name='checkout'),
-    path('cartlist/',views.cartlist)
 ]
