@@ -93,15 +93,19 @@
                     {% for name,product in lists.items %}
                         <div id="{{name}}" class="tab-pane container active">
                             <!--inner table -->
-                            {% for product in product %}
                             <table class="table table-borderless arrangement">
                                 <thead class="text-muted">
                                 <tr class="small text-uppercase">
                                     <th scope="col">Product for {{name}}</th>
-                                    <th scope="col">Date</th>
                                 </tr>
                                 </thead>
                                 <!-- 3 products -->
+                                <td>
+                                        <div class="">
+                                            <input class="form-control" type="date">
+                                        </div>
+                                    </td>
+                                {% for product in product %}
                                 <tbody>
                                 <tr>
                                     <td>
@@ -111,11 +115,6 @@
                                                 <p class="text-muted small">{{ product.category }}</p>
                                             </figcaption>
                                         </figure>
-                                    </td>
-                                    <td>
-                                        <div class="">
-                                            <input class="form-control" type="date">
-                                        </div>
                                     </td>
                                     <td>
                                         <div class="text-right">

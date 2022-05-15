@@ -102,6 +102,12 @@ def addwishlist(request):
     return redirect("/giftshop/shoppingcart/addwishlist/genwishlist")
 
 
+def GenOrder(request):
+    name = request.GET.get("name", '')
+    date = request.GET.get("date")
+
+    return redirect("/giftshop/personal/")
+
 def Login(request):
     if request.session.get('is_login',None):
         return redirect("../")
