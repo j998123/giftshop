@@ -171,21 +171,24 @@ def remove_from_cart(request,product_id):
 
 @csrf_exempt
 def checkout(request):
+    items = []
     for item in Cart(request):
-        session = stripe.checkout.Session.create(
-            payment_method_types=['card'],
-            line_items=[{
-                'price': item.product.stripe_price_id,
-                'quantity': item.quantity,
-            }],
-            mode='payment',
-            success_url=request.build_absolute_uri(reverse('thanks')) + '?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url=request.build_absolute_uri(reverse('test')),
-        )
-        return JsonResponse({
-            'session_id' : session.id,
-            'stripe_public_key' : settings.TRIPE_PUBLISHABLE_KEY
+        items.append({
+            'price': item.product.stripe_price_id,
+            'quantity': item.quantity,
         })
+    print(items)
+    session = stripe.checkout.Session.create(
+        payment_method_types=['card'],
+        line_items=items,
+        mode='payment',
+        success_url=request.build_absolute_uri(reverse('thanks')) + '?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url=request.build_absolute_uri(reverse('test')),
+    )
+    return JsonResponse({
+        'session_id' : session.id,
+        'stripe_public_key' : settings.TRIPE_PUBLISHABLE_KEY
+    })
 
 
 
