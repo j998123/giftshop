@@ -13,11 +13,9 @@ class CustomerAdmin(admin.ModelAdmin):
 class OrderAdmin(admin.ModelAdmin):
     def prodlist(self,obj):
         return obj.Productlist.count()
-    def user(self,obj):
-        return obj.user_id.username
     prodlist.short_description = 'Number of Products'
-    list_display = ['Orderid','user','mobile','Price','deliverdate','address','emailaddress','prodlist','status']
-    fieldsets = ((None, {'fields': ('Orderid','user_id','mobile','Price','deliverdate','address','emailaddress', 'Productlist','status')}),)
+    list_display = ['Orderid','customername','mobile','Price','deliverdate','address','emailaddress','prodlist','status']
+    fieldsets = ((None, {'fields': ('Orderid','customername','mobile','Price','deliverdate','address','emailaddress', 'Productlist','status')}),)
     filter_horizontal = ('Productlist',)
     def has_add_permission(self, request):
         return False

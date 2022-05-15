@@ -26,12 +26,6 @@ class Product(models.Model):
 
 
 class Order(models.Model):
-    ORDER_STATUS_ENUM = {
-        "UNPAID": 1,
-        "UNSEND": 2,
-        "UNRECRIVED": 3,
-        "FINISH": 4,
-    }
     ORDER_STATUS_CHOICES = (
         (1,"Pending Payment"),
         (2, "Pending Shipment"),
@@ -39,8 +33,8 @@ class Order(models.Model):
         (4, "Completed"),
         (5, "Cancelled"),
     )
-    Orderid = models.IntegerField(primary_key=True)
-    user_id = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
+    Orderid = models.CharField(primary_key=True,max_length=100)
+    customername = models.CharField( max_length=45, blank=True, null=True)
     Price = models.IntegerField(null=True)
     mobile = PhoneNumberField()
     deliverdate = models.DateField(null=True)

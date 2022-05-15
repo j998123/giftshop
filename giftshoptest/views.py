@@ -8,6 +8,7 @@ from django.views import View
 import stripe
 from django.conf import settings
 from django.urls import reverse
+from datetime import datetime
 import uuid
 import re
 from tkinter import messagebox
@@ -25,7 +26,8 @@ def toSignup(request):
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 def payment(request):
-    return render(request, 'Check_out.html',{'cart':Cart(request)})
+    user = Customer.objects.get(id=request.session['user_id'])
+    return render(request, 'Check_out.html',{'cart':Cart(request),'user':user,})
 
 def paymentsucess(request):
     return render(request, 'thanks.html')
@@ -103,9 +105,18 @@ def addwishlist(request):
 
 
 def GenOrder(request):
-    name = request.GET.get("name", '')
-    date = request.GET.get("date")
-
+    name = request.GET.get("Frist", '')+request.GET.get("Last",'')
+    email = request.GET.get("Email" )
+    mobile = request.GET.get("Mobile")
+    address = request.GET.get("Address")
+    oid = str(uuid.uuid4().int)[-12:]
+    date = datetime.today()
+    productlist=[]
+    for item in Cart(request):
+        productlist.append(item.product)
+    neworder = Order(Orderid=oid,customername=name,Price=Cart(request).summary(),mobile=mobile,deliverdate=date,address=address,emailaddress=email,status=1)
+    neworder.save()
+    neworder.Productlist.set(productlist)
     return redirect("/giftshop/personal/")
 
 def Login(request):
@@ -191,6 +202,14 @@ def checkout(request):
         success_url=request.build_absolute_uri(reverse('thanks')) + '?session_id={CHECKOUT_SESSION_ID}',
         cancel_url=request.build_absolute_uri(reverse('payment')),
     )
+    productlist = []
+    for item in Cart(request):
+        productlist.append(item.product)
+    neworder = Order(Orderid=str(uuid.uuid4().int)[-12:], customername=Customer.objects.get(id=request.session['user_id']).Name, Price=Cart(request).summary(), mobile=Customer.objects.get(id=request.session['user_id']).mobile, deliverdate=datetime.today(),
+                     address=Customer.objects.get(id=request.session['user_id']).address, emailaddress=Customer.objects.get(id=request.session['user_id']).emailaddress, status=2)
+    neworder.save()
+    neworder.Productlist.set(productlist)
+    Cart(request).clear()
     return JsonResponse({
         'session_id' : session.id,
         'stripe_public_key' : settings.TRIPE_PUBLISHABLE_KEY

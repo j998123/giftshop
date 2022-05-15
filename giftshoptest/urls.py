@@ -18,4 +18,5 @@ urlpatterns = [
     path('payment/', views.payment,name='payment'),
     path('thanks/', views.paymentsucess, name='thanks'),
     path('checkout/', views.checkout, name='checkout'),
+    path('ordgen/', views.GenOrder),
 ]
