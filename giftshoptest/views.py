@@ -24,8 +24,8 @@ def toSignup(request):
     return render(request,'Signup.html')
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
-def paymenttest(request):
-    return render(request, 'testpayment.html')
+def payment(request):
+    return render(request, 'Check_out.html',{'cart':Cart(request)})
 
 def paymentsucess(request):
     return render(request, 'thanks.html')
@@ -101,6 +101,7 @@ def addwishlist(request):
     request.session['newwishlist'] = suid
     return redirect("/giftshop/shoppingcart/addwishlist/genwishlist")
 
+
 def Login(request):
     if request.session.get('is_login',None):
         return redirect("../")
@@ -157,7 +158,6 @@ def Signup(request):
         return redirect("../tosign")
 
 
-
 def add_to_cart(request,product_id,quantity):
     product = Product.objects.get(Productid=product_id)
     price = product.Price
@@ -169,6 +169,7 @@ def remove_from_cart(request,product_id):
     cart=Cart(request)
     cart.remove(product)
 
+
 @csrf_exempt
 def checkout(request):
     items = []
@@ -177,13 +178,12 @@ def checkout(request):
             'price': item.product.stripe_price_id,
             'quantity': item.quantity,
         })
-    print(items)
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=items,
         mode='payment',
         success_url=request.build_absolute_uri(reverse('thanks')) + '?session_id={CHECKOUT_SESSION_ID}',
-        cancel_url=request.build_absolute_uri(reverse('test')),
+        cancel_url=request.build_absolute_uri(reverse('payment')),
     )
     return JsonResponse({
         'session_id' : session.id,

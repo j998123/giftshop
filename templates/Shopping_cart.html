@@ -81,19 +81,24 @@
                                 <td>
                                     <figure class="item_side align-items-center">
                                         <div class="aside"><img src="{{ MEDIA_URL }}{{ item.product.image }}"class="img-sm"></div>
-                                        <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">{{ item.product.Productname }}</a>
+                                        <figcaption class="info"> <a href="/giftshop/productlist/{{ item.product.Productid }}" class="title text-dark" data-abc="true">{{ item.product.Productname }}</a>
                                             <p class="text-muted small">{{ item.product.category }}</p>
                                         </figcaption>
                                     </figure>
                                 </td>
-                                <td> <select class="form-control">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                    </select> </td>
                                 <td>
-                                    <div class="price-wrap"> <var class="price">{{item.unit_price}}</var>  </div><!-- <small class="text-muted"> $9.20 each </small> -->
+                                    <form method="get">
+                                        <select class="form-control" name="quantity" type="submit">
+                                            <option id = "quantity" selected>{{ item.quantity }}</option>
+                                            <option id = "quantity" value= 1>1</option>
+                                            <option id = "quantity" value= 2>2</option>
+                                            <option id = "quantity" value= 3>3</option>
+                                            <option id = "quantity" value= 4>4</option>
+                                        </select>
+                                    </form>
+                                </td>
+                                <td>
+                                    <div class="price-wrap"> <var class="price">AUD${{item.unit_price}}</var>  </div><!-- <small class="text-muted"> $9.20 each </small> -->
                                 </td>
                                 <td class="text-right d-none d-md-block">
                                      <form method="Post" onsubmit="return" >
@@ -128,9 +133,9 @@
                 <div class="card-body">
                     <dl class="dlist-align">
                         <dt>Total price:</dt>
-                        <dd class="text-right ml-3">{{cart.summary}}</dd>
+                        <dd class="text-right ml-3">AUD${{cart.summary}}</dd>
                     </dl>
-                    <hr> <a href="#" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a>
+                    <hr> <a href="../payment" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a>
                     <a href="../productlist" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Continue Shopping</a>
                 </div>
             </div>
