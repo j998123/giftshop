@@ -79,17 +79,28 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'giftshop',
-        'USER': 'root',
-        'PASSWORD': '980627',
-        'HOST': '127.0.0.1',
-        'PORT': '3306'
-
+if os.getenv('GAE_APPLICATION', None):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '/cloudsql/online-gift-shop-350507:australia-southeast1:giftshop',
+            'USER': 'Lee',
+            'PASSWORD': '980627',
+            'NAME': 'giftshop',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'giftshop',
+            'USER': 'root',
+            'PASSWORD': '980627',
+            'HOST': '127.0.0.1',
+            'PORT': '1433'
+
+        }
+    }
 
 
 # Password validation

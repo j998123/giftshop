@@ -45,7 +45,7 @@ class Order(models.Model):
 
 class Wishlist(models.Model):
    listid = models.CharField(primary_key=True,max_length=100)
-   listname = models.CharField(unique=True, max_length=45, blank=True, null=True)
+   listname = models.CharField( max_length=45, blank=True, null=True)
    user_id = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True)
    deliverdate = models.DateField(null=True)
    address = models.CharField(max_length=255, blank=True, null=True)

@@ -205,8 +205,9 @@ def checkout(request):
     productlist = []
     for item in Cart(request):
         productlist.append(item.product)
-    neworder = Order(Orderid=str(uuid.uuid4().int)[-12:], customername=Customer.objects.get(id=request.session['user_id']).Name, Price=Cart(request).summary(), mobile=Customer.objects.get(id=request.session['user_id']).mobile, deliverdate=datetime.today(),
-                     address=Customer.objects.get(id=request.session['user_id']).address, emailaddress=Customer.objects.get(id=request.session['user_id']).emailaddress, status=2)
+    user = Customer.objects.get(id=request.session['user_id'])
+    neworder = Order(Orderid=str(uuid.uuid4().int)[-12:], customername=user.Name, Price=Cart(request).summary(), mobile=user.mobile, deliverdate=datetime.today(),
+                     address=user.address, emailaddress=user.emailaddress, status=2)
     neworder.save()
     neworder.Productlist.set(productlist)
     Cart(request).clear()
