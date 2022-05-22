@@ -1,0 +1,84 @@
+.border-bottom{
+    border-bottom: 2px solid #FC6701;
+    margin: 15px auto 25px auto;
+}
+.border-bottom1{
+    border-bottom: 1px solid #eee;
+    margin: 15px auto 25px auto;
+}
+.nav-link{
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+.nav-tabs>li.active>a{
+    color: #FC6701;
+    border: none;
+}
+.nav-tabs>li.active>a:focus {
+    color: #FC6701;
+    border: none;
+}
+.top{
+    border-bottom: 2px solid #FC6701;
+    margin: 0 auto 25px auto;
+}
+.top p a{
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+.nav-stacked .act{
+    background-color: #FC6701;
+    border-radius: 5px;
+}
+.nav li a{
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+.nav-stacked .act a{
+    color: white;
+}
+.pa{
+   width: 95%;
+   margin: 0 auto;
+}
+.pa img{
+    width: 100%;
+}
+.savebut{
+    background-color: #FC6701;
+    color: white;
+}
+.threec{
+    color: #FC6701;
+}
+.pt{
+    padding-top: 2%;
+}
+.pb{
+    padding-bottom: 5%;
+}
+.product{
+    position: relative;
+}
+.productcheck{
+    position: absolute;
+    z-index: 10;
+    top: 10%;
+    left: 10%;
+}
+.cartin{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    border-top: 1px solid #666;
+    padding: 1% 0;
+    background-color: white;
+    z-index: 100;
+}
+.big{
+    font-weight: bold;
+    font-size: 16px;
+}

@@ -4,14 +4,11 @@ from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
 from cart.cart import Cart
-from django.views import View
 import stripe
 from django.conf import settings
 from django.urls import reverse
 from datetime import datetime
 import uuid
-import re
-from tkinter import messagebox
 # Create your views here.
 
 

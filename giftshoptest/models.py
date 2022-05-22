@@ -1,6 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-from django.db.models import JSONField
+
 # Create your models here.
 
 
