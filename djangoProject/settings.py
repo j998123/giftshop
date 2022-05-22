@@ -108,6 +108,7 @@ DATABASES = {
         'NAME': 'giftshop',
         'USER': 'Lee',
         'PASSWORD': '980627',
+        'HOST': '/cloudsql/online-gift-shop-350507:australia-southeast1:giftshop',
         'HOST': '35.201.20.76',
         'PORT': '3306'
     }
