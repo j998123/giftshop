@@ -10,7 +10,7 @@ urlpatterns = [
     path('personal/',views.persondetails),
     path('productlist/',views.Productlist),
     path('productlist/<int:Productid>/',views.Productdetail,name = 'Productdetail'),
-    path('wishlist/<str:listid>/',views.WishList),
+    path('wishlist/<str:listid>/',views.WishList,name='WishList'),
     path('shoppingcart/',views.Shoppingcart),
     path('shoppingcart/addwishlist',views.Addwishlist),
     path('shoppingcart/addwishlist/genwishlist',views.genWishList),
@@ -19,4 +19,7 @@ urlpatterns = [
     path('thanks/', views.paymentsucess, name='thanks'),
     path('checkout/', views.checkout, name='checkout'),
     path('ordgen/', views.GenOrder),
+    path('userGenOrder/', views.userGenOrder),
+    path('searchcode/', views.searchcode),
+    path('checkout/confirm', views.confirm),
 ]

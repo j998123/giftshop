@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-bd&^r$kkc)mu&s4x(frhlkw!byzgpiflb*o+u^roectoziicod
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['online-gift-shop-350507.ts.r.appspot.com','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -79,41 +79,40 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 #     }
 # }
 
-# if os.getenv('GAE_APPLICATION', None):
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.mysql',
-#             'HOST': '/cloudsql/online-gift-shop-350507:australia-southeast1:giftshop',
-#             'USER': 'Lee',
-#             'PASSWORD': '980627',
-#             'NAME': 'giftshop',
-#         }
-#     }
-# else:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.mysql',
-#             'NAME': 'giftshop',
-#             'USER': 'root',
-#             'PASSWORD': '980627',
-#             'HOST': '127.0.0.1',
-#             'PORT': '1433'
-#
-#         }
-#     }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'giftshop',
         'USER': 'Lee',
         'PASSWORD': '980627',
-        'HOST': '/cloudsql/online-gift-shop-350507:australia-southeast1:giftshop',
         'HOST': '35.201.20.76',
         'PORT': '3306'
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'giftshop',
+#         'USER': 'Lee',
+#         'PASSWORD': '980627',
+#         'HOST': '/cloudsql/online-gift-shop-350507:australia-southeast1:giftshop',
+#         'PORT': '3306'
+#     }
+# }
+
+#local database
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'giftshop',
+#         'USER': 'root',
+#         'PASSWORD': '980627',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306'
+#
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 

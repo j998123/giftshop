@@ -1,12 +1,6 @@
 runtime: python
 env: flex
-entrypoint: gunicorn -b :$PORT djangoProject.wsgi
-
-env_variables:
-  INSTANCE_UNIX_SOCKET: /cloudsql/online-gift-shop-350507:australia-southeast1:giftshop
-  DB_USER: Lee
-  DB_PASS: 980627
-  DB_NAME: giftshop
+entrypoint: gunicorn -b :$PORT djangoProject.wsgi --timeout 90
 
 beta_settings:
     cloud_sql_instances: online-gift-shop-350507:australia-southeast1:giftshop

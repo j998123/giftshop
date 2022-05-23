@@ -134,13 +134,13 @@
             <div class="col-lg-6" style="position: center">
                 <div style="text-align: left;font-size: 14px">
                     <p>Hi, there</p><br>
-                    <p>You are invited to <mark>{{ wish.user_id.Name }}'s</mark> Wedding party on 20th May 2022.</p>
+                    <p>You are invited to <mark>{{ wish.user_id.Name }}'s</mark>{{ wish.listname }} on 20th May 2022.</p>
                     <p>Below is the link to online gift shop if you are struggling with choosing the wedding gift.
                         The item list that you will see on the webpage is created by <mark>{{ wish.user_id.Name }}</mark> for saving you from guessing the wishes of the couple.
                         Now, let's check it out!</p>
                 </div>
                 <div>
-                    <a href="/giftshop/wishlist/{{request.session.newwishlist}}">http://127.0.0.1:8000/giftshop/wishlist/{{request.session.newwishlist}}</a>
+                    <a href="/giftshop/wishlist/{{request.session.newwishlist}}">https://online-gift-shop-350507.ts.r.appspot.com/giftshop/wishlist/{{request.session.newwishlist}}</a>
                     <br>
                     <br>
                     <p>Or you could go to the homepage and enter the following code to access the list:</p>

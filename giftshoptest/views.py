@@ -23,7 +23,11 @@ def toSignup(request):
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 def payment(request):
-    user = Customer.objects.get(id=request.session['user_id'])
+    user = []
+    if request.session.get('user_id',None):
+        user = Customer.objects.get(id=request.session['user_id'])
+    else:
+        user = []
     return render(request, 'Check_out.html',{'cart':Cart(request),'user':user,})
 
 def paymentsucess(request):
@@ -85,6 +89,10 @@ def genWishList(request):
     wish = Wishlist.objects.get(listid = request.session['newwishlist'])
     return render(request,'Generate.html', {'wish':wish})
 
+def confirm(request):
+    order = Order.objects.get(Orderid= request.session['neworder'])
+    return render(request,'checkouconfirm.html', {'cart':Cart(request),'order':order})
+
 def addwishlist(request):
     name = request.GET.get("name", '')
     date = request.GET.get("date")
@@ -101,20 +109,19 @@ def addwishlist(request):
     return redirect("/giftshop/shoppingcart/addwishlist/genwishlist")
 
 
-def GenOrder(request):
-    name = request.GET.get("Frist", '')+request.GET.get("Last",'')
-    email = request.GET.get("Email" )
-    mobile = request.GET.get("Mobile")
-    address = request.GET.get("Address")
-    oid = str(uuid.uuid4().int)[-12:]
-    date = datetime.today()
-    productlist=[]
-    for item in Cart(request):
-        productlist.append(item.product)
-    neworder = Order(Orderid=oid,customername=name,Price=Cart(request).summary(),mobile=mobile,deliverdate=date,address=address,emailaddress=email,status=1)
-    neworder.save()
-    neworder.Productlist.set(productlist)
-    return redirect("/giftshop/personal/")
+def searchcode(request):
+    code = request.GET.get("code",'')
+    if code:
+        try:
+            wishlist = Wishlist.objects.get(listid=code)
+        except:
+            messages.error(request, 'wishlist is not exist')
+            return redirect("/giftshop")
+        wishlist = Wishlist.objects.get(listid=code)
+        return redirect('WishList', listid=wishlist.listid)
+    else:
+        messages.error(request, 'Please enter a event code')
+        return redirect("/giftshop")
 
 def Login(request):
     if request.session.get('is_login',None):
@@ -199,19 +206,39 @@ def checkout(request):
         success_url=request.build_absolute_uri(reverse('thanks')) + '?session_id={CHECKOUT_SESSION_ID}',
         cancel_url=request.build_absolute_uri(reverse('payment')),
     )
-    productlist = []
-    for item in Cart(request):
-        productlist.append(item.product)
-    user = Customer.objects.get(id=request.session['user_id'])
-    neworder = Order(Orderid=str(uuid.uuid4().int)[-12:], customername=user.Name, Price=Cart(request).summary(), mobile=user.mobile, deliverdate=datetime.today(),
-                     address=user.address, emailaddress=user.emailaddress, status=2)
-    neworder.save()
-    neworder.Productlist.set(productlist)
-    Cart(request).clear()
     return JsonResponse({
         'session_id' : session.id,
         'stripe_public_key' : settings.TRIPE_PUBLISHABLE_KEY
     })
 
+def userGenOrder(request):
+    productlist = []
+    for item in Cart(request):
+        productlist.append(item.product)
+    oid = str(uuid.uuid4().int)[-12:]
+    user = Customer.objects.get(id=request.session['user_id'])
+    neworder = Order(Orderid=oid, customername=user.Name, Price=Cart(request).summary(), mobile=user.mobile, deliverdate=datetime.today(),
+                     address=user.address, emailaddress=user.emailaddress, status=2)
+    neworder.save()
+    neworder.Productlist.set(productlist)
+    request.session['neworder'] = oid
+    return redirect("/giftshop/checkout/confirm")
+
+
+def GenOrder(request):
+    name = request.GET.get("Frist", '')+request.GET.get("Last",'')
+    email = request.GET.get("Email" )
+    mobile = request.GET.get("Mobile")
+    address = request.GET.get("Address")
+    oid = str(uuid.uuid4().int)[-12:]
+    date = datetime.today()
+    productlist=[]
+    for item in Cart(request):
+        productlist.append(item.product)
+    neworder = Order(Orderid=oid,customername=name,Price=Cart(request).summary(),mobile=mobile,deliverdate=date,address=address,emailaddress=email,status=1)
+    neworder.save()
+    neworder.Productlist.set(productlist)
+    request.session['neworder'] = oid
+    return redirect("/giftshop/checkout/confirm")
 
 
