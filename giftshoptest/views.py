@@ -64,8 +64,12 @@ def Productdetail(request,Productid):
 
 @csrf_exempt
 def WishList(request,listid):
+    if request.POST:
+        if 'Add' in request.POST:
+            add_to_cart(request,request.POST.get('Add'),1)
+            return redirect("/giftshop/wishlist/"+listid)
     wishlist = Wishlist.objects.get(listid = listid)
-    return render(request,'Pay_Cart.html',{'wishlist':wishlist})
+    return render(request,'Pay_Cart.html',{'wishlist':wishlist,'cart':Cart(request)})
 
 @csrf_exempt
 def Shoppingcart(request):

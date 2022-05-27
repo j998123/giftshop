@@ -79,8 +79,10 @@
                                     </div>
                                     <div id="price">
                                         <h5>AUD${{ product.Price }}</h5>
-                                        <a href="{% url 'Productdetail' product.Productid %}">
-                                        <button class= "btn add" type="button" >Add</button>
+                                        <a>
+                                            <form method="Post" onsubmit="return" >
+                                            <button  type="submit" class="btn btn-primary" style="background-color:#FC6701" name="Add" value={{product.Productid}} >Add</button>
+                                            </form>
                                         </a>
                                     </div>
                                 </th>
@@ -94,8 +96,10 @@
                                     </div>
                                     <div id="price">
                                         <h5>AUD${{ product.Price }}</h5>
-                                        <a href="{% url 'Productdetail' product.Productid %}">
-                                        <button class= "btn add" type="button" >Add</button>
+                                        <a>
+                                            <form method="Post" onsubmit="return" >
+                                            <button  type="submit" class="btn btn-primary" style="background-color:#FC6701" name="Add" value={{product.Productid}} >Add</button>
+                                            </form>
                                         </a>
                                     </div>
                                 </th>
@@ -111,16 +115,15 @@
     <div class="cartin">
         <div class="container">
             <div class="col-lg-6">
-                <p><input type="checkbox"> Select All</p>
             </div>
             <div class="col-lg-2">
-                <p><span class="text-danger big">1</span> Products chosen</p>
+                <p><span class="text-danger big">{{ cart.count }}</span> Products chosen</p>
             </div>
             <div class="col-lg-2">
                 <p>Total Price:</p>
             </div>
             <div class="col-lg-2">
-                <p><span class="text-danger big">AUD59.99</span></p>
+                <p><span class="text-danger big">AUD{{ cart.summary }}</span></p>
             </div>
         </div>
     </div>
