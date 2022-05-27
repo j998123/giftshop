@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1">
+    <title>Online Gift Shop</title>
+    <link rel="stylesheet" href="../../../static/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../static/bootstrap/dist/css/index.css">
+
+    <link rel="shortcut icon" href="../../../static/bootstrap/pic/webicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../../static/bootstrap/dist/css/cart.css">
+</head>
+<body>
+
+
+<!-- hdead-->
+<header id="ol_header">
+    <!--header1-->
+    <div class="top-bar text-center">
+        <div class="container">
+          <div class="row">
+              <div class="top-bar-1 col-md-4">
+                  <a href="">
+                      <img src="../../../static/bootstrap/pic/logo1.png" alt="online gift shop" width="100">
+                  </a>
+              </div>
+
+              <div class="top-bar-2 col-md-4">
+                  <span style="font-size:large ">{{ wishlist.listname}}</span>
+              </div>
+              <div class="top-bar-3 col-md-4">
+                    <a href="" style="color: black">
+
+                    </a>
+
+                    <a href="login">
+<!--                        -->
+                      <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
+                    </a>
+              </div>
+          </div>
+        </div>
+    </div>
+</header>
+
+<section class="pb">
+
+    <!-- Tab pane -->
+    <div class="container">
+        <div class="row pt">
+            <div class="col-lg-3">
+                <h2>Gender</h2>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a><input type="radio" value="1" name="gender"> Male</a></li>
+                    <li><a><input type="radio" value="2" name="gender"> Unisex</a></li>
+                    <li><a><input type="radio" value="3" name="gender"> Female</a></li>
+                </ul>
+                <h2>Price</h2>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a><input type="radio" value="1" name="price"> $5-$10</a></li>
+                    <li><a><input type="radio" value="2" name="price"> $10-$20</a></li>
+                    <li><a><input type="radio" value="3" name="price"> $20-$30</a></li>
+                    <li><a><input type="radio" value="4" name="price"> $30-$50</a></li>
+                </ul>
+            </div>
+                    <div class="col-xs-6 col-md-39">
+                    <div class="table" >
+                        <table class="table" id="table_list" >
+                            <tbody>
+                            {%for product in wishlist.Productlist.all %}
+                            {% if forloop.counter0|divisibleby:"3" %}
+                                <tr>
+                                <th>
+                                    <a href="{% url 'Productdetail' product.Productid %}">
+                                        <img src="{{MEDIA_URL}}{{product.image}}" alt="online gift shop" style="height: 250px;width:250px">
+                                    </a>
+                                    <div id="caption">
+                                        <p>{{ product.Productname }}</p>
+                                    </div>
+                                    <div id="price">
+                                        <h5>AUD${{ product.Price }}</h5>
+                                        <a href="{% url 'Productdetail' product.Productid %}">
+                                        <button class= "btn add" type="button" >Add</button>
+                                        </a>
+                                    </div>
+                                </th>
+                                {% else %}
+                                <th>
+                                    <a href="{% url 'Productdetail' product.Productid %}">
+                                        <img src="{{MEDIA_URL}}{{product.image}}" alt="online gift shop" style="height: 250px;width:250px">
+                                    </a>
+                                    <div id="caption">
+                                        <p>{{ product.Productname }}</p>
+                                    </div>
+                                    <div id="price">
+                                        <h5>AUD${{ product.Price }}</h5>
+                                        <a href="{% url 'Productdetail' product.Productid %}">
+                                        <button class= "btn add" type="button" >Add</button>
+                                        </a>
+                                    </div>
+                                </th>
+                                {% endif %}
+                                {% endfor %}
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> <!-- row closed -->
+    </div>
+    <div class="cartin">
+        <div class="container">
+            <div class="col-lg-6">
+                <p><input type="checkbox"> Select All</p>
+            </div>
+            <div class="col-lg-2">
+                <p><span class="text-danger big">1</span> Products chosen</p>
+            </div>
+            <div class="col-lg-2">
+                <p>Total Price:</p>
+            </div>
+            <div class="col-lg-2">
+                <p><span class="text-danger big">AUD59.99</span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<script src="../../../static/bootstrap/jquery/jquery-3.5.1.js"></script>
+<script src="../../../static/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../../../static/bootstrap/dist/js/index.js"></script>
+<script type="text/javascript" src="../static/bootstrap/dist/js/poplayer.js"></script>
+<script>
+    document.getElementById("prompt_btn2").onclick = function(){
+		// 调用插件
+		poplayer.prompt('Welcome,please enter the invitation code','Enter','Cancel','','Code',true);
+	};
+</script>
+
+</body>
+</html>
