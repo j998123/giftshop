@@ -22,4 +22,5 @@ urlpatterns = [
     path('userGenOrder/', views.userGenOrder),
     path('searchcode/', views.searchcode),
     path('checkout/confirm', views.confirm),
+    path('search/', views.searchproduct),
 ]

@@ -65,7 +65,7 @@ def Productdetail(request,Productid):
 @csrf_exempt
 def WishList(request,listid):
     wishlist = Wishlist.objects.get(listid = listid)
-    return render(request,'Cart_list.html',{'wishlist':wishlist})
+    return render(request,'Pay_Cart.html',{'wishlist':wishlist})
 
 @csrf_exempt
 def Shoppingcart(request):
@@ -121,6 +121,19 @@ def searchcode(request):
         return redirect('WishList', listid=wishlist.listid)
     else:
         messages.error(request, 'Please enter a event code')
+        return redirect("/giftshop")
+
+def searchproduct(request):
+    prod = request.GET.get("prod",'')
+    if prod:
+        try:
+            Products = Product.objects.filter(Productname__contains=prod)
+        except:
+            messages.error(request, 'Product is not exist')
+            return redirect("/giftshop")
+        return render(request,'Search_Product_list.html',{'products':Products})
+    else:
+        messages.error(request, 'Please enter something')
         return redirect("/giftshop")
 
 def Login(request):
@@ -206,6 +219,7 @@ def checkout(request):
         success_url=request.build_absolute_uri(reverse('thanks')) + '?session_id={CHECKOUT_SESSION_ID}',
         cancel_url=request.build_absolute_uri(reverse('payment')),
     )
+    Cart(request).clear()
     return JsonResponse({
         'session_id' : session.id,
         'stripe_public_key' : settings.TRIPE_PUBLISHABLE_KEY

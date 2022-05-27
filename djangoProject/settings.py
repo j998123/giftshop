@@ -90,6 +90,7 @@ DATABASES = {
     }
 }
 
+#deploy database
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
