@@ -30,6 +30,11 @@ def payment(request):
         user = []
     return render(request, 'Check_out.html',{'cart':Cart(request),'user':user,})
 
+def wishlistpayment(request):
+    wishlist = Wishlist.objects.get(listid=request.session['paywishlist'])
+    user = wishlist.user_id
+    return render(request, 'Invitee_checkout.html',{'cart':Cart(request),'user':user})
+
 def paymentsucess(request):
     return render(request, 'thanks.html')
 
@@ -68,12 +73,23 @@ def Productdetail(request,Productid):
 
 @csrf_exempt
 def WishList(request,listid):
+    wishlist = Wishlist.objects.get(listid=listid)
     if request.POST:
         if 'Add' in request.POST:
             add_to_cart(request,request.POST.get('Add'),1)
             return redirect("/giftshop/wishlist/"+listid)
-    wishlist = Wishlist.objects.get(listid = listid)
+        if 'Remove' in request.POST:
+            try:
+             remove_from_cart(request, request.POST.get('Remove'))
+            except:
+                return redirect("/giftshop/wishlist/" + listid)
+            return redirect("/giftshop/wishlist/" + listid)
+        if 'Check' in request.POST:
+            request.session['paywishlist'] = listid
+            request.session['userwishlist'] = wishlist.user_id.id
+            return redirect("/giftshop/wishlistpayment/")
     return render(request,'Pay_Cart.html',{'wishlist':wishlist,'cart':Cart(request)})
+
 
 @csrf_exempt
 def Shoppingcart(request):
@@ -227,6 +243,11 @@ def checkout(request):
         success_url=request.build_absolute_uri(reverse('thanks')) + '?session_id={CHECKOUT_SESSION_ID}',
         cancel_url=request.build_absolute_uri(reverse('payment')),
     )
+    if request.session['paywishlist'] !=None:
+        wishlist = Wishlist.objects.get(listid=request.session['paywishlist'])
+        for item in Cart(request):
+            Product = item.product
+            wishlist.Productlist.remove(Product)
     Cart(request).clear()
     return JsonResponse({
         'session_id' : session.id,
@@ -263,4 +284,24 @@ def GenOrder(request):
     request.session['neworder'] = oid
     return redirect("/giftshop/checkout/confirm")
 
-
+def GenwishlistOrder(request):
+    name = request.GET.get("name", '')
+    user = Customer.objects.get(id=request.session['userwishlist'])
+    wishlist = Wishlist.objects.get(listid=request.session['paywishlist'])
+    if name:
+        oid = str(uuid.uuid4().int)[-12:]
+        date = wishlist.deliverdate
+        address = wishlist.address
+        mobile = user.mobile
+        email = user.emailaddress
+        productlist=[]
+        for item in Cart(request):
+            productlist.append(item.product)
+        neworder = Order(Orderid=oid,customername=name,Price=Cart(request).summary(),mobile=mobile,deliverdate=date,address=address,emailaddress=email,status=1)
+        neworder.save()
+        neworder.Productlist.set(productlist)
+        request.session['neworder'] = oid
+    else:
+        messages.error(request, 'Please enter your name')
+        return redirect("/giftshop/wishlistpayment/")
+    return redirect("/giftshop/checkout/confirm")
