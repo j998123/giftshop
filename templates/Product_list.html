@@ -38,33 +38,58 @@
         <div class="container">
             <div class="row">
                 <div class="top-bar-1 col-md-4">
-                    <a href=../>
+                    <a href="/giftshop/">
                         <img src="/static/bootstrap/pic/logo1.png" alt="online gift shop" width="100">
                     </a>
                 </div>
 
                 <div class="top-bar-2 col-md-4">
-                    <div class="top-search hidden-sm hidden-xs" >
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
+                    <form name="Search" action="/giftshop/search"method="get">
+                        <input type="text" name="prod" class="search_goods" placeholder=" Search...">
+                        <button type="submit" class="btn btn-default">Search</button>
+                    </form>
                 </div>
                 <div class="top-bar-3 col-md-4">
-                     <span id="prompt_btn332" style="color: white">Event code</span>
-                    <!--         shopping cart       -->
-                    <a href="../shoppingcart" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px;
-                        " >
-                    </a>
-                    {% if request.session.is_login %}
-                        <a href="../personal" style="color: white">
+                <!-- event code-->
+                        <span style="color: white" data-toggle="modal" data-target="#eventcode">Event code</span>
+                    <div class="modal" tabindex="-1" role="dialog" id="eventcode">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">Please enter the event code</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                                <form name="Event" action="/giftshop/searchcode"method="get">
+                                    <div class="modal-body">
+                                        <input name ="code" type="text" class="form-control" id="code"/>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" type="button" class="btn btn-primary">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                          </div>
+                        </div>
 
-                            <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
-                        </a>
-                    {% else %}
-                        <a href="../login">
-                            <!--                        -->
-                            <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
-                        </a>
-                    {% endif %}
+
+                    <!--       cart           -->
+                    <a href="/giftshop/shoppingcart" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px">
+                    </a>
+
+                        {% if request.session.is_login %}
+                            <a href="/giftshop/personal" style="color: white">
+                                <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
+                            </a>
+                        {% else %}
+                            <a href="/giftshop/login">
+                                <!--                        -->
+                                <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
+                            </a>
+                        {% endif %}
+
                 </div>
             </div>
         </div>
@@ -78,59 +103,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
                 <ul class="nav navbar-nav">
-                    <!--   exclusive       -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Exclusive</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Cake</a></li>
-                            <li><a href="#">Flowers</a></li>
-                            <li><a href="#">Bags</a></li>
-                            <li><a href="#">Makeups</a></li>
-                            <li><a href="#">Rings</a></li>
-                            <li><a href="#">Clothes</a></li>
-                            <li><a href="#">Beauty</a></li>
-                            <li><a href="#">Other more</a></li>
-                        </ul>
-                    </li>
-                    <!--  events          -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Wedding</a></li>
-                            <li><a href="#">Birthday</a></li>
-                            <li><a href="#">House Warming</a></li>
-                            <li><a href="#">Get Promotion</a></li>
-                            <li><a href="#">Graduation</a></li>
-                            <li><a href="#">Other Events</a></li>
-                        </ul>
-                    </li>
-                    <!--  holidays        -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Holiday</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Valentine‘s Day</a></li>
-                            <li><a href="#">New Year</a></li>
-                            <li><a href="#">Mother's Day</a></li>
-                            <li><a href="#">Christmas</a></li>
-                            <li><a href="#">Halloween</a></li>
-                            <li><a href="#">Thanksgiving Day</a></li>
-                        </ul>
-                    </li>
-                    <!--    womens     <span class="caret">   -->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Womens</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Flowers</a></li>
-                            <li><a href="#">Perfume</a></li>
-                            <li><a href="#">Bags</a></li>
-                            <li><a href="#">Makeups</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Beauty</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Other more</a></li>
-                        </ul>
-                    </li>
-                    <!--    mens      -->
+                    <li><a href="#">All</a></li>
+                    <li><a href="#">Exclusive</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Holiday</a></li>
+                    <li><a href="#">Women</a></li>
                     <li><a href="#">Mens</a></li>
                     <!--    kids and baby     hidden-sm hidden-xs -->
                     <li><a href="#">Kids & Baby</a></li>

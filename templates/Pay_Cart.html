@@ -20,7 +20,7 @@
         <div class="container">
           <div class="row">
               <div class="top-bar-1 col-md-4">
-                  <a href="">
+                  <a href="/giftshop/">
                       <img src="../../../static/bootstrap/pic/logo1.png" alt="online gift shop" width="100">
                   </a>
               </div>
@@ -33,7 +33,7 @@
 
                     </a>
 
-                    <a href="login">
+                    <a href="/giftshop/login">
 <!--                        -->
                       <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
                     </a>
@@ -114,16 +114,17 @@
     </div>
     <div class="cartin">
         <div class="container">
-            <div class="col-lg-6">
-            </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <p><span class="text-danger big">{{ cart.count }}</span> Products chosen</p>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <p>Total Price:</p>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-3">
                 <p><span class="text-danger big">AUD{{ cart.summary }}</span></p>
+            </div>
+            <div class="col-lg-3">
+                <button href="#" class="btn btn-primary" id="buy_now_btn" style="background-color: #FC6701;color: white" >Checkout</button>
             </div>
         </div>
     </div>

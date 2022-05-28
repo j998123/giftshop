@@ -17,15 +17,16 @@
         <div class="container">
           <div class="row">
               <div class="top-bar-1 col-md-4">
-                  <a href=../../>
+                  <a href=/giftshop/>
                       <img src="/static/bootstrap/pic/logo1.png" alt="online gift shop" width="100">
                   </a>
               </div>
 
               <div class="top-bar-2 col-md-4">
-                  <div class="top-search hidden-sm hidden-xs" >
-                      <input type="text" class="form-control" placeholder="Search">
-                  </div>
+                  <form name="Search" action="/giftshop/search"method="get">
+                        <input type="text" name="prod" class="search_goods" placeholder=" Search...">
+                        <button type="submit" class="btn btn-default">Search</button>
+                  </form>
               </div>
               <div class="top-bar-3 col-md-4">
                     <span id="prompt_btn2" style="color: white">Event code</span>
@@ -51,84 +52,35 @@
 </header>
 <!-- cate-->
 <section id="ol_cate">
-<nav class="navbar navbar-default navbar-static-top navbar-giftshop">
-  <div class="container">
+    <nav class="navbar navbar-default navbar-static-top navbar-giftshop">
+        <div class="container">
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
-      <ul class="nav navbar-nav">
-<!--   exclusive       -->
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Exclusive</a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Cake</a></li>
-                <li><a href="#">Flowers</a></li>
-                <li><a href="#">Bags</a></li>
-                <li><a href="#">Makeups</a></li>
-                <li><a href="#">Rings</a></li>
-                <li><a href="#">Clothes</a></li>
-                <li><a href="#">Beauty</a></li>
-                <li><a href="#">Other more</a></li>
-          </ul>
-        </li>
-<!--  events          -->
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Events</a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Wedding</a></li>
-                <li><a href="#">Birthday</a></li>
-                <li><a href="#">House Warming</a></li>
-                <li><a href="#">Get Promotion</a></li>
-                <li><a href="#">Graduation</a></li>
-                <li><a href="#">Other Events</a></li>
-          </ul>
-        </li>
-<!--  holidays        -->
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Holiday</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Valentine‘s Day</a></li>
-                    <li><a href="#">New Year</a></li>
-                    <li><a href="#">Mother's Day</a></li>
-                    <li><a href="#">Christmas</a></li>
-                    <li><a href="#">Halloween</a></li>
-                    <li><a href="#">Thanksgiving Day</a></li>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+                <ul class="nav navbar-nav">
+                    <li><a href="#">All</a></li>
+                    <li><a href="#">Exclusive</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Holiday</a></li>
+                    <li><a href="#">Women</a></li>
+                    <li><a href="#">Mens</a></li>
+                    <!--    kids and baby     hidden-sm hidden-xs -->
+                    <li><a href="#">Kids & Baby</a></li>
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Artworks</a></li>
+                    <li><a href="#">Entertainment</a></li>
+                    <li><a href="#">Home & Living</a></li>
+                    <li><a href="#">Sports & Outdoor</a></li>
                 </ul>
-        </li>
-<!--    womens     <span class="caret">   -->
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Womens</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Flowers</a></li>
-            <li><a href="#">Perfume</a></li>
-            <li><a href="#">Bags</a></li>
-            <li><a href="#">Makeups</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Beauty</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Other more</a></li>
-          </ul>
-        </li>
-<!--    mens      -->
-        <li><a href="#">Mens</a></li>
-<!--    kids and baby     hidden-sm hidden-xs -->
-        <li><a href="#">Kids & Baby</a></li>
-        <li><a href="#">Technology</a></li>
-        <li><a href="#">Artworks</a></li>
-        <li><a href="#">Entertainment</a></li>
-        <li><a href="#">Home & Living</a></li>
-        <li><a href="#">Sports & Outdoor</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
 </section>
 <!-- path -->
 <section id="path_top">
 <ol class="breadcrumb">
   <li><a href="#">Home</a></li>
   <li><a href="#">Womens</a></li>
-  <li><a href="#">Flowers</a></li>
   <li class="active">Classic Sympathy Bouquet</li>
 </ol>
 </section>
