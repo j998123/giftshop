@@ -9,6 +9,7 @@ urlpatterns = [
     path('sign/',views.Signup),
     path('personal/',views.persondetails),
     path('productlist/',views.Productlist),
+    path('productlist/<str:cat>',views.Productcatlist,name = 'Productcatlist'),
     path('productlist/<int:Productid>/',views.Productdetail,name = 'Productdetail'),
     path('wishlist/<str:listid>/',views.WishList,name='WishList'),
     path('shoppingcart/',views.Shoppingcart),

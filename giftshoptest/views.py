@@ -52,6 +52,10 @@ def Productlist(request):
     products = Product.objects.all()
     return render(request,'Product_list.html',{'products':products})
 
+def Productcatlist(request,cat):
+    catProducts = Product.objects.filter(category__icontains=cat)
+    return render(request,'Product_catlist.html',{'products':catProducts})
+
 @csrf_exempt
 def Productdetail(request,Productid):
     product = Product.objects.get(Productid=Productid)
