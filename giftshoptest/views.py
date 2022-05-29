@@ -51,6 +51,18 @@ def persondetails(request):
         if 'Logout' in request.POST:
             request.session.flush()
             return redirect("../")
+        if 'Generate' in request.POST:
+            request.session['newwishlist'] = request.POST.get('Generate')
+            return redirect("/giftshop/shoppingcart/addwishlist/genwishlist")
+        if 'Reset' in request.POST:
+            wishlist = Wishlist.objects.get(listid=request.POST.get('Reset'))
+            if request.POST["date"]:
+                wishlist.deliverdate = request.POST["date"]
+                wishlist.save()
+            else:
+                messages.error(request, 'Please enter a data')
+                return redirect("/giftshop/personal")
+            return redirect("/giftshop/personal")
     return render(request, 'Personal_info.html', {'user':user,'wishlists':wishlists,'lists':list,})
 
 def Productlist(request):

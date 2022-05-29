@@ -6,7 +6,6 @@
     <title>Online Gift Shop</title>
     <link rel="stylesheet" href="/static/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/static/bootstrap/dist/css/index.css">
-
     <link rel="shortcut icon" href="/static/bootstrap/pic/webicon.png" type="image/x-icon">
     <link rel="stylesheet" href="/static/bootstrap/dist/css/wishlist.css">
 </head>
@@ -113,13 +112,15 @@
                         </ul>
                     </div>
                     <div class="col-lg-9 tab-content">
-                        {% for name,product in lists.items %}
-                        <div id="{{name}}" class="tab-pane container active">
+                        {% for wishlist in wishlists %}
+                        <div id="{{wishlist.listname}}" class="tab-pane container active">
                             <div class="text-left d-none d-md-block">
-                                <input class="form-control" type="date" style="width: 200px">
                                 <form method="Post" onsubmit="return">
-                                    <button type="submit" class="btn btn-light" style="background-color:#B53C1E;position: relative;right: -220px;top:-30px" name="Reset" value="{{ Wishlist.listid }}"> Reset</button>
-                                    <button type="submit" class="btn btn-light" style="background-color:#E4BA45;position: relative;right: -250px;top:-30px" name="Generate" value="{{ Wishlist.listid }}"> Generate</button>
+                                    {% csrf_token %}
+                                    <p>Delivery date: {{ wishlist.deliverdate }}</p>
+                                    <input id="datePickerId" class="form-control" type="date" name = "date" style="width: 200px">
+                                    <button type="submit" class="btn btn-light" style="background-color:#B53C1E;position: relative;right: -220px;top:-30px" value="{{ wishlist.listid }}" name="Reset"> Reset</button>
+                                    <button type="submit" class="btn btn-light" style="background-color:#E4BA45;position: relative;right: -250px;top:-30px" name="Generate" value="{{ wishlist.listid }}"> Generate</button>
                                 </form>
 
                             </div>
@@ -127,10 +128,10 @@
                             <table class="table-responsive">
                                 <thead class="text-muted">
                                 <tr class="small text-uppercase">
-                                    <th scope="col">Product for {{name}}</th>
+                                    <th scope="col">Product for {{wishlist.listname}}</th>
                                 </tr>
                                 </thead>
-                                {% for product in product %}
+                                {% for product in wishlist.Productlist.all %}
                                 <tbody>
                                 <tr>
                                     <td>
@@ -339,16 +340,10 @@
 <script src="/static/bootstrap/dist/js/index.js"></script>
 <script type="text/javascript" src="/static/bootstrap/dist/js/poplayer.js"></script>
 <script>
-    document.getElementById("prompt_btn2").onclick = function(){
-        // 调用插件
-        poplayer.prompt('Welcome,please enter the invitation code','Enter','Cancel','','Code',true);
-
-    };
-</script>
-<script>
     {% for msg in messages %}
         alert('{{ msg.message }}');
     {% endfor %}
 </script>
-
+<script>datePickerId.min = new Date().toISOString().split("T")[0];</script>
 </body>
+</html>
