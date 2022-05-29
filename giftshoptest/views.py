@@ -130,6 +130,7 @@ def addwishlist(request):
     newlist.save()
     newlist.Productlist.set(products)
     request.session['newwishlist'] = suid
+    Cart(request).clear()
     return redirect("/giftshop/shoppingcart/addwishlist/genwishlist")
 
 
@@ -183,6 +184,58 @@ def Login(request):
         messages.error(request, 'Please enter username and password')
         return redirect("../login")
 
+def update(request):
+    nusn = request.GET.get("newname",'')
+    npas = request.GET.get("password",'')
+    nphone = request.GET.get("mobile",'')
+    nemail = request.GET.get("email",'')
+    naddress = request.GET.get("address",'')
+    user = Customer.objects.get(id=request.session['user_id'])
+    if nusn:
+        user.Name = nusn
+    if npas:
+        user.password = npas
+    if nphone:
+        user.mobile = nphone
+    if nemail:
+        user.emailaddress = nemail
+    if naddress:
+        user.address = naddress
+    user.save()
+    return redirect("/giftshop/personal")
+
+
+def forgotpassword(request):
+    return render(request,'forgotpass.html')
+
+
+def Retpassword(request):
+    usn = request.GET.get("name",'')
+    pas = request.GET.get("psd",'')
+    pas2 = request.GET.get("psd2", '')
+    email = request.GET.get("email",'')
+    if usn and pas and pas2 and email:
+        try:
+            user = Customer.objects.get(username=usn)
+        except:
+            messages.error(request, 'Username does not exist')
+            return redirect("/giftshop/forgot")
+        if user.emailaddress!=email:
+            messages.error(request, 'Email address is incorrect')
+            return redirect("/giftshop/forgot")
+        else:
+            if pas != pas2:
+                messages.error(request, 'Two input password must be consistent')
+                return redirect("/giftshop/forgot")
+            else:
+                user.password = pas
+                user.save()
+                messages.error(request, 'Password reset success')
+                return redirect("/giftshop/login")
+    else:
+        messages.error(request, 'Please enter all information')
+        return redirect("/giftshop/forgot")
+
 
 def Signup(request):
     usn = request.GET.get("user",'')
@@ -198,22 +251,22 @@ def Signup(request):
         try:
             Customer.objects.filter(username=usn).get()
             messages.error(request, 'Username already exists')
-            return redirect("../tosign")
+            return redirect("/giftshop/tosign")
         except:
             if pas != pas2:
                 messages.error(request, 'Two input password must be consistent')
-                return redirect("../tosign")
+                return redirect("/giftshop/tosign")
             elif not emailTrue:
                 messages.error(request, 'Wrong email address')
-                return redirect("../tosign")
+                return redirect("/giftshop/tosign")
             else:
                 newcus = Customer(id = id,username = usn,password = pas,mobile = phone,dateofbirth = date,address = address,emailaddress=email )
                 newcus.save()
                 messages.error(request, 'Signup success')
-                return redirect("../login")
+                return redirect("/giftshop/login")
     else:
         messages.error(request, 'Please enter all information')
-        return redirect("../tosign")
+        return redirect("/giftshop/tosign")
 
 
 def add_to_cart(request,product_id,quantity):

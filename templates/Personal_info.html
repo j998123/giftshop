@@ -108,51 +108,83 @@
                                 <a class="nav-link active" data-toggle="tab" href="#{{name}}">{{name}}</a>
                             </li>
                             {% empty %}
-                                <em><h3>You don't have wishlist</h3></em>
+                            <em><h3>You don't have wishlist</h3></em>
                             {% endfor %}
                         </ul>
                     </div>
                     <div class="col-lg-9 tab-content">
-                    {% for name,product in lists.items %}
+                        {% for name,product in lists.items %}
                         <div id="{{name}}" class="tab-pane container active">
-                            <!--inner table -->
-                            <table class="table table-borderless arrangement">
+                            <div class="text-left d-none d-md-block">
+                                <input class="form-control" type="date" style="width: 200px">
+                                <form method="Post" onsubmit="return">
+                                    <button type="submit" class="btn btn-light" style="background-color:#B53C1E;position: relative;right: -220px;top:-30px" name="Reset" value="{{ Wishlist.listid }}"> Reset</button>
+                                    <button type="submit" class="btn btn-light" style="background-color:#E4BA45;position: relative;right: -250px;top:-30px" name="Generate" value="{{ Wishlist.listid }}"> Generate</button>
+                                </form>
+
+
+
+                            </div>
+
+
+                            <table class="table-responsive">
                                 <thead class="text-muted">
                                 <tr class="small text-uppercase">
                                     <th scope="col">Product for {{name}}</th>
                                 </tr>
                                 </thead>
-                                <!-- 3 products -->
-                                <td>
-                                        <div class="">
-                                            <input class="form-control" type="date">
-                                        </div>
-                                    </td>
                                 {% for product in product %}
                                 <tbody>
                                 <tr>
                                     <td>
                                         <figure class="item_side align-items-center">
-                                            <div class="aside"><img src="{{ MEDIA_URL }}{{ product.image}}"class="img-sm"></div>
-                                            <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">{{ product.Productname}}</a>
-                                                <p class="text-muted small">{{ product.category }}</p>
-                                            </figcaption>
+                                            <div>
+                                                <div class="aside"><img src="{{ MEDIA_URL }}{{ product.image}}"class="img-sm"></div>
+                                                <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">{{ product.Productname}}</a>
+                                                    <p class="text-muted small">{{ product.category }}</p>
+                                                </figcaption>
+<!--                                                <form method="Post" onsubmit="return" >{% csrf_token %}-->
+<!--                                                    <button type="submit" class="btn btn-light" style="background-color:#FC6701;position: relative;right: -1080px;top:-80px" name="Delete" value="{{ product_in_wishlist.Productid }}"> Delete</button>-->
+<!--                                                </form>-->
+                                            </div>
                                         </figure>
+
+
                                     </td>
-                                    <td>
-                                        <div class="text-right">
-                                            <p><a href="#">Add</a></p>
-                                            <p><a href="#">Delete</a></p>
-                                        </div>
-                                    </td>
+
                                 </tr>
+
+
+
+
+                                <!--                                    <td class="text-left ">-->
+                                <!--                                        <figure class="item_side align-items-center">-->
+                                <!--                                            <div class="aside"><img src="{{ MEDIA_URL }}{{ product.image}}"class="img-sm"></div>-->
+                                <!--                                            <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">{{ product.Productname}}</a>-->
+                                <!--                                                <p class="text-muted small">{{ product.category }}</p>-->
+                                <!--                                            </figcaption>-->
+                                <!--                                        </figure>-->
+
+
+
+                                <!--                                    </td>-->
+                                <!--                                    <div class="text-right d-none d-md-block">-->
+                                <!--                                        <form method="Post" onsubmit="return" >-->
+                                <!--                                            <button type="submit" class="btn btn-light" style="background-color:#FC6701" name="Delete" value="{{ Product.Productid }}"> Delete</button>-->
+                                <!--                                        </form>-->
+                                <!--                                    </div>-->
+
+
+
+
+
                                 </tbody>
                             </table>
-                                {% empty %}
+                            {% empty %}
                             <em><h3>Wishlist is empty</h3></em>
-                                {% endfor %}
+                            {% endfor %}
                         </div>
-                    {% endfor %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -160,49 +192,61 @@
             <div id="Order" class="tab-pane fade">
                 <div class="container">
                     <div class="text-center">
-                        <h3><a href="" class="threec">Received gift order</a> <a href="">Orders</a></h3>
+                        <h3>Order status</h3>
                     </div>
                 </div>
 
-                <div class="row border-bottom1">
-                    <table class="table table-borderless table-shopping-cart">
-                        <thead class="text-muted">
-                        <tr class="small text-uppercase">
-                            <th scope="col">Product</th>
-                            <th scope="col">Time</th>
-                            <th scope="col">Price</th>
-                            <th scope="col" class="text-right d-none d-md-block"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
+
+
+                <table class="table table-borderless table-shopping-cart">
+                    <thead class="text-muted">
+                    <tr class="small text-uppercase">
+
+                        <th scope="col">OrderID</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Delivery date</th>
+                        <th scope="col">Status </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%for order in orders %}
+
+
                         <tr>
                             <td>
-                                <figure class="item_side align-items-center">
-                                    <div class="aside"><img src="{{ MEDIA_URL }}{{ item.product.image }}"class="img-sm"></div>
-                                    <figcaption class="info"> <a href="#" class="title text-dark" data-abc="true">{{ item.product.Productname }}</a>
-                                        <p class="text-muted small">{{ item.product.category }}</p>
-                                    </figcaption>
-                                </figure>
+
+                                <p class="text-muted small">{{ order.Orderid }}</p>
+
                             </td>
-                            <td> <select class="form-control">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                            </select> </td>
                             <td>
-                                <div class="price-wrap"> <var class="price">{{item.unit_price}}</var>  </div><!-- <small class="text-muted"> $9.20 each </small> -->
+                                <p class="text-muted small">AUD${{ order.Price }}</p>
+
                             </td>
-                            <td class="text-right d-none d-md-block">
-                                <form method="Post" onsubmit="return" >
-                                    <button type="submit" class="btn btn-light" style="background-color:#FC6701" name="Remove" value="{{ item.product.Productid }}"> Remove</button>
-                                </form>
+
+                            <td>
+                                <p class="text-muted small">{{ order.deliverdate }}</p>
+
                             </td>
+                            <td>
+                                <p class="text-muted small">{{ order.status }}</p>
+
+                            </td>
+
+
+
+
                         </tr>
+                    {% empty %}
+                    <em><h3>Orderlist is empty</h3></em>
+                    {% endfor %}
+
+
                         </tbody>
                     </table>
+
+
                 </div>
-            </div>
+
             <!-- user profile -->
             <div id="Profile" class="tab-pane fade">
                 <h2>Personal info</h2>
@@ -218,7 +262,7 @@
                                                 <img src="" alt="">
                                             </div>
                                             <h4 class="user">Information</h4>
-                                            <h6 class="user-info">{{user.username}}</h6>
+                                            <h6 class="user-info">{{user.Name}}</h6>
                                             <h6 class="user-email">{{user.emailaddress}}</h6>
                                             <h6 class="user-phone">{{user.mobile}}</h6>
                                         </div><br>
@@ -234,76 +278,50 @@
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <div class="row gutters">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                            <h6 class="mb-2 text-primary">Personal Details</h6>
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                            <div class="form-group">
-                                                <label for="fullName">Full Name</label>
-                                                <input type="text" class="form-control" id="fullName" placeholder="Enter full name">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <form action="/giftshop/update" onsubmit="return" method="get">
+                                        <div class="row gutters">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <h6 class="mb-2 text-primary">Personal Details</h6>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="username">Full Name</label>
+                                                    <input type="text" name = "newname" class="form-control" id="username" placeholder="{{user.username}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="emailaddress">Email</label>
+                                                    <input type="email" name = "email" class="form-control" id="emailaddress" placeholder="{{user.emailaddress}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="mobile">Phone</label>
+                                                    <input type="text" name = "mobile" class="form-control" id="mobile" placeholder="{{user.mobile}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="password">Password</label>
+                                                    <input type="password" name = "password" class="form-control" id="password" placeholder="{{user.password}}">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                            <div class="form-group">
-                                                <label for="eMail">Email</label>
-                                                <input type="email" class="form-control" id="eMail" placeholder="Enter email ID">
+                                        <div class="row gutters">
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="address">Address details</label>
+                                                    <input type="text" name = "address" class="form-control" id="address" placeholder="{{user.address}}">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                            <div class="form-group">
-                                                <label for="phone">Phone</label>
-                                                <input type="text" class="form-control" id="phone" placeholder="Enter phone number">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                            <div class="form-group">
-                                                <label for="password">Password</label>
-                                                <input type="password" class="form-control" id="password" placeholder="Enter new password">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row gutters">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                            <h6 class="mt-3 mb-2 text-primary">Address</h6>
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                            <div class="form-group">
-                                                <label for="Street">Street</label>
-                                                <input type="name" class="form-control" id="Street" placeholder="Enter Street">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                            <div class="form-group">
-                                                <label for="ciTy">City</label>
-                                                <input type="name" class="form-control" id="ciTy" placeholder="Enter City">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                            <div class="form-group">
-                                                <label for="sTate">State</label>
-                                                <input type="text" class="form-control" id="sTate" placeholder="Enter State">
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                            <div class="form-group">
-                                                <label for="Post">Post Code</label>
-                                                <input type="text" class="form-control" id="Post" placeholder="Zip Code">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row gutters">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                            <div class="text-right">
-                                                <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
-                                                <button type="button" id="submit" name="submit" class="btn btn-primary" style="background-color:#FC6701 ">Update</button>
-                                            </div>
-                                        </div>
+                                        <button type="submit" class="btn btn-primary" style="background-color:#FC6701" name="Update" value="update">Update</button>
+                                        </form>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -323,12 +341,17 @@
 <script src="/static/bootstrap/dist/js/bootstrap.js"></script>
 <script src="/static/bootstrap/dist/js/index.js"></script>
 <script type="text/javascript" src="/static/bootstrap/dist/js/poplayer.js"></script>
-<script type="text/javascript">
-    document.getElementById("prompt_btn332").onclick = function(){
+<script>
+    document.getElementById("prompt_btn2").onclick = function(){
         // 调用插件
         poplayer.prompt('Welcome,please enter the invitation code','Enter','Cancel','','Code',true);
+
     };
+</script>
+<script>
+    {% for msg in messages %}
+        alert('{{ msg.message }}');
+    {% endfor %}
 </script>
 
 </body>
-</html>

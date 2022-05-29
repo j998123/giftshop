@@ -75,7 +75,6 @@
         </div>
     </div>
 </header>
-
 <!-- cate-->
 <section id="ol_cate">
     <nav class="navbar navbar-default navbar-static-top navbar-giftshop">
@@ -102,40 +101,54 @@
         </div><!-- /.container-fluid -->
     </nav>
 </section>
-
-<!-- login- signup-->
-<section id="signup-login-btn">
+<section id="gen2">
     <div class="container">
-            <div class="row">
-        <div class="top-bar-1 col-md-6">
-            <div class="login-btn">
-                <h1>Login</h1>
-                <!-- action method-->
-            <form name="loginForm" action="/giftshop/tologin"method="get">
-          <div class="form-group">
-              <label for="username" >Username：</label>
-              <input name ="username" type="text" class="form-control" id="username"/>
-          </div>
-          <div class="form-group">
-              <label for="password" >Password：</label>
-             <input name ="password" type="password" class="form-control" id="password"/>
-         </div>
-                <!-- login- button-->
-         <button type="submit" class="btn btn-login" value="Login" >Login</button>
-                <a href="/giftshop/forgot" class="forgetPWD" style="font-size: 8px">Forget your password?</a>
-     </form>
+        <div class="row">
+            <div class="col-lg-3"></div>
+
+            <div class="col-lg-6" style="position: center">
+                <!--fill the list name-->
+                <div>
+                    <form method="get"action="/giftshop/reset/">
+                        <div class="row">
+                            <div class="col">
+                                <h5>Enter Your user name</h5>
+                                <input name = "name"  type="text" class="form-control" placeholder="Enter Your username" >
+                            </div>
+                            <div class="col">
+                                <h5>Enter your email address</h5>
+                                <input name = "email"  type="text" class="form-control" placeholder="Enter your email address" >
+                            </div>
+                            <div class="col">
+                                <h5>Enter your new password</h5>
+                                <input name = "psd"  type="password" class="form-control" placeholder="Enter your new password">
+                            </div>
+                            <div class="col">
+                                <h5>Renter your new password</h5>
+                                <input name = "psd2"  type="password" class="form-control" placeholder="Enter your new password">
+                            </div>
+                        </div>
+                        <br>
+                        <div style="text-align: center">
+                            <button class="btn" style="background-color: #FC6701;color: white" name = "addwishlist" type="submit">Reset</button>
+                        </div>
+                    </form>
+                </div>
+                <br><br><br><br><br>
+                <footer class="my-5 pt-5 text-muted text-center text-small">
+                    <p class="mb-1">&copy; 2021 - 2045 Online gift shop</p>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="#">Privacy</a></li>
+                        <li class="list-inline-item"><a href="#">Terms</a></li>
+                        <li class="list-inline-item"><a href="#">Support</a></li>
+                    </ul>
+                </footer>
+            </div>
+            <div class="col-lg-3"></div>
         </div>
-        </div>
-        <div class="top-bar-2 col-md-6">
-            <div class="signup-btn">
-        <h1>Sign up</h1>
-        <h5>Don't have an account yet?</h5>
-         <a href="/giftshop/tosign"> <button type="submit" class="btn btn-sign" >Join Now</button></a>
-    </div>
-        </div>
-    </div>
     </div>
 </section>
+
 
 
 <script src="/static/bootstrap/jquery/jquery-3.5.1.js"></script>
@@ -143,17 +156,20 @@
 <script src="/static/bootstrap/dist/js/index.js"></script>
 <script type="text/javascript" src="/static/bootstrap/dist/js/poplayer.js"></script>
 <script type="text/javascript">
-    document.getElementById("prompt_btn332").onclick = function(){
-		// 调用插件
-		poplayer.prompt('Welcome,please enter the invitation code','Enter','Cancel','','Code',true);
-	};
+ document.getElementById("prompt_btn332").onclick = function(){
+        // 调用插件
+        poplayer.prompt('Welcome,please enter the invitation code','Enter','Cancel','','Code',true);
+    };
+
+</script>
+
 </script>
 <script>
     {% for msg in messages %}
         alert('{{ msg.message }}');
     {% endfor %}
 </script>
-
+<script>datePickerId.min = new Date().toISOString().split("T")[0];</script>
 
 
 
