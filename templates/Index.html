@@ -25,7 +25,7 @@
 
                 <div class="top-bar-2 col-md-4">
                     <form name="Search" action="/giftshop/search"method="get">
-                        <input type="text" name="prod" class="search_goods" placeholder=" Search...">
+                        <input type="text" name="prod" class="search_goods" style="height: 38px;width: 200px" placeholder=" Search...">
                         <button type="submit" class="btn btn-default">Search</button>
                     </form>
                 </div>
@@ -125,26 +125,26 @@
             <div class="col-xs-6 col-md-3">
                 <a href="{% url 'Productcatlist' "Women"%}" class="thumbnail">
                     <h2> Women</h2>
-                    <img src="/static/bootstrap/pic/mred.jpeg" alt="fashion" height="100%" width="100%">
+                    <img src="/static/bootstrap/pic/beauty.png" alt="fashion" style="width:202px;height:202px";>
                 </a>
 
             </div>
             <div class="col-xs-6 col-md-3">
-                <a href="{% url 'Productcatlist' "Events"%}" class="thumbnail">
-                    <h2> Events</h2>
-                    <img src="/static/bootstrap/pic/mred.jpeg" alt="makeup">
-                </a>
-            </div>
-            <div class="col-xs-6 col-md-3">
                 <a href="{% url 'Productcatlist' "Mens"%}" class="thumbnail">
                     <h2> Mens</h2>
-                    <img src="/static/bootstrap/pic/bag.png" alt="...">
+                    <img src="/static/bootstrap/pic/men.png" alt="tie" style="width:202px;height:202px";>
                 </a>
             </div>
             <div class="col-xs-6 col-md-3">
-                <a href="{% url 'Productcatlist' "Artworks"%}" class="thumbnail">
+                <a href="{% url 'Productcatlist' "Events"%}" class="thumbnail">
+                    <h2> Events</h2>
+                    <img src="/static/bootstrap/pic/Events.png" alt="event" style="width:202px;height:202px">
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <a href="{% url 'Productcatlist' "Technology"%}" class="thumbnail">
                     <h2> Artworks</h2>
-                    <img src="/static/bootstrap/pic/bag.png" alt="cake">
+                    <img src="/static/bootstrap/pic/headset.png" alt="headset" style="width:202px;height:202px">
                 </a>
             </div>
         </div>
@@ -170,13 +170,6 @@
 <script src="/static/bootstrap/dist/js/bootstrap.js"></script>
 <script src="/static/bootstrap/dist/js/index.js"></script>
 <script type="text/javascript" src="/static/bootstrap/dist/js/poplayer.js"></script>
-<script>
-    document.getElementById("prompt_btn2").onclick = function(){
-        // 调用插件
-        poplayer.prompt('Welcome,please enter the invitation code','Enter','Cancel','','Code',true);
-
-    };
-</script>
 <script>
     {% for msg in messages %}
         alert('{{ msg.message }}');

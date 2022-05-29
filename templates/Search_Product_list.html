@@ -45,7 +45,7 @@
 
                 <div class="top-bar-2 col-md-4">
                     <form name="Search" action="/giftshop/search"method="get">
-                        <input type="text" name="prod" class="search_goods" placeholder=" Search...">
+                        <input type="text" name="prod" class="search_goods" style="height: 38px;width: 200px" placeholder=" Search...">
                         <button type="submit" class="btn btn-default">Search</button>
                     </form>
                 </div>
@@ -103,19 +103,19 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
                 <ul class="nav navbar-nav">
-                    <li><a href="#">All</a></li>
-                    <li><a href="#">Exclusive</a></li>
-                    <li><a href="#">Events</a></li>
-                    <li><a href="#">Holiday</a></li>
-                    <li><a href="#">Women</a></li>
-                    <li><a href="#">Mens</a></li>
+                    <li><a href="/giftshop/productlist/">All</a></li>
+                    <li><a href="{% url 'Productcatlist' "Exclusive"%}">Exclusive</a></li>
+                    <li><a href="{% url 'Productcatlist' "Events"%}">Events</a></li>
+                    <li><a href="{% url 'Productcatlist' "Holiday"%}">Holiday</a></li>
+                    <li><a href="{% url 'Productcatlist' "Women"%}">Women</a></li>
+                    <li><a href="{% url 'Productcatlist' "Mens"%}">Mens</a></li>
                     <!--    kids and baby     hidden-sm hidden-xs -->
-                    <li><a href="#">Kids & Baby</a></li>
-                    <li><a href="#">Technology</a></li>
-                    <li><a href="#">Artworks</a></li>
-                    <li><a href="#">Entertainment</a></li>
-                    <li><a href="#">Home & Living</a></li>
-                    <li><a href="#">Sports & Outdoor</a></li>
+                    <li><a href="{% url 'Productcatlist' "Kids & Baby"%}">Kids & Baby</a></li>
+                    <li><a href="{% url 'Productcatlist' "Technology"%}">Technology</a></li>
+                    <li><a href="{% url 'Productcatlist' "Artworks"%}">Artworks</a></li>
+                    <li><a href="{% url 'Productcatlist' "Entertainment"%}">Entertainment</a></li>
+                    <li><a href="{% url 'Productcatlist' "Home & Living"%}">Home & Living</a></li>
+                    <li><a href="{% url 'Productcatlist' "Sports & Outdoor"%}">Sports & Outdoor</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

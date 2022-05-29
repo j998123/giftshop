@@ -24,28 +24,52 @@
                 </div>
 
                 <div class="top-bar-2 col-md-4">
-                   <form name="Search" action="/giftshop/search"method="get">
-                        <input type="text" name="prod" class="search_goods" placeholder=" Search...">
+                    <form name="Search" action="/giftshop/search"method="get">
+                        <input type="text" name="prod" class="search_goods" style="height: 38px;width: 200px" placeholder=" Search...">
                         <button type="submit" class="btn btn-default">Search</button>
                     </form>
                 </div>
                 <div class="top-bar-3 col-md-4">
-                    <!--  event code   -->
-                    <span id="prompt_btn332" style="color: white">Event code</span>
+                <!-- event code-->
+                        <span style="color: white" data-toggle="modal" data-target="#eventcode">Event code</span>
+                    <div class="modal" tabindex="-1" role="dialog" id="eventcode">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">Please enter the event code</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                                <form name="Event" action="/giftshop/searchcode"method="get">
+                                    <div class="modal-body">
+                                        <input name ="code" type="text" class="form-control" id="code"/>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" type="button" class="btn btn-primary">Search</button>
+                                    </div>
+                                </form>
+                            </div>
+                          </div>
+                        </div>
+
 
                     <!--       cart           -->
                     <a href="/giftshop/shoppingcart" class="glyphicon glyphicon-shopping-cart"style="color: white;font-size:30px; position: relative; top: 10px; right: -130px">
                     </a>
 
-                    {% if request.session.is_login %}
-                        <a href="/giftshop/personal" style="color: white">
-                            <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
-                        </a>
-                    {% else %}
-                        <a href="/giftshop/login">
-                            <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
-                        </a>
-                    {% endif %}
+                        {% if request.session.is_login %}
+                            <a href="/giftshop/personal" style="color: white">
+                                <span class="glyphicon glyphicon-user" style="font-size: 18px;position: relative; right: -150px" >{{ request.session.user_name }}</span>
+                            </a>
+                        {% else %}
+                            <a href="/giftshop/login">
+                                <!--                        -->
+                                <button type="button" class="btn btn-default navbar-btn hidden-sm hidden-xs" style="position: relative; right: -150px">Sign in</button>
+                            </a>
+                        {% endif %}
+
                 </div>
             </div>
         </div>
@@ -59,19 +83,19 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
                 <ul class="nav navbar-nav">
-                    <li><a href="#">All</a></li>
-                    <li><a href="#">Exclusive</a></li>
-                    <li><a href="#">Events</a></li>
-                    <li><a href="#">Holiday</a></li>
-                    <li><a href="#">Women</a></li>
-                    <li><a href="#">Mens</a></li>
+                    <li><a href="/giftshop/productlist/">All</a></li>
+                    <li><a href="{% url 'Productcatlist' "Exclusive"%}">Exclusive</a></li>
+                    <li><a href="{% url 'Productcatlist' "Events"%}">Events</a></li>
+                    <li><a href="{% url 'Productcatlist' "Holiday"%}">Holiday</a></li>
+                    <li><a href="{% url 'Productcatlist' "Women"%}">Women</a></li>
+                    <li><a href="{% url 'Productcatlist' "Mens"%}">Mens</a></li>
                     <!--    kids and baby     hidden-sm hidden-xs -->
-                    <li><a href="#">Kids & Baby</a></li>
-                    <li><a href="#">Technology</a></li>
-                    <li><a href="#">Artworks</a></li>
-                    <li><a href="#">Entertainment</a></li>
-                    <li><a href="#">Home & Living</a></li>
-                    <li><a href="#">Sports & Outdoor</a></li>
+                    <li><a href="{% url 'Productcatlist' "Kids & Baby"%}">Kids & Baby</a></li>
+                    <li><a href="{% url 'Productcatlist' "Technology"%}">Technology</a></li>
+                    <li><a href="{% url 'Productcatlist' "Artworks"%}">Artworks</a></li>
+                    <li><a href="{% url 'Productcatlist' "Entertainment"%}">Entertainment</a></li>
+                    <li><a href="{% url 'Productcatlist' "Home & Living"%}">Home & Living</a></li>
+                    <li><a href="{% url 'Productcatlist' "Sports & Outdoor"%}">Sports & Outdoor</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
