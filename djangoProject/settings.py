@@ -97,7 +97,7 @@ DATABASES = {
 #         'NAME': 'giftshop',
 #         'USER': 'Lee',
 #         'PASSWORD': '980627',
-#         'HOST': '/cloudsql/online-gift-shop-350507:australia-southeast1:giftshop',
+#         'HOST': '/cloudsql/onlinegiftshop-cp57-1:australia-southeast1:chance5703',
 #         'PORT': '3306'
 #     }
 # }
