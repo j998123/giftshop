@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'giftshop',
         'USER': 'Lee',
         'PASSWORD': '980627',
-        'HOST': '35.201.20.76',
+        'HOST': '34.87.240.99',
         'PORT': '3306'
     }
 }

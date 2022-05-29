@@ -41,7 +41,7 @@ def paymentsucess(request):
 @csrf_exempt
 def persondetails(request):
     user = Customer.objects.get(id=request.session['user_id'])
-    wishlists = Wishlist.objects.all()
+    wishlists = Wishlist.objects.filter(user_id=user)
     list = {}
     for wishlist in wishlists:
         name = wishlist.listname
@@ -257,9 +257,10 @@ def Signup(request):
     email = request.GET.get("ema",'')
     address = request.GET.get("add",'')
     date = request.GET.get("date",'')
+    name = request.GET.get("name",'')
     emailTrue = email.find("@") and email.endswith('.com')
     id = Customer.objects.count()+1
-    if usn and pas and phone and email and address:
+    if usn and pas and phone and email and address and name:
         try:
             Customer.objects.filter(username=usn).get()
             messages.error(request, 'Username already exists')
@@ -272,7 +273,7 @@ def Signup(request):
                 messages.error(request, 'Wrong email address')
                 return redirect("/giftshop/tosign")
             else:
-                newcus = Customer(id = id,username = usn,password = pas,mobile = phone,dateofbirth = date,address = address,emailaddress=email )
+                newcus = Customer(id = id,username = usn,password = pas,mobile = phone,dateofbirth = date,address = address,emailaddress=email, Name=name )
                 newcus.save()
                 messages.error(request, 'Signup success')
                 return redirect("/giftshop/login")
