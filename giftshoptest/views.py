@@ -42,6 +42,8 @@ def paymentsucess(request):
 def persondetails(request):
     user = Customer.objects.get(id=request.session['user_id'])
     wishlists = Wishlist.objects.filter(user_id=user)
+
+
     list = {}
     for wishlist in wishlists:
         name = wishlist.listname
@@ -63,7 +65,7 @@ def persondetails(request):
                 messages.error(request, 'Please enter a data')
                 return redirect("/giftshop/personal")
             return redirect("/giftshop/personal")
-    return render(request, 'Personal_info.html', {'user':user,'wishlists':wishlists,'lists':list,})
+    return render(request, 'Personal_info.html', {'user':user,'wishlists':wishlists,'lists':list})
 
 def Productlist(request):
     products = Product.objects.all()
@@ -76,11 +78,13 @@ def Productcatlist(request,cat):
 @csrf_exempt
 def Productdetail(request,Productid):
     product = Product.objects.get(Productid=Productid)
+    Pname = product.Productname
+    Pcat = product.category
     if request.POST:
         if 'Add' in request.POST:
             add_to_cart(request,Productid,1)
             return redirect("../../shoppingcart")
-    return render(request,'Product_detail.html',{'product':product})
+    return render(request,'Product_detail.html',{'product':product,'name':Pname,'cat':Pcat})
 
 
 @csrf_exempt

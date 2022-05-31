@@ -18,14 +18,14 @@
             <div class="row">
                 <div class="top-bar-1 col-md-4">
                     <a href="/giftshop/">
-                        <img src="/static/bootstrap/pic/logo1.png" alt="online gift shop" width="100">
+                        <img src="/static/bootstrap/pic/logo_new.png" alt="online gift shop" width="100">
                     </a>
                 </div>
 
                 <div class="top-bar-2 col-md-4">
                     <form name="Search" action="/giftshop/search"method="get">
                         <input type="text" name="prod" class="search_goods" style="height: 38px;width: 200px" placeholder=" Search...">
-                        <button type="submit" class="btn btn-default">Search</button>
+                        <button type="submit" class="btn btn-default" style="background-color:#D1B8A4"1>Search</button>
                     </form>
                 </div>
                 <div class="top-bar-3 col-md-4">
@@ -101,6 +101,12 @@
     </nav>
 </section>
 <!-- path -->
+<section id="path_top">
+<ol class="breadcrumb">
+  <li><a href=" ">Home</a></li>
+  <li><a href="{% url 'Productcatlist' cat%}">{{ cat }}</a></li>
+  <li class="active">{{ name }}</li>
+</ol>
 </section>
 
 <section id="details">
@@ -132,7 +138,7 @@
                     <!-- cart -->
                     <div class="section" style="padding-bottom:20px;">
                         <form method="Post" onsubmit="return" >
-                        <button  type="submit" class="btn btn-primary" style="background-color:#FC6701" name="Add" value="Add"> Add to Cart</button>
+                        <button  type="submit" class="btn btn-primary" style="background-color:#D1B8A4" name="Add" value="Add"> Add to Cart</button>
                         </form>
                         <h6><a href="#"><span class="glyphicon glyphicon-heart-empty" style="cursor:pointer;"></span> Cancel</a></h6>
                     </div>

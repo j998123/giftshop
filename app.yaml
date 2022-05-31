@@ -3,7 +3,7 @@ env: flex
 entrypoint: gunicorn -b :$PORT djangoProject.wsgi --timeout 90
 
 beta_settings:
-    cloud_sql_instances: online-gift-shop-350507:australia-southeast1:giftshop
+    cloud_sql_instances: onlinegiftshop-cp57-1:australia-southeast1:chance5703
 
 runtime_config:
   python_version: 3
