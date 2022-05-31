@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from .models import *
-from cart.cart import Cart
+from cart.cart import *
 import stripe
 from django.conf import settings
 from django.urls import reverse
@@ -71,7 +71,7 @@ def Productlist(request):
 
 def Productcatlist(request,cat):
     catProducts = Product.objects.filter(category__icontains=cat)
-    return render(request,'Product_catlist.html',{'products':catProducts})
+    return render(request,'Product_catlist.html',{'products':catProducts,'cat':cat})
 
 @csrf_exempt
 def Productdetail(request,Productid):

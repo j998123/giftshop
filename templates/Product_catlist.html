@@ -124,9 +124,8 @@
 <!-- path -->
 <section id="path_top">
     <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Womens</a></li>
-        <li class="active">Flowers</li>
+        <li><a href="/giftshop/">Home</a></li>
+        <li class="active">{{ cat }}</li>
     </ol>
 </section>
 
@@ -135,31 +134,13 @@
     <div class="product_list">
         <div class="container">
             <div class="row">
-                <!-- left filter -->
-                <div class="col-xs-6 col-md-3">
-                    <dl class="radio">
-                        <dt><h3>Flowers</h3></dt>
-                        <dd><input type="radio" id="radio">Rose</dd>
-                        <dd><input type="radio" id="radio">Jasmine</dd>
-                        <dd><input type="radio" id="radio">Daisy</dd>
-                        <dd><input type="radio" id="radio">Lavender</dd>
-                        <dd><input type="radio" id="radio">Lotus</dd>
-                        <dd><input type="radio" id="radio">Others</dd>
-                        <dt><h3>Price</h3></dt>
-                        <dd><input type="radio" id="radio">Any Price</dd>
-                        <dd><input type="radio" id="radio">31$ ~ 40$</dd>
-                        <dd><input type="radio" id="radio">41$ ~ 50$</dd>
-                        <dd><input type="radio" id="radio">51$ ~ 60$</dd>
-                        <dd><input type="radio" id="radio">61$ ~ 70$</dd>
-                    </dl>
-                </div>
+
                 <!-- product -->
-                <div class="col-xs-6 col-md-39">
                     <div class="table" >
                         <table class="table" id="table_list" >
                             <tbody>
                             {%for product in products %}
-                            {% if forloop.counter0|divisibleby:"3" %}
+                            {% if forloop.counter0|divisibleby:"4" %}
                                 <tr>
                                 <th>
                                     <a href="{% url 'Productdetail' product.Productid %}">
@@ -192,42 +173,19 @@
                                 </th>
                                 {% endif %}
                                 {% empty %}
-                                <em><h3>There are no related products</h3></em>
+                                <em style="text-align: center"><h3>There are no related products</h3></em>
                                 {% endfor %}
                             </tr>
                             </tbody>
                         </table>
 
                     </div>
-                </div>
+
             </div> <!-- row closed -->
         </div>
     </div>
 </section>
 
-<section id="pages" style="position: relative;text-align: center">
-     <div class="pages">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-</section>
 <section id="product_down">
     <div>
         <br><br><br><br>
@@ -241,13 +199,5 @@
 <script src="/static/bootstrap/dist/js/bootstrap.js"></script>
 <script src="/static/bootstrap/dist/js/index.js"></script>
 <script type="text/javascript" src="/static/bootstrap/dist/js/poplayer.js"></script>
-
-
-<script>
-    document.getElementById('prompt_btn332').onclick = function(){
-        // 调用插件
-        poplayer.prompt('Welcome,please enter the invitation code','Enter','Cancel','','Code',true);
-    };
-</script>
 </body>
 </html>
