@@ -42,7 +42,7 @@ def paymentsucess(request):
 def persondetails(request):
     user = Customer.objects.get(id=request.session['user_id'])
     wishlists = Wishlist.objects.filter(user_id=user)
-
+    orders = Order.objects.filter(customername=user.Name)
 
     list = {}
     for wishlist in wishlists:
@@ -65,7 +65,7 @@ def persondetails(request):
                 messages.error(request, 'Please enter a data')
                 return redirect("/giftshop/personal")
             return redirect("/giftshop/personal")
-    return render(request, 'Personal_info.html', {'user':user,'wishlists':wishlists,'lists':list})
+    return render(request, 'Personal_info.html', {'user':user,'wishlists':wishlists,'lists':list, 'orders':orders})
 
 def Productlist(request):
     products = Product.objects.all()
@@ -306,6 +306,7 @@ def checkout(request):
             'price': item.product.stripe_price_id,
             'quantity': item.quantity,
         })
+    print(items)
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
         line_items=items,
@@ -313,11 +314,12 @@ def checkout(request):
         success_url=request.build_absolute_uri(reverse('thanks')) + '?session_id={CHECKOUT_SESSION_ID}',
         cancel_url=request.build_absolute_uri(reverse('payment')),
     )
-    if request.session['paywishlist'] !=None:
-        wishlist = Wishlist.objects.get(listid=request.session['paywishlist'])
-        for item in Cart(request):
-            Product = item.product
-            wishlist.Productlist.remove(Product)
+    if 'paywishlist' in request.session:
+        if request.session['paywishlist'] !=None:
+            wishlist = Wishlist.objects.get(listid=request.session['paywishlist'])
+            for item in Cart(request):
+                Product = item.product
+                wishlist.Productlist.remove(Product)
     Cart(request).clear()
     return JsonResponse({
         'session_id' : session.id,
