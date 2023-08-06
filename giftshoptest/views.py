@@ -1,3 +1,4 @@
+from base64 import encode
 from django.shortcuts import render,redirect
 from django.http import JsonResponse
 from django.contrib import messages
@@ -9,8 +10,10 @@ from django.conf import settings
 from django.urls import reverse
 from datetime import datetime
 import uuid
+import base64
+from Crypto.Cipher import AES
 # Create your views here.
-
+allkey = "c22ppala2345aedf"
 
 def Mainpage(request):
     return render(request,'Index.html')
@@ -65,7 +68,7 @@ def persondetails(request):
                 messages.error(request, 'Please enter a data')
                 return redirect("/giftshop/personal")
             return redirect("/giftshop/personal")
-    return render(request, 'Personal_info.html', {'user':user,'wishlists':wishlists,'lists':list, 'orders':orders})
+    return render(request, 'Personal_info.html', {'user':user,'wishlists':wishlists,'lists':list, 'orders':orders,'password':dncrypt_CBC(user.password,allkey)})
 
 def Productlist(request):
     products = Product.objects.all()
@@ -185,10 +188,11 @@ def Login(request):
     if usn and pas:
         try:
             user = Customer.objects.get(username=usn)
+            password = dncrypt_CBC(user.password,allkey)
         except:
             messages.error(request,'User does not exist')
             return redirect("../login")
-        if user.password == pas:
+        if password == pas:
             request.session['is_login'] = True
             request.session['user_id'] = user.id
             request.session['user_name'] = user.username
@@ -210,7 +214,7 @@ def update(request):
     if nusn:
         user.Name = nusn
     if npas:
-        user.password = npas
+        user.password = encrypt_CBC(npas,allkey)
     if nphone:
         user.mobile = nphone
     if nemail:
@@ -244,13 +248,28 @@ def Retpassword(request):
                 messages.error(request, 'Two input password must be consistent')
                 return redirect("/giftshop/forgot")
             else:
-                user.password = pas
+                user.password =encrypt_CBC(pas,allkey)
                 user.save()
                 messages.error(request, 'Password reset success')
                 return redirect("/giftshop/login")
     else:
         messages.error(request, 'Please enter all information')
         return redirect("/giftshop/forgot")
+  
+
+def encrypt_CBC(password,key):
+    aes=AES.new(key.encode(),AES.MODE_CBC,b"0000000000000000")
+    password=password+(16-len(password)%16)*chr(16-len(password)%16)
+    cipher_password=aes.encrypt(password.encode('utf-8'))
+    result=base64.b64encode(cipher_password).decode('utf-8','ignore')
+    return result
+
+def dncrypt_CBC(password,key):
+    aes=AES.new(key.encode(),AES.MODE_CBC,b"0000000000000000")
+    password=base64.b64decode(password.encode('utf-8'))
+    password=aes.decrypt(password).decode('utf-8')
+    password=password[:-ord(password[-1])]
+    return password
 
 
 def Signup(request):
@@ -277,6 +296,7 @@ def Signup(request):
                 messages.error(request, 'Wrong email address')
                 return redirect("/giftshop/tosign")
             else:
+                pas = encrypt_CBC(pas,allkey)     
                 newcus = Customer(id = id,username = usn,password = pas,mobile = phone,dateofbirth = date,address = address,emailaddress=email, Name=name )
                 newcus.save()
                 messages.error(request, 'Signup success')

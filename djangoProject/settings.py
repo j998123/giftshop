@@ -79,16 +79,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'giftshop',
-        'USER': 'Lee',
-        'PASSWORD': '980627',
-        'HOST': '34.87.240.99',
-        'PORT': '3306'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'giftshop',
+#         'USER': 'Lee',
+#         'PASSWORD': '980627',
+#         'HOST': '34.87.240.99',
+#         'PORT': '3306'
+#     }
+# }
 
 #deploy database
 # DATABASES = {
@@ -103,17 +103,17 @@ DATABASES = {
 # }
 
 #local database
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'giftshop',
-#         'USER': 'root',
-#         'PASSWORD': '980627',
-#         'HOST': '127.0.0.1',
-#         'PORT': '3306'
-#
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'giftshop',
+        'USER': 'root',
+        'PASSWORD': '980627',
+        'HOST': '127.0.0.1',
+        'PORT': '3306'
+
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
